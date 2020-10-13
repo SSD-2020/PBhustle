@@ -14,3 +14,21 @@ def Codeforces_User():
 
     print(data_codeforces)
     #return data_codeforces
+
+def User_Codeforces_Contests():
+    url=" https://codeforces.com/api/user.rating?handle=sumitthakur"
+    r=requests.get(url)
+
+    contests=r.json()
+
+    if(contests['status']!='OK'): return -1
+
+    contests=contests['result'][0]
+
+    del contests['ratingUpdateTimeSeconds']
+    del contests['oldRating']
+
+    #print(contests)
+
+    return contests
+#User_Codeforces_Contests()
