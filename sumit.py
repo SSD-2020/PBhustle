@@ -23,12 +23,18 @@ def User_Codeforces_Contests():
 
     if(contests['status']!='OK'): return -1
 
-    contests=contests['result'][0]
+    contests=contests['result']
 
-    del contests['ratingUpdateTimeSeconds']
-    del contests['oldRating']
+    #print(contests)
+    for data in contests:
+
+        del data['ratingUpdateTimeSeconds']
+        del data['oldRating']
+        del data['handle']
+
+    print(contests)
 
     #print(contests)
 
-    return contests
-#User_Codeforces_Contests()
+    #return contests
+User_Codeforces_Contests()
