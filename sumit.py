@@ -14,6 +14,3 @@ def Codeforces_User():
 
     print(data_codeforces)
     #return data_codeforces
-
-def Codeforces_contests():
-    
