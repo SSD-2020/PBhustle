@@ -132,10 +132,13 @@ Login/Signup modal window - by CodyHouse.co
     border-radius: 50em;
   }
   .cd-main-nav__item.cd-main-nav__item--signin {
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    
+    border: 2px solid green;
   }
   .cd-main-nav__item.cd-main-nav__item--signup {
-    background: #2f889a;
+    /* background: green; */
+    border: 2 px solid green;
+
   }
 }
 
