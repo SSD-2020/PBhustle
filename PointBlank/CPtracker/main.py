@@ -1,6 +1,10 @@
 # Class
 from collections import defaultdict
 import requests
+from plotly.offline import plot
+from plotly.graph_objs import Scatter
+import plotly.graph_objects as go
+
 
 
 class Codechef:
@@ -11,6 +15,7 @@ class Codechef:
         self.user_info={}
         self.user_contests=[]
         self.user_valid=False
+        self.plot=0
 
 
     def fetch_data(self):
@@ -43,7 +48,34 @@ class Codechef:
             self.user_contests.append(here)
 
     def plot_data(self):
-        pass
+        
+
+        xd=[]
+        yd=[]
+        c=1
+        
+        for i in self.user_contests:
+            xd.append(c)
+            yd.append([i['rating']])
+            c+=1
+        
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=xd, 
+            y=yd,
+            mode='lines+markers',
+            name='lines+markers',
+            line = dict(color='black', width=1)
+            )
+        )
+
+        fig.update_layout(
+            title='Rating Change',
+            xaxis_title='Contest Number',
+            yaxis_title='Rating'
+            )
+
+        self.plot=plot(fig, output_type='div')
 
 
 
@@ -55,6 +87,7 @@ class Codeforces:
         self.user_info={}
         self.user_contests=[]
         self.user_valid=False
+        self.plot=0
 
 
     def fetch_data(self):
@@ -86,15 +119,41 @@ class Codeforces:
             del data['handle']
 
     def plot_data(self):
-        pass
+
+        xd=[]
+        yd=[]
+        c=1
+        
+        for i in self.user_contests:
+            xd.append(c)
+            yd.append([i['newRating']])
+            c+=1
+        
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=xd, 
+            y=yd,
+            mode='lines+markers',
+            name='lines+markers',
+            line = dict(color='black', width=1)
+            )
+        )
+
+        fig.update_layout(
+            title='Rating Change',
+            xaxis_title='Contest Number',
+            yaxis_title='Rating'
+            )
+
+        self.plot=plot(fig, output_type='div')
 
 
 
 
 
 
-# CC_user=Codechef('deepu217')
-# CC_user.fetch_data()
+CC_user=Codechef('deepu217')
+CC_user.fetch_data()
 
 # print(CC_user.user_valid)
 # print()
