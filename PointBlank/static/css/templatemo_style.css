@@ -82,6 +82,11 @@ html {
     position: relative;
 }
 
+.header-wrapper2 {
+    border-bottom: 2px solid #46494f;
+    padding: 30px 0;
+    position: relative;
+}
 a.toggle-nav {
     position: absolute;
     top: 0;
