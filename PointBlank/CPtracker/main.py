@@ -129,8 +129,6 @@ class Codeforces:
             yd.append(i['newRating'])
             c+=1
         
-        print(xd)
-        print(yd)
 
         fig = go.Figure()
         fig.add_trace(go.Scatter(
