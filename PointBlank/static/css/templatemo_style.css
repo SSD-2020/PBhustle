@@ -279,7 +279,7 @@ h2.welcome-title {
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(169,91,195,0.9);
+    background:#32353a;
     text-align: center;
     opacity: 0;
     -webkit-transition: all 200ms ease-in-out;
@@ -335,6 +335,17 @@ h2.welcome-title {
     animation-delay: 2s;
 }
 
+.project-item.five {
+    -moz-animation-delay: 2.5s;
+    -webkit-animation-delay: 2.5s;
+    animation-delay: 2.5s;
+}
+
+.project-item.six {
+    -moz-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
 .our-story {
     padding: 0 50px;
     margin-top: 30px;

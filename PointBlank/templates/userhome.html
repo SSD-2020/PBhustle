@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,11 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<title>Pointblank</title>
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/simple-line-icons.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/templatemo_style.css">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %">
+	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
 </head>
 <body>
 	<header class="site-header container animated fadeInDown">
@@ -17,7 +18,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="site-branding">
-						<a href="#"><h1>POINT BLANK</h1></a>
+						<a href="userhome.html"><h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1></a>
 					</div>
 				</div>
 				<a href="#" class="toggle-nav hidden-md hidden-lg">
@@ -27,17 +28,19 @@
 					<nav id="nav" class="main-navigation hidden-xs hidden-sm">
 						<ul class="main-menu">
 							<li><a class=" active homebutton" href="#">Home</a></li>
-							<li><a  href="codeforces.html">codeforces</a></li>
-							<li><a  href="codechef.html">codechef</a></li>
-							<li><a href="pbhustle.html">pb hustle</a></li>
+							<li><a  href="{% url 'codeforces' %}">codeforces</a></li>
+							<li><a  href="{% url 'codechef' %}">codechef</a></li>
+							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+							<li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
 						</ul>
 					</nav>
 					<nav class="main-navigation menu-responsive hidden-md hidden-lg">
 						<ul class="main-menu">
 							<li><a class=" active homebutton" href="#">Home</a></li>
-							<li><a  href="codeforces.html">codeforces</a></li>
-							<li><a  href="codechef.html">codechef</a></li>
-							<li><a href="pbhustle.html">pb hustle</a></li>
+							<li><a  href="{% url 'codeforces' %}">codeforces</a></li>
+							<li><a  href="{% url 'codechef' %}">codechef</a></li>
+							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+							<li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -49,17 +52,19 @@
 	<div id="menu-container">
 		<div id="menu-1" class="homepage home-section container">
 			<div class="home-intro text-left">
-				<p class="animated fadeInRight">Hi User</p>
-				<p class="animated fadeInLeft">Welcome Back</p>
+				<p class="animated fadeInDown">Hi User!!!</p>
+				<p class="animated fadeInRight">Welcome Back!!</p>
 				<p class="animated fadeInRight">College : Dsce</p>
-				<p class="animated fadeInLeft">Email ID : spadskgnds@dsnf.xncv</p>
-				<p class="animated fadeInRight">Single</p>
+				<p class="animated fadeInLeft">CodeChef Profile : @xxxxxxx</p>
+				<p class="animated fadeInLeft">CodeForces Profile : @xxxxxxx</p>
+				<p class="animated fadeInLeft">HackerRank Profile : @xxxxxxx</p>
+				<p class="animated fadeInUp">Email ID : spadskgnds@dsnf.xncv</p>
 
 			<br>
 			<br>
 			<br>
 			<br>
-			<br>
+			<br>	
 			<br>
 			<br>
 			<br>
@@ -80,7 +85,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-6">
 								<div class="project-item one animated fadeInRight">
-									<img src="img/1.jpg" alt="">
+									<img src="{% static 'img/1.jpg' %}" alt="">  
 									<div class="overlay">
 										<h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
 									</div>
@@ -88,7 +93,7 @@
 							</div>
 							<div class="col-md-2 col-sm-6">
 								<div class="project-item two animated fadeInRight">
-									<img src="img/2.jpg" alt="">
+									<img src="{% static 'img/2.jpg' %}" alt="">
 									<div class="overlay">
 										<h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
 									</div>
@@ -96,31 +101,31 @@
 							</div>
 							<div class="col-md-2 col-sm-6">
 								<div class="project-item three animated fadeInRight">
-									<img src="img/4.jpg" alt="">
+									<img src="{% static 'img/4.jpg' %}" alt="">
 									<div class="overlay">
 										<h4><a href="https://github.com/">Git Hub</a></h4>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-6">
-								<div class="project-item one animated fadeInRight">
-									<img src="img/3.jpg" alt="">
+								<div class="project-item three animated fadeInLeft">
+									<img src="{% static 'img/5.jpg' %}" alt="">
 									<div class="overlay">
-										<h4><a href="https://atcoder.jp/">At Coders</a></h4>
+										<h4><a href="https://atcoder.jp/">GeeksForGeeks</a></h4>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-6">
-								<div class="project-item two animated fadeInRight">
-									<img src="img/3.jpg" alt="">
+								<div class="project-item two animated fadeInLeft">
+									<img src="{% static 'img/6.jpg' %}" alt="">
 									<div class="overlay">
-										<h4><a href="https://atcoder.jp/">At Coders</a></h4>
+										<h4><a href="https://atcoder.jp/">HackerRank</a></h4>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-6">
-								<div class="project-item three animated fadeInRight">
-									<img src="img/3.jpg" alt="">
+								<div class="project-item one animated fadeInLeft">
+									<img src="{% static 'img/3.jpg' %}" alt="">
 									<div class="overlay">
 										<h4><a href="https://atcoder.jp/">At Coders</a></h4>
 									</div>
@@ -144,9 +149,9 @@
 			<div class="col-md-12">
 				<div class="main-footer">
 					<ul class="social">
-						<li><a href="#">Facebook</a></li>
-						<li><a href="#">Twitter</a></li>
-						<li><a href="#">Instagram</a></li>
+						<li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
+						<li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
+						<li><a href="https://www.dsce.edu.in/">DSCE</a></li>
 					</ul>
 				</div>
 			</div>

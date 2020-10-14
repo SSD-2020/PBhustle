@@ -4,7 +4,10 @@ from django.conf import settings
 
 
 urlpatterns= [
-    path('hi',views.user_home,name='user_home'),
-    # path('virtual',views.virtual,name='virtual')
+    path('',views.userhome,name='userhome'),
+    path('codeforces/', views.codeforces , name='codeforces'),
+    path('codechef/', views.codechef , name='codechef'),
+    path('hackerrank/', views.hackerrank, name='hackerrank'),
+    path('pbhustle/', views.pbhustle , name='pbhustle'),
 
 ]

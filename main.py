@@ -56,7 +56,6 @@ class Codeforces:
 
     def fetch_data(self):
 
-
         # USER INFORMATION
 
         url= "https://codeforces.com/api/user.info?handles=" + self.user_id
@@ -88,7 +87,6 @@ class Codeforces:
 
 
 
-
 # CC_user=Codechef('deepu217')
 # CC_user.fetch_data()
 
@@ -103,8 +101,7 @@ class Codeforces:
 
 
 
-
-# CF_user=Codeforces('deepanshu_pal')
+# CF_user=Codeforces('deepanshu_pali')
 # CF_user.fetch_data()
 
 # print(CF_user.user_valid)
