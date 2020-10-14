@@ -29,7 +29,7 @@
 					<nav id="nav" class="main-navigation hidden-xs hidden-sm">
 						<ul class="main-menu">
 							<li><a  href="{% url 'userhome' %}">Home</a></li>
-							<li><a  href="{% url 'codeforcesuserinfo' %}">codeforces</a></li>
+							<li><a  href="{% url 'codeforces' %}">codeforces</a></li>
 							<li><a  href="{% url 'codechef' %}">codechef</a></li>
 							<li><a  href="{% url 'hackerrank' %}">HackerRank</a></li>
 							<li><a  class=" active homebutton" href="{% url 'pbhustle' %}">pb hustle</a></li>
@@ -38,7 +38,7 @@
 					<nav class="main-navigation menu-responsive hidden-md hidden-lg">
 						<ul class="main-menu">
 							<li><a  href="{% url 'userhome' %}">Home</a></li>
-							<li><a  href="{% url 'codeforcesuserinfo' %}">codeforces</a></li>
+							<li><a  href="{% url 'codeforces' %}">codeforces</a></li>
 							<li><a  href="{% url 'codechef' %}">codechef</a></li>
 							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
 							<li><a  class=" active homebutton" href="{% url 'pbhustle' %}">pb hustle</a></li>
@@ -49,71 +49,93 @@
 		</div>
 	</header>
 
-<!-- 
-	<div id="menu-2" class="content about-section container">
-		<div class="our-story">
-			<div class="story-bg animated fadeIn"></div>
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="inner-story animated fadeInRight text-center">
-						<h2>CODEFORCES</h2>
-						<p>Cras placerat, est ac sollicitudin laoreet, ante enim egestas lorem, vel auctor nibh massa sit amet lacus. Cras mollis tellus id sollicitudin vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam gravida arcu</p>
-					<!-- </div> -->
-				<!-- </div>
+<!-- <div id="menu-2" class="content about-section container"> -->
+	<div class="our-story">
+		<div class="story-bg animated fadeIn"></div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="inner-story animated fadeInRight text-center">
+					<h2>CODEFORCES</h2>
+					<p>Cras placerat, est ac sollicitudin laoreet, ante enim egestas lorem, vel auctor nibh massa sit amet lacus. Cras mollis tellus id sollicitudin vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam gravida arcu</p>
+				<!-- </div> -->
 			</div>
 		</div>
-	</div> --> 
+	</div>
+</div>
 
 
-    <!-- <div id="menu-4" class="content blog-section container"> -->
-        <div class="blog-header text-center">
-            <h2 class="animated fadeInRight">PB Hustle</h2>
-            <p class="animated fadeInLeft">Our Weekly contest</p>
-            <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="blog-button animated fadeInUp">Visit Our Blog</a>
-        <!-- </div> -->
-    
-        </div>
-    
-	<br>
+<!-- 2nd menu end -->
 
-<br>
-<br>
-<br>
-<br>
+<header class="site-header container animated fadeInDown">
+<div class="header-wrapper2">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="site-branding">
+					<ul class="main-menu">
+							<li><a class="show-1 active homebutton" href="#">USER INFO</a></li>
+							<li><a class="show-2 aboutbutton" href="#">RATING INFO</a></li>
+					</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</header>
+
+
+<div id="menu-container">
+<div id="menu-1" class="homepage home-section container">
 	
+		<p class="animated fadeInRight">USER INFO</p>
+		
+			<!-- </ul>
+			{% for key,value in info.items %} 
+
+				<li> {{ key }} : {{ value }} </li> 
+
+			{% endfor %} 
+			</ul> -->
+	
+</div>
+
+<div id="menu-2" class="content about-section container">
+	<p class="animated fadeInRight">RATING INFO</p>
+
+</div>
+</div>
+
+
 
 
 
 <footer class="site-footer container text-center">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="main-footer">
-				<ul class="social">
-					<li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
-					<li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
-					<li><a href="https://www.dsce.edu.in/">DSCE</a></li>
-				</ul>
-			</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="main-footer">
+			<ul class="social">
+				<li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
+				<li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
+				<li><a href="https://www.dsce.edu.in/">DSCE</a></li>
+			</ul>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12 copyright">
-			<p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
-		</div>
+</div>
+<div class="row">
+	<div class="col-md-12 copyright">
+		<p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
 	</div>
+</div>
 </footer>
 
 
-	<span class="border-top"></span>
-	<span class="border-left"></span>
-	<span class="border-right"></span>
-	<span class="border-bottom"></span>
-	<span class="shape-1"></span>
-	<span class="shape-2"></span>
+<span class="border-top"></span>
+<span class="border-left"></span>
+<span class="border-right"></span>
+<span class="border-bottom"></span>
+<span class="shape-1"></span>
+<span class="shape-2"></span>
 
-	<script src="{% static 'js/jquery.min.js' %}"></script>  
-    <script src="{% static 'js/templatemo_custom.js' %}"></script>
-    
+<script src="{% static 'js/jquery.min.js' %}"></script>  
+<script src="{% static 'js/templatemo_custom.js' %}"></script>
 
 </body>
 </html>

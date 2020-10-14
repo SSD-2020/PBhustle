@@ -11,6 +11,23 @@
 	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 	<link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
+
+	<style>
+		.card {
+		  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+		  transition: 0.3s;
+		  width: 40%;
+		  color:#DCDCDC !important;	
+		}
+		
+		.card:hover {
+		  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+		}
+		
+		.card-container {
+		  padding: 2px 16px;
+		}
+		</style>
 </head>
 <body>
 	<header class="site-header container animated fadeInDown">
@@ -18,7 +35,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="site-branding">
-						<a href="{% url 'userhome' %}" ><h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1></a>
+						<a href="{% url 'userhome' %}"><h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1></a>
 					</div>
 				</div>
 				<a href="#" class="toggle-nav hidden-md hidden-lg">
@@ -27,20 +44,20 @@
 				<div class="col-md-8">
 					<nav id="nav" class="main-navigation hidden-xs hidden-sm">
 						<ul class="main-menu">
-							<li><a class=" active homebutton" href="{% url 'userhome' %}" >Home</a></li>
-							<li><a  href="{% url 'codeforcesuserinfo' %}">codeforces</a></li>
+							<li><a  class=" active homebutton" href="{% url 'userhome' %}" >Home</a></li>
+							<li><a  href="{% url 'codeforces' %}">codeforces</a></li>
 							<li><a  href="{% url 'codechef' %}">codechef</a></li>
-							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
-							<li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+							<li><a  href="{% url 'hackerrank' %}">HackerRank</a></li>
+							<li><a  href="{% url 'pbhustle' %}">pb hustle</a></li>
 						</ul>
 					</nav>
 					<nav class="main-navigation menu-responsive hidden-md hidden-lg">
 						<ul class="main-menu">
-							<li><a class=" active homebutton" href="{% url 'userhome' %}">Home</a></li>
-							<li><a  href="{% url 'codeforcesuserinfo' %}">codeforces</a></li>
+							<li><a  class=" active homebutton" href="{% url 'userhome' %}" >Home</a></li>
+							<li><a  href="{% url 'codeforces' %}">codeforces</a></li>
 							<li><a  href="{% url 'codechef' %}">codechef</a></li>
-							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
-							<li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+							<li><a  href="{% url 'hackerrank' %}">HackerRank</a></li>
+							<li><a  href="{% url 'pbhustle' %}">pb hustle</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -48,28 +65,31 @@
 		</div>
 	</header>
 
-	
-	<div id="menu-container">
+
+	<div id="menu-container"  >
 		<div id="menu-1" class="homepage home-section container">
-			<div class="home-intro text-left">
+			
+			<p class="animated fadeInRight">Hi User!!!</p>
+			<p class="animated fadeInLeft">Welcome Back!!</p>
+			<br>
+			<br>
 
-  				
-				<p class="animated fadeInRight">Hi {{name}} !!!</p>
-				<p class="animated fadeInLeft">Welcome Back!!</p><br>
+				 <div class="card animated fadeInRight ">
+						<div id="menu-container">
+
+						<div id="menu-1" class="homepage home-section container">
+				     	<div class="card-container">
+							<!-- <p class="animated fadeInRight">Hi User!!!</p>
+							<p class="animated fadeInLeft">Welcome Back!!</p> -->
+							<p class="animated fadeInRight">College : Dsce</p>
+							<p class="animated fadeInLeft">Email ID : spadskgnds@dsnf.xncv</p>
+							<p class="animated fadeInRight">Mingled</p>
+
+					</div></div>
+					</div>
+				  </div>
+	
 				
-				<p class="animated fadeInRight">Email ID : {{email}} </p>
-				<p class="animated fadeInLeft">College : {{college}}</p>
-				<p class="animated fadeInRight">Branch: {{branch}}</p>
-
-				<p class="animated fadeInLeft">CodeChef Profile : {{CC_id}} </p>
-				<p class="animated fadeInRight">CodeForces Profile : {{CF_id}} </p>
-
-				<p class="animated fadeInLeft">HackerRank Profile : {{HR_id}}</p>
-				<p class="animated fadeInRight">HackerEarth Profile : {{HE_id}}</p>
-
-			</div>
-				
-
 			<br>
 			<br>
 			<br>
@@ -95,7 +115,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-6">
 								<div class="project-item one animated fadeInRight">
-									<img src="{% static 'img/1.jpg' %}" alt="">  
+									<img src="{% static 'img/1.jpg' %}" alt="">
 									<div class="overlay">
 										<h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
 									</div>
@@ -118,7 +138,7 @@
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-6">
-								<div class="project-item three animated fadeInLeft">
+								<div class="project-item four animated fadeInRight">
 									<img src="{% static 'img/5.jpg' %}" alt="">
 									<div class="overlay">
 										<h4><a href="https://atcoder.jp/">GeeksForGeeks</a></h4>
@@ -126,7 +146,7 @@
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-6">
-								<div class="project-item two animated fadeInLeft">
+								<div class="project-item five animated fadeInRight">
 									<img src="{% static 'img/6.jpg' %}" alt="">
 									<div class="overlay">
 										<h4><a href="https://atcoder.jp/">HackerRank</a></h4>
@@ -134,8 +154,8 @@
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-6">
-								<div class="project-item one animated fadeInLeft">
-									<img src="{% static 'img/3.jpg' %}" alt="">
+								<div class="project-item six animated fadeInRight">
+									<img src="{% static 'img/3.jpg' %}" alt=""> 
 									<div class="overlay">
 										<h4><a href="https://atcoder.jp/">At Coders</a></h4>
 									</div>
@@ -182,7 +202,8 @@
 	<span class="shape-2"></span>
 
 
-	<!-- <script src="js/jquery.min.js"></script>
-	<script src="js/templatemo_custom.js"></script> -->
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
 </body>
 </html>

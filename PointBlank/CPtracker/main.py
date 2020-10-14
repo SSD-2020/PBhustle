@@ -49,7 +49,6 @@ class Codechef:
 
     def plot_data(self):
         
-
         xd=[]
         yd=[]
         c=1

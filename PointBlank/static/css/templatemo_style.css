@@ -76,6 +76,9 @@ html {
     margin-bottom: 80px;
 }
 
+.site-header2 {
+    margin-bottom: 0px;
+}
 .header-wrapper {
     border-bottom: 2px solid #46494f;
     padding: 60px 0;
@@ -84,9 +87,10 @@ html {
 
 .header-wrapper2 {
     border-bottom: 2px solid #46494f;
-    padding: 30px 0;
+    padding: 30px 0px;
     position: relative;
 }
+
 a.toggle-nav {
     position: absolute;
     top: 0;
@@ -159,7 +163,12 @@ ul.main-menu li a {
 }
 
 ul.main-menu li a.active {
-    background: #4e91c9;
+    background: grey;
+    color: #fff;
+}
+
+ul.main-menu li a.active2 {
+    background: grey;
     color: #fff;
 }
 
@@ -284,7 +293,7 @@ h2.welcome-title {
     height: 100%;
     top: 0;
     left: 0;
-    background:#32353a;
+    background: rgba(169,91,195,0.9);
     text-align: center;
     opacity: 0;
     -webkit-transition: all 200ms ease-in-out;

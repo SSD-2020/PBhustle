@@ -28,20 +28,20 @@
 				<div class="col-md-8">
 					<nav id="nav" class="main-navigation hidden-xs hidden-sm">
 						<ul class="main-menu">
-							<li><a  href="{% url 'userhome' %}" >Home</a></li>
-							<li><a  class=" active homebutton" href="{% url 'codeforcesuserinfo' %}">codeforces</a></li>
-							<li><a  href="{% url 'codechef' %}">codechef</a></li>
-							<li><a  href="{% url 'hackerrank' %}">HackerRank</a></li>
-							<li><a  href="{% url 'pbhustle' %}">pb hustle</a></li>
+							<li><a  href="{% url 'userhome' %}">Home</a></li>
+							<li><a  class=" active homebutton" href="{% url 'codeforces' %}">Codeforces</a></li>
+							<li><a  href="{% url 'codechef' %}">Codechef</a></li>
+							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+							<li><a href="{% url 'pbhustle' %}">PB hustle</a></li>
 						</ul>
 					</nav>
 					<nav class="main-navigation menu-responsive hidden-md hidden-lg">
 						<ul class="main-menu">
 							<li><a  href="{% url 'userhome' %}">Home</a></li>
-							<li><a  class=" active homebutton" href="{% url 'codeforcesuserinfo' %}">codeforces</a></li>
-							<li><a  href="{% url 'codechef' %}">codechef</a></li>
+							<li><a  class=" active homebutton" href="{% url 'codeforces' %}">Codeforces</a></li>
+							<li><a  href="{% url 'codechef' %}">Codechef</a></li>
 							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
-							<li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+							<li><a href="{% url 'pbhustle' %}">PB hustle</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -64,42 +64,47 @@
 		</div>
 	</div>
 
-<!-- 2nd menu start -->
-<div class="site-header container animated fadeInDown">
+
+<!-- 2nd menu end -->
+
+<header class="site-header container animated fadeInDown">
 	<div class="header-wrapper2">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="site-branding">
-					<ul class="main-menu">
-						<li><a class="active2 " href="#">GENERAL</a></li>
-						<li><a href="{% url 'codeforcesrating' %}" >CONTEST HISTORY</a></li>
-					</ul>
-
+						<ul class="main-menu">
+								<li><a class="show-1 active homebutton" href="#">USER INFO</a></li>
+								<li><a class="show-2 aboutbutton" href="#">RATING INFO</a></li>
+						</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+</header>
+
+
+<div id="menu-container">
+	<div id="menu-1" class="homepage home-section container">
+		
+			<p class="animated fadeInRight">USER INFO</p>
+			
+				<!-- </ul>
+				{% for key,value in info.items %} 
+
+					<li> {{ key }} : {{ value }} </li> 
+
+				{% endfor %} 
+				</ul> -->
+		
+	</div>
+
+	<div id="menu-2" class="content about-section container">
+		<p class="animated fadeInRight">RATING INFO</p>
+
+	</div>
 </div>
 
-
-<!-- 2nd menu end -->
-
-
-
-	<br>
-
-<br>
-<br>
-<br>
-<br>
 	
-		<!-- </ul>
-		{% for key,value in info.items %} 
-
-			<li> {{ key }} : {{ value }} </li> 
-
-		{% endfor %} 
-		</ul> -->
 
 
 

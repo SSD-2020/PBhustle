@@ -27,7 +27,7 @@ def userhome(request):
             'name':  data['name'],
             'email': data['email'],
             'college': data['college'],
-            'branch' : data['branch'],
+            'branch': data['branch'],
             'CC_id': data['CC_id'],
             'CF_id': data['CF_id'],
             'HE_id': data['HE_id'],
@@ -35,33 +35,13 @@ def userhome(request):
         }
         )
 
-def codeforcesuserinfo(request):
+def codeforces(request):
 
     CF_user=Codeforces(data['CF_id'])
     CF_user.fetch_data()
     CF_user.plot_data()
 
-    return render(
-        request,'codeforcesuserinfo.html',
-        {
-            'info': CF_user.user_info,
-            'contest': CF_user.user_contests,
-        }
-        )
-
-def codeforcesrating(request):
-
-    CF_user=Codeforces(data['CF_id'])
-    CF_user.fetch_data()
-    CF_user.plot_data()
-
-    return render(
-        request,'codeforcesrating.html',
-        )
-
-
-
-
+    return render( request,'codeforces.html',{'user' : CF_user})
 
 
 def codechef(request):
@@ -70,14 +50,8 @@ def codechef(request):
     CC_user.fetch_data()
     CC_user.plot_data()
 
+    return render(request,'codechef.html',{'user' : CC_user})
 
-    return render(
-        request,'codechef.html',
-        {
-            'info': CC_user.user_info,
-            'contest': CC_user.user_contests,
-        }
-        )
 
 def hackerrank(request):
     return render(request,'hackerrank.html')
