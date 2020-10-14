@@ -122,7 +122,6 @@ class Codeforces:
         yd=[]
         c=1
 
-        print(self.user_contests)
         
         for i in self.user_contests:
             xd.append(c)
