@@ -35,19 +35,34 @@ def userhome(request):
         }
         )
 
-def codeforces(request):
+def codeforcesuserinfo(request):
 
     CF_user=Codeforces(data['CF_id'])
     CF_user.fetch_data()
     CF_user.plot_data()
 
     return render(
-        request,'codeforces.html',
+        request,'codeforcesuserinfo.html',
         {
             'info': CF_user.user_info,
             'contest': CF_user.user_contests,
         }
         )
+
+def codeforcesrating(request):
+
+    CF_user=Codeforces(data['CF_id'])
+    CF_user.fetch_data()
+    CF_user.plot_data()
+
+    return render(
+        request,'codeforcesrating.html',
+        )
+
+
+
+
+
 
 def codechef(request):
 
