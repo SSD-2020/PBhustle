@@ -41,7 +41,13 @@ def codeforces(request):
     CF_user.fetch_data()
     CF_user.plot_data()
 
-    return render(request,'codeforces.html')
+    return render(
+        request,'codeforces.html',
+        {
+            'info': CF_user.user_info,
+            'contest': CF_user.user_contests,
+        }
+        )
 
 def codechef(request):
 
@@ -50,7 +56,13 @@ def codechef(request):
     CC_user.plot_data()
 
 
-    return render(request,'codechef.html')
+    return render(
+        request,'codechef.html',
+        {
+            'info': CC_user.user_info,
+            'contest': CC_user.user_contests,
+        }
+        )
 
 def hackerrank(request):
     return render(request,'hackerrank.html')
