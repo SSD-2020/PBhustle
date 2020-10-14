@@ -1,30 +1,29 @@
 import requests
-
-def GetContestIDs():
-    
-    url='https://competitive-coding-api.herokuapp.com/api/codechef/deepu217'
+import matplotlib.pyplot as plt
+def User_Codeforces_Contests():
+    url=" https://codeforces.com/api/user.rating?handle=deepanshu_pali"
     r=requests.get(url)
 
-    content=r.json()
-    
-    info={}
-    contests=[]
+    contests=r.json()
 
-    for contest in content['contest_ratings']:
-        
-        here={}
-        for key in contest:
-            if(key in ['code','rating', 'rank', 'name']):
-                here[key]=contest[key]
+    if(contests['status']!='OK'): return -1
 
-        contests.append(here)
-
-    for i in content:
-        if(i in ['rating', 'stars', 'highest_rating', 'global_rank', 'country_rank']):
-            info[i]=content[i]
-
-    for i in content['user_details']:
-        info[i]=content['user_details'][i]
-
-
-GetContestIDs()
+    contests=contests['result']
+    x=[]
+    y=[]
+    c=1
+    for i in contests:
+        x+=[c]
+        y+=[i['newRating']]
+        c+=1
+    #print(x)
+    #print(y)
+    plt.style.use('seaborn-whitegrid')
+    plt.figure(figsize=(len(x), len(y)))
+    plt.plot(x, y, color='green', linestyle='dashed', linewidth=3,
+             marker='o', markerfacecolor='blue', markersize=12)
+    plt.xlabel('contest Number')
+    plt.ylabel('Rating')
+    plt.savefig('sumitpb.jpg')
+    plt.show()
+User_Codeforces_Contests()

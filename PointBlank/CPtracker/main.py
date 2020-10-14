@@ -42,6 +42,9 @@ class Codechef:
 
             self.user_contests.append(here)
 
+    def plot_data(self):
+        pass
+
 
 
 class Codeforces:
@@ -81,6 +84,9 @@ class Codeforces:
             del data['ratingUpdateTimeSeconds']
             del data['oldRating']
             del data['handle']
+
+    def plot_data(self):
+        pass
 
 
 
