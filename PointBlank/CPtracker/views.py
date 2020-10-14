@@ -41,7 +41,8 @@ def codeforces(request):
     CF_user.fetch_data()
     CF_user.plot_data()
 
-    return render( request,'codeforces.html',{'user' : CF_user})
+
+    return render( request,'codeforces.html', context={'plot':CF_user.plot})
 
 
 def codechef(request):

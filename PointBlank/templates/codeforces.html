@@ -51,7 +51,7 @@
 
 
 	<!-- <div id="menu-2" class="content about-section container"> -->
-		<div class="our-story">
+		<!-- <div class="our-story">
 			<div class="story-bg animated fadeIn"></div>
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
 <!-- 2nd menu end -->
@@ -99,7 +99,13 @@
 	</div>
 
 	<div id="menu-2" class="content about-section container">
-		<p class="animated fadeInRight">RATING INFO</p>
+		<p class="animated fadeInRight">
+
+			{% autoescape off %}
+			{{ plot }}
+			{% endautoescape %}
+
+		</p>
 
 	</div>
 </div>

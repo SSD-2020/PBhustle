@@ -69,8 +69,7 @@ class Codechef:
         )
 
         fig.update_layout(
-            title='Rating Change',
-            xaxis_title='Contest Number',
+            xaxis_title='Contests',
             yaxis_title='Rating'
             )
 
@@ -122,12 +121,17 @@ class Codeforces:
         xd=[]
         yd=[]
         c=1
+
+        print(self.user_contests)
         
         for i in self.user_contests:
             xd.append(c)
-            yd.append([i['newRating']])
+            yd.append(i['newRating'])
             c+=1
         
+        print(xd)
+        print(yd)
+
         fig = go.Figure()
         fig.add_trace(go.Scatter(
             x=xd, 
@@ -139,8 +143,7 @@ class Codeforces:
         )
 
         fig.update_layout(
-            title='Rating Change',
-            xaxis_title='Contest Number',
+            xaxis_title='Contest',
             yaxis_title='Rating'
             )
 
@@ -151,8 +154,8 @@ class Codeforces:
 
 
 
-CC_user=Codechef('deepu217')
-CC_user.fetch_data()
+# CC_user=Codechef('deepu217')
+# CC_user.fetch_data()
 
 # print(CC_user.user_valid)
 # print()
@@ -167,6 +170,7 @@ CC_user.fetch_data()
 
 # CF_user=Codeforces('deepanshu_pali')
 # CF_user.fetch_data()
+# CF_user.plot_data()
 
 # print(CF_user.user_valid)
 # print()
