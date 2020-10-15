@@ -109,12 +109,20 @@ class Codeforces:
         contests=r.json()
 
         self.user_contests=contests['result']
+        last=self.user_contests[0]['newRating']
 
         for data in self.user_contests:
 
             del data['ratingUpdateTimeSeconds']
             del data['oldRating']
             del data['handle']
+
+            data['ratingChange']=data['newRating']-last
+
+            if(data['ratingChange']>=0): data['ratingChange']='+'+str(data['ratingChange'])
+            else: data['ratingChange']=str(data['ratingChange'])
+
+            last=data['newRating']
 
     def plot_data(self):
 
