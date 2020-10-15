@@ -293,7 +293,7 @@ h2.welcome-title {
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(169,91,195,0.9);
+    background: grey;
     text-align: center;
     opacity: 0;
     -webkit-transition: all 200ms ease-in-out;
