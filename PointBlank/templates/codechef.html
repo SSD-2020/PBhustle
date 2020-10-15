@@ -91,13 +91,14 @@
 <div id="menu-container">
 	<div id="menu-1" class="homepage home-section container">
 		
-			<p class="animated fadeInRight">USER INFO</p>
-			
-			<table>
+		<h2 style="color: #fff;" class="animated fadeInRight">USER INFO</h3>
+			<br>
+			<br>
+			<table >
 				{% for key,value in info.items %}
 				  <tr>
-					<th>{{key}}</th>
-					<th>{{value}}</th>
+					<td style="padding-bottom: 10px; padding-right: 40px;"><h6 style="color: #fff;"class="animated fadeInRight">{{key }}</h6>  </td>
+					<td style="padding-bottom: 10px;"> <h6 style="color: #fff;" class="animated fadeInRight">{{value}}</h6></td>
 				  </tr>
 				{% endfor %}
 				
@@ -119,37 +120,40 @@
 
 
 
-		<div id="menu-3" class="content project-section container">
-			<p class="animated fadeInRight">
+	<div id="menu-3" class="content project-section container">
+		<h2 style="color: #fff;" class="animated fadeInRight">CONTEST HISTORY</h2>
+		<br>
 
-			<table>
-				<tr>
-					<th>Contest ID</th>
-					<th>Contest Name</th>
-					<th>Rank</th>	
-					<th>Rating</th>
-					<th>Change</th>
+		<table class="table table-hover">
+			<thead>
+					
+				<tr >
+					<th><h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Contest ID</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Contest Name</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Rank</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Rating</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Change</h5></th>
 				</tr>
 
-				{% for contest in contests %}
+			</thead>
+			{% for contest in contests %}
 
-					<tr>
+				<tr>
 
-					{% for key, value in contest.items %}
+				{% for key, value in contest.items %}
 
-					<th> {{value}}</th>
-				
-					{% endfor %}
-
-					</tr>
-
+				<td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{value}}</td>
+			
 				{% endfor %}
 
-			</table>
-			</p>
+				</tr>
+
+			{% endfor %}
+
+		</table>
 
 
-		</div>
+	</div>
 
 		<div id="menu-4" class="content blog-section container">
 			<p class="animated fadeInRight">COMPARE WITH FRIENDS</p>
