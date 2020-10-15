@@ -163,12 +163,12 @@ ul.main-menu li a {
 }
 
 ul.main-menu li a.active {
-    background: grey;
+    background: darkgreen;
     color: #fff;
 }
 
 ul.main-menu li a.active2 {
-    background: grey;
+    background: green;
     color: #fff;
 }
 
