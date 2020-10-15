@@ -51,7 +51,7 @@ def codechef(request):
     CC_user.fetch_data()
     CC_user.plot_data()
 
-    return render(request,'codechef.html',{'user' : CC_user})
+    return render(request,'codechef.html',context={'plot':CC_user.plot})
 
 
 def hackerrank(request):
