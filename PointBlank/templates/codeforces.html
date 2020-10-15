@@ -89,28 +89,29 @@
 <div id="menu-container">
 	<div id="menu-1" class="homepage home-section container">
 		
-			<p class="animated fadeInRight">USER INFO</p>
+			<p class="animated fadeInRight"></p>
 			
-			<!-- <table>
+			<table>
 				{% for key,value in info.items %}
 				  <tr>
 					<th>{{key}}</th>
-					<th>{{value}}</th>
+					<th>: {{value}}</th>
 				  </tr>
 				{% endfor %}
 				
-			</table> -->
+			</table>
 		
 	</div>
 
 	<div id="menu-2" class="content about-section container">
 		<p class="animated fadeInRight">
 				<div class="graphplot" style="width: 1000px; height:400px;">
-			<!-- {% autoescape off %}
+			{% autoescape off %}
 			{{ plot }}
-			{% endautoescape %} -->
+			{% endautoescape %}
 				</div>
 		</p>
+		<br><br>
 
 	</div>
 
@@ -119,6 +120,31 @@
 
 		<div id="menu-3" class="content project-section container">
 			<p class="animated fadeInRight">CONTEST HISTORY</p>
+
+			<table>
+				<tr>
+					<th>Contest ID</th>
+					<th>Contest Name</th>
+					<th>Rank</th>
+					<th>Rating</th>
+				</tr>
+
+				{% for contest in contests %}
+
+					<tr>
+
+					{% for key, value in contest.items %}
+
+					<th> {{value}}</th>
+				
+					{% endfor %}
+
+					</tr>
+
+				{% endfor %}
+
+			</table>
+
 
 		</div>
 
@@ -130,7 +156,8 @@
 </div>
 
 
-
+<br>
+<br>
 <footer class="site-footer container text-center">
 	<div class="row">
 		<div class="col-md-12">

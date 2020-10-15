@@ -93,7 +93,7 @@
 		
 			<p class="animated fadeInRight">USER INFO</p>
 			
-			<!-- <table>
+			<table>
 				{% for key,value in info.items %}
 				  <tr>
 					<th>{{key}}</th>
@@ -101,17 +101,17 @@
 				  </tr>
 				{% endfor %}
 				
-			</table> -->
+			</table>
 		
 	</div>
 
 	<div id="menu-2" class="content about-section container">
 		<p class="animated fadeInRight">
-				<!-- <div class="graphplot" style="width: 1000px; height:400px;">
+				<div class="graphplot" style="width: 1000px; height:400px;">
 			{% autoescape off %}
 			{{ plot }}
 			{% endautoescape %}
-				</div> -->
+				</div>
 		</p>
 
 	</div>
@@ -120,7 +120,33 @@
 
 
 		<div id="menu-3" class="content project-section container">
-			<p class="animated fadeInRight">CONTEST HISTORY</p>
+			<p class="animated fadeInRight">
+
+			<table>
+				<tr>
+					<th>Contest ID</th>
+					<th>Rating</th>
+					<th>Rank</th>	
+					<th>Contest Name</th>
+				</tr>
+
+				{% for contest in contests %}
+
+					<tr>
+
+					{% for key, value in contest.items %}
+
+					<th> {{value}}</th>
+				
+					{% endfor %}
+
+					</tr>
+
+				{% endfor %}
+
+			</table>
+			</p>
+
 
 		</div>
 
@@ -130,7 +156,8 @@
 		</div>
 
 </div>
-
+<br>
+<br>
 
 
 <footer class="site-footer container text-center">

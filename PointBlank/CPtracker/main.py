@@ -55,7 +55,7 @@ class Codechef:
         
         for i in self.user_contests:
             xd.append(c)
-            yd.append([i['rating']])
+            yd.append(i['rating'])
             c+=1
         
         fig = go.Figure()
