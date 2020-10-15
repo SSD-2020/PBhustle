@@ -42,7 +42,7 @@ def codeforces(request):
     CF_user.plot_data()
 
 
-    return render( request,'codeforces.html', context={'plot':CF_user.plot})
+    return render( request,'codeforces.html', {'plot':CF_user.plot,'info':CF_user.user_info,'contest':CF_user.user_contests})
 
 
 def codechef(request):
