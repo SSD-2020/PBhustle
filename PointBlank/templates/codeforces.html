@@ -88,15 +88,15 @@
 		
 			<p class="animated fadeInRight">USER INFO</p>
 			
-				</ul>
-				{% for key,value in info.items %} 
-					<table>
-
+			<table>
+				{% for key,value in info.items %}
+				  <tr>
+					<th>{{key}}</th>
+					<th>{{value}}</th>
+				  </tr>
+				{% endfor %}
 				
-					<li> {{ key }} : {{ value }} </li> 
-
-				{% endfor %} 
-				</ul>
+			</table>
 		
 	</div>
 
