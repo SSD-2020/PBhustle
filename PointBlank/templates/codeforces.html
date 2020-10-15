@@ -67,16 +67,17 @@
 	</div> 
 
 
-<!-- 2nd menu end -->
 
 <header class="site-header container animated fadeInDown">
 	<div class="header-wrapper2">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-8">
 				<div class="site-branding">
 						<ul class="main-menu">
 								<li><a class="show-1 active homebutton" href="#">USER INFO</a></li>
 								<li><a class="show-2 aboutbutton" href="#">RATING INFO</a></li>
+								<li><a class="show-3 projectbutton" href="#">CONTEST HISTORY</a></li>
+								<li><a class="show-4 blogbutton" href="#">COMPARE WITH FRIENDS</a></li>
 						</ul>
 				</div>
 			</div>
@@ -90,7 +91,7 @@
 		
 			<p class="animated fadeInRight">USER INFO</p>
 			
-			<table>
+			<!-- <table>
 				{% for key,value in info.items %}
 				  <tr>
 					<th>{{key}}</th>
@@ -98,23 +99,35 @@
 				  </tr>
 				{% endfor %}
 				
-			</table>
+			</table> -->
 		
 	</div>
 
 	<div id="menu-2" class="content about-section container">
 		<p class="animated fadeInRight">
-
-			{% autoescape off %}
+				<div class="graphplot" style="width: 1000px; height:400px;">
+			<!-- {% autoescape off %}
 			{{ plot }}
-			{% endautoescape %}
-
+			{% endautoescape %} -->
+				</div>
 		</p>
 
 	</div>
-</div>
 
-	
+
+
+
+		<div id="menu-3" class="content project-section container">
+			<p class="animated fadeInRight">CONTEST HISTORY</p>
+
+		</div>
+
+		<div id="menu-4" class="content blog-section container">
+			<p class="animated fadeInRight">COMPARE WITH FRIENDS</p>
+
+		</div>
+
+</div>
 
 
 
