@@ -37,6 +37,7 @@ class Codechef:
             self.user_info[i]=content['user_details'][i]
 
         # USER CONTESTS
+        temp=[]
 
         for contest in content['contest_ratings']:
             
@@ -44,6 +45,24 @@ class Codechef:
             for key in contest:
                 if(key in ['code','rating', 'rank', 'name']):
                     here[key]=contest[key]
+
+            temp.append(here)
+
+        last=int(temp[0]['rating'])
+
+        for contest in temp:
+
+            here={}
+
+            here['code']=contest['code']
+            here['name']=contest['name']
+            here['rank']=contest['rank']
+            here['rating']=int(contest['rating'])
+            here['change']=here['rating']-last
+            last=here['rating']
+
+            if(here['change']>=0): here['change']='+'+str(here['change'])
+            else: here['change']=str(here['change'])
 
             self.user_contests.append(here)
 
