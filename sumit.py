@@ -124,4 +124,36 @@ def index(request):
 
 #index("1234")
 
+#function to compare between 3 users
+from collections import defaultdict
+def same_contest():
 
+    url=" https://codeforces.com/api/user.rating?handle=sparshkesari98"
+    r=requests.get(url)
+    contests=r.json()
+    if(contests['status']!='OK'): return -1
+    user1=contests['result']
+    
+
+    url=" https://codeforces.com/api/user.rating?handle=sumitthakur"
+    r=requests.get(url)
+    contests=r.json()
+    if(contests['status']!='OK'): return -1
+    user2=contests['result']
+
+    #user1 is admin
+
+    d=defaultdict(int)
+    for i in user1:
+        d[i['contestId']]=i['newRating']
+    
+    common=[] #contains (contestId,contestname,userrating,2nd userrating, difference of rating)
+
+    for i in user2:
+        if i['contestId'] in d:
+            common.append((i['contestId'],i['contestName'],d[i['contestId']],i['newRating'],d[i['contestId']]-i['newRating']))
+
+    print(common)
+
+
+#same_contest()
