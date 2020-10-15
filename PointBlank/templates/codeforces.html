@@ -88,14 +88,14 @@
 <div id="menu-container">
 	<div id="menu-1" class="homepage home-section container">
 		
-		<h2 style="color: #fff;" class="animated fadeInRight">USER INFO</h3>
+		<h2 style="color: #fff;" class="animated fadeInUp">USER INFO</h3>
 			<br>
 			<br>
 			<table >
 				{% for key,value in info.items %}
 				  <tr>
 					<td style="padding-bottom: 10px; padding-right: 40px;"><h6 style="color: #fff;"class="animated fadeInRight">{{key }}</h6>  </td>
-					<td style="padding-bottom: 10px;"> <h6 style="color: #fff;" class="animated fadeInRight">{{value}}</h6></td>
+					<td style="padding-bottom: 10px;"> <h6 style="color: #fff;" class="animated fadeInLeft">{{value}}</h6></td>
 				  </tr>
 				{% endfor %}
 				
@@ -104,13 +104,14 @@
 	</div>
 
 	<div id="menu-2" class="content about-section container">
-		<p class="animated fadeInRight">
-				<div class="graphplot" style="width: 1000px; height:400px;">
+		<h2 style="color: #fff;" class="animated fadeInRight">RATING GRAPH</h3>
+			<br>
+			<div class="graphplot animated fadeInLeft" style="width: 1000px; height:400px;">
 			{% autoescape off %}
 			{{ plot }}
 			{% endautoescape %}
 				</div>
-		</p>
+		
 		<br><br>
 
 	</div>
@@ -154,7 +155,7 @@
 		</div>
 
 		<div id="menu-4" class="content blog-section container">
-			<p class="animated fadeInRight">COMPARE WITH FRIENDS</p>
+			<h2 style="color: #fff;" class="animated fadeInRight">COMPARE WITH FRIENDS</h3>
 
 			<form action="codeforcesCompare">
 				<label for="compare">Handle</label><br>

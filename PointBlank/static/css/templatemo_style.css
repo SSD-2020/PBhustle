@@ -50,6 +50,10 @@ ol,ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 blockquote,q {
     quotes: none;
 }
@@ -281,6 +285,17 @@ h2.welcome-title {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+
+.project-item-text {
+    /* margin-bottom: 30px; */
+    position: relative;
+    overflow: hidden;
+    /* border: 3px solid #1a1c1f; */
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
 
 .project-item img {
     width: 100%;
