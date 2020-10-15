@@ -85,17 +85,16 @@
 	</div>
 </header>
 
-
 <div id="menu-container">
 	<div id="menu-1" class="homepage home-section container">
 		
-			<p class="animated fadeInRight"></p>
+			<p class="animated fadeInRight"> </p>
 			
-			<table>
+			<table class="table table-hover">
 				{% for key,value in info.items %}
 				  <tr>
-					<th>{{key}}</th>
-					<th>: {{value}}</th>
+					<th>{{key }}  </th>
+					<th> : {{value}}</th>
 				  </tr>
 				{% endfor %}
 				
@@ -119,23 +118,27 @@
 
 
 		<div id="menu-3" class="content project-section container">
-			<p class="animated fadeInRight">CONTEST HISTORY</p>
+			<h3 class="animated fadeInRight">CONTEST HISTORY</h3>
+			<br>
 
-			<table>
-				<tr>
-					<th>Contest ID</th>
-					<th>Contest Name</th>
-					<th>Rank</th>
-					<th>Rating</th>
-				</tr>
+			<table class="table table-hover">
+				<thead>
+						
+					<tr >
+						<th>Contest ID</th>
+						<th>Contest Name</th>
+						<th>Rank</th>
+						<th>Rating</th>
+					</tr>
 
+				</thead>
 				{% for contest in contests %}
 
 					<tr>
 
 					{% for key, value in contest.items %}
 
-					<th> {{value}}</th>
+					<td> {{value}}</td>
 				
 					{% endfor %}
 
