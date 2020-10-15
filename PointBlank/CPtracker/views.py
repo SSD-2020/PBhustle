@@ -41,6 +41,10 @@ def codeforces(request):
     CF_user.fetch_data()
     CF_user.plot_data()
 
+    friend_id=''
+
+    try: friend_id=request.POST['friend_id']
+    except: pass
 
     return render( 
         request,
@@ -48,7 +52,8 @@ def codeforces(request):
         {
             'plot':CF_user.plot,
             'info':CF_user.user_info,
-            'contests':CF_user.user_contests[::-1]
+            'contests':CF_user.user_contests[::-1],
+            'friend_id': friend_id,
             }
         )
 
