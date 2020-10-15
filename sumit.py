@@ -147,7 +147,7 @@ def same_contest():
     for i in user1:
         d[i['contestId']]=i['newRating']
     
-    common=[] #contains (contestId,contestname,userrating,2nd userrating, difference of rating)
+    common=[] # contains (contestId,contestname,userrating,2nd userrating, difference of rating)
 
     for i in user2:
         if i['contestId'] in d:
@@ -156,4 +156,4 @@ def same_contest():
     # print(common)
 
 
-#same_contest()
+same_contest()

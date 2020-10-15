@@ -50,22 +50,7 @@
 			</div>
 		</div>
 	</header>
-<!-- 
 
-	<div id="menu-2" class="content about-section container">
-		<div class="our-story">
-			 <div class="story-bg animated fadeIn"></div> -->
-			<!-- <div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="inner-story animated fadeInRight text-center">
-						<h2>CODEFORCES</h2>
-						<p>Cras placerat, est ac sollicitudin laoreet, ante enim egestas lorem, vel auctor nibh massa sit amet lacus. Cras mollis tellus id sollicitudin vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam gravida arcu</p>
-					 </div> -->
-				<!-- </div>
-			</div>
-		</div>
-	</div> 
- --> 
 
 
 <header class="site-header container animated fadeInDown">
@@ -75,12 +60,64 @@
 
 			</div>
 		</div>
+
+		<br>
+		<br>
+		<br><br>
+
+		<p class="animated fadeInRight">
+			<div class="graphplot" style="width: 1000px; height:400px;">
+		{% autoescape off %}
+		{{ plot }}
+		{% endautoescape %}
+			</div>
+		</p>
+		<br>
+		<br>
+		<br>
+		<br>
+	
+
+		<table class="table table-hover">
+			<thead>
+					
+				<tr >
+					<th><h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Contest ID</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Contest Name</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">My Rank</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Friend Rank</h5></th>
+					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Difference</h5></th>
+				</tr>
+		
+			</thead>
+			{% for contest in result %}
+		
+				<tr>
+		
+				{% for value in contest %}
+		
+				<td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{value}}</td>
+			
+				{% endfor %}
+		
+				</tr>
+		
+			{% endfor %}
+		
+		</table>
+
+
 	</div>
 </header>
 
 <br>
 <br><br>
 <br><br>
+
+
+
+
+
 <br><br>
 <br><br>
 <br>
