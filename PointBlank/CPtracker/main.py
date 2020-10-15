@@ -177,17 +177,16 @@ class Codeforces:
         from collections import defaultdict
     
 
-class Compare:
+class CodeforceCompare:
 
     def __init__(self,user,friend):
         self.user=user
         self.friend=friend
         self.compare_result=[]
         self.friend_valid=False
-        self.CFplot=0
-        self.CCplot=0
+        self.plot=0
 
-    def CFcompare(self):
+    def compare(self):
 
         url=" https://codeforces.com/api/user.rating?handle="+self.user
         r=requests.get(url)
@@ -275,14 +274,105 @@ class Compare:
 
         fig.update_layout(title='Rating Change',yaxis_title='Rating')
 
-        self.CFplot=plot(fig, output_type='div')
+        self.plot=plot(fig, output_type='div')
 
         
 
-    def CCcompare(self):
-        
-        pass
+class CodechefCompare:
 
+    def __init__(self,user,friend):
+        self.user=user
+        self.friend=friend
+        self.compare_result=[]
+        self.friend_valid=False
+        self.plot=0
+
+    def compare(self):
+
+        
+        user_obj=Codechef(self.user)
+        user_obj.fetch_data()
+
+        friend_obj=Codechef(self.friend)
+        friend_obj.fetch_data()
+
+        if(not friend_obj.user_valid): return
+        self.friend_valid=True
+
+        user_contests=user_obj.user_contests[::-1]
+        friend_contests=friend_obj.user_contests[::-1]
+
+
+        d=defaultdict(int)
+
+        for i in user_contests:
+            d[i['code']]=i['rank']
+        
+
+        for i in friend_contests:
+            if i['code'] in d:
+
+                dif=int(i['rank'])-int(d[i['code']])
+                if(dif>=0): dif='+'+str(dif)
+                else: dif=str(dif)
+
+                self.compare_result.append([i['code'],i['name'],d[i['code']],i['rank'],dif])
+
+
+
+        all_Contest=[]
+        temp=[]
+
+        user1_rank={}
+        for i in user_contests:
+            cno=i['code']
+            all_Contest.append(cno)
+            user1_rank[cno]=i['rating']
+            temp.append(cno)
+
+
+        user2_rank={}
+        for i in friend_contests:
+            cno=i['code']
+            if cno not in temp: 
+                all_Contest.append(cno)
+                temp.append(cno)
+            user2_rank[cno]=i['rating']
+
+        y_user1=[]
+        y_user2=[]
+
+        # print(all_Contest)
+        all_Contest=all_Contest[::-1]
+
+        print(all_Contest)
+
+        for i in all_Contest:
+            if i in user1_rank:
+                y_user1.append(user1_rank[i])
+            else:
+                y_user1.append(None)
+            
+            if i in user2_rank:
+                y_user2.append(user2_rank[i])
+            else:
+                y_user2.append(None)
+
+        xd=[i for i in range(1,len(all_Contest)+1)]
+
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=xd, y=y_user1, connectgaps=True,
+                    mode='lines+markers',name=self.user,line = dict(color='black', width=1)))
+
+        
+        fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
+                    mode='lines+markers',name=self.friend,line = dict(color='blue', width=1)))
+
+        fig.update_layout(title='Rating Change',yaxis_title='Rating')
+
+        self.plot=plot(fig, output_type='div')
+
+    
 
 
 

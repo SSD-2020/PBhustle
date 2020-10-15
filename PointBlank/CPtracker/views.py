@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .main import Codechef,Codeforces,Compare
+from .main import *
 
 # Create your views here.
 
@@ -56,19 +56,30 @@ def codeforces(request):
 def codeforcesCompare(request):
 
     friend=request.GET['friend_id']
-    compare=Compare(data['CF_id'],friend)
-    compare.CFcompare()
-
-    print(friend)
-    print(compare.compare_result)
-
+    compare=CodeforceCompare(data['CF_id'],friend)
+    compare.compare()
 
     return render(request, "codeforcescompare.html",{
         'friend' : friend,
         'result': compare.compare_result[::-1],
-        'plot' : compare.CFplot
+        'plot' : compare.plot
         }
         )
+
+def codechefCompare(request):
+
+    friend=request.GET['friend_id']
+    compare=CodechefCompare(data['CC_id'],friend)
+    compare.compare()
+
+
+    return render(request, "codechefcompare.html",{
+        'friend' : friend,
+        'result': compare.compare_result[::-1],
+        'plot' : compare.plot
+        }
+        )
+
 
 
 def codechef(request):
