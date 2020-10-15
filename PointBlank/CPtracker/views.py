@@ -53,6 +53,13 @@ def codeforces(request):
         )
 
 
+def codeforcesCompare(request):
+
+    friend=request.GET['friend_id']
+
+    return render(request, "codeforcescompare.html",{'friend' : friend})
+
+
 def codechef(request):
 
     CC_user=Codechef(data['CC_id'])

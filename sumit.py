@@ -153,7 +153,7 @@ def same_contest():
         if i['contestId'] in d:
             common.append((i['contestId'],i['contestName'],d[i['contestId']],i['newRating'],d[i['contestId']]-i['newRating']))
 
-    print(common)
+    # print(common)
 
 
 #same_contest()
