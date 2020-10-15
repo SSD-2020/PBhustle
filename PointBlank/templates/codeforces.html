@@ -91,11 +91,12 @@
 		<h2 style="color: #fff;" class="animated fadeInRight">USER INFO</h3>
 			<br>
 			<br>
-			<table class="table">
+			<table >
 				{% for key,value in info.items %}
 				  <tr>
-					<th><h6 style="color: #fff;"class="animated fadeInRight">{{key }}</h6>  </th>
-					<th> <h6 style="color: #fff;" class="animated fadeInRight">{{value}}</h6></th>
+					<td style="padding-bottom: 10px; padding-right: 40px;"><h6 style="color: #fff;"class="animated fadeInRight">{{key }}</h6>  </td>
+					<!-- <td> </td> -->
+					<td style="padding-bottom: 10px;"> <h6 style="color: #fff;" class="animated fadeInRight">{{value}}</h6></td>
 				  </tr>
 				{% endfor %}
 				
@@ -126,11 +127,11 @@
 				<thead>
 						
 					<tr >
-						<th><h5 style="color: #fff;" class="animated fadeInRight">Contest ID</h5></th>
-						<th><h5 style="color: #fff;"class="animated fadeInRight">Contest Name</h5></th>
-						<th><h5 style="color: #fff;"class="animated fadeInRight">Rank</h5></th>
-						<th><h5 style="color: #fff;"class="animated fadeInRight">Rating</h5></th>
-						<th><h5 style="color: #fff;"class="animated fadeInRight">Rating Change</h5></th>
+						<th><h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Contest ID</h5></th>
+						<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Contest Name</h5></th>
+						<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Rank</h5></th>
+						<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Rating</h5></th>
+						<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Change</h5></th>
 					</tr>
 
 				</thead>
@@ -140,7 +141,7 @@
 
 					{% for key, value in contest.items %}
 
-					<td style="color: #fff;" class="animated fadeInLeft"> {{value}}</td>
+					<td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{value}}</td>
 				
 					{% endfor %}
 
