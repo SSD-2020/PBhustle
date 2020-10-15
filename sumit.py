@@ -38,3 +38,90 @@ def User_Codeforces_Contests():
 
     #return contests
 User_Codeforces_Contests()
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from plotly.offline import plot
+from plotly.graph_objs import Scatter
+import requests
+import plotly.graph_objects as go
+# Create your views here.
+
+def index(request):
+    url=" https://codeforces.com/api/user.rating?handle=deepanshu_pali"
+    r=requests.get(url)
+    contests=r.json()
+    if(contests['status']!='OK'): return -1
+    user1=contests['result']
+    
+    #print(user1)
+
+    url=" https://codeforces.com/api/user.rating?handle=sumitthakur"
+    r=requests.get(url)
+    contests=r.json()
+    if(contests['status']!='OK'): return -1
+    user2=contests['result']
+    
+    all_Contest=[]
+    temp=[]
+
+    user1_rank={}
+    for i in user1:
+        cno=i['contestId']
+        time=i['ratingUpdateTimeSeconds']
+        all_Contest.append((cno,time))
+        user1_rank[cno]=i['newRating']
+        temp.append(cno)
+
+
+    user2_rank={}
+    for i in user2:
+        cno=i['contestId']
+        time=i['ratingUpdateTimeSeconds']
+        if cno not in temp: 
+            all_Contest.append((cno,time))
+            temp.append(cno)
+        user2_rank[cno]=i['newRating']
+
+    y_user1=[]
+    y_user2=[]
+
+    #print(all_Contest)
+    all_Contest.sort(key=lambda x:x[1])
+
+    #print(all_Contest)
+
+    for i,j in all_Contest:
+        if i in user1_rank:
+            y_user1.append(user1_rank[i])
+        else:
+            y_user1.append(None)
+        
+        if i in user2_rank:
+            y_user2.append(user2_rank[i])
+        else:
+            y_user2.append(None)
+
+    xd=[i for i in range(1,len(all_Contest)+1)]
+
+    #print(len(y_user1),len(y_user2),len(xd))
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=xd, y=y_user1, connectgaps=True,
+                mode='lines+markers',name='deepanshu_pali',line = dict(color='black', width=1)))
+
+    
+    fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
+                mode='lines+markers',name='sumitthakur',line = dict(color='blue', width=1)))
+
+    fig.update_layout(title='Rating Change',
+                   yaxis_title='Rating')
+
+    plot_div=plot(fig, output_type='div')
+
+    #print(plot_div)
+    return render(request, "index.html", context={'plot_div':plot_div})
+
+#index("1234")
+
+
