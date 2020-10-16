@@ -58,7 +58,6 @@ def signup(request):
         # 'HR_id': HR_id,
     }
 
-    print(backend_obj.user)
     backend_obj.PushData(data)
 
     return landingpage(request)
