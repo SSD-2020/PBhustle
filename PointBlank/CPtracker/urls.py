@@ -6,12 +6,12 @@ from django.conf import settings
 urlpatterns= [
 
     path('',views.landingpage,name='landingpage'),
-    path('home/',views.userhome,name='userhome'),
-    path('home/codeforces/', views.codeforces, name='codeforces'),
-    path('home/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
-    path('home/codechef/', views.codechef , name='codechef'),
-    path('home/codechef/codechefCompare/', views.codechefCompare, name='codechefCompare'),
-    path('home/hackerrank/', views.hackerrank, name='hackerrank'),
-    path('home/pbhustle/', views.pbhustle , name='pbhustle'),
+    path('userhome/',views.userhome,name='userhome'),
+    path('userhome/codeforces/', views.codeforces, name='codeforces'),
+    path('userhome/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
+    path('userhome/codechef/', views.codechef , name='codechef'),
+    path('userhome/codechef/codechefCompare/', views.codechefCompare, name='codechefCompare'),
+    path('userhome/hackerrank/', views.hackerrank, name='hackerrank'),
+    path('userhome/pbhustle/', views.pbhustle , name='pbhustle'),
 
 ]

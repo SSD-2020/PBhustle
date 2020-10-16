@@ -39,16 +39,20 @@ def signin(request):
 
 def signup(request):
 
-    emailid=request.GET(['emailid'])
-    password=request.GET(['password'])
-    backend_obj.SignUp(emailid,password)
-    backend_obj.PushData()
-
     return userhome(request)
 
 
 
 def userhome(request):
+
+    # emailid=request.GET['emailid']
+    # password=request.GET['password']
+    # backend_obj.SignIn(emailid,password)
+    # backend_obj.PushData()
+
+    print(backend_obj.user)
+
+
 
     return render(
         request,'userhome.html',
