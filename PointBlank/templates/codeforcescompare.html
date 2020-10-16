@@ -51,33 +51,57 @@
 		</div>
 	</header>
 
-
-
-<header class="site-header container animated fadeInDown">
-	<div class="header-wrapper2">
-		<div class="row">
-			<h2 style="color: #fff;" class="animated fadeInRight">COMPARE RATINGS</h3>
-
+	<header class="site-header container animated fadeInDown">
+		<div class="header-wrapper2">
+			<div class="row">
+				<h2 style="color: #fff;" class="animated fadeInRight">COMPARE RATINGS</h2>
+	
 			</div>
 		</div>
+	</header>
 
-		<br>
-		<br>
-		<br><br>
 
-		<p class="animated fadeInRight">
-			<div class="graphplot" style="width: 1000px; height:400px;">
-		{% autoescape off %}
-		{{ plot }}
-		{% endautoescape %}
+
+
+	<header class="site-header container animated fadeInDown">
+		<div class="header-wrapper2">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="site-branding">
+							<ul class="main-menu">
+									<li><a class="show-1 active homebutton" href="#">GRAPH COMPARE</a></li>
+									<li><a class="show-2 aboutbutton" href="#">TABLE COMPARE</a></li>
+									<!-- <li><a class="show-3 projectbutton" href="#">CONTEST HISTORY</a></li>
+									<li><a class="show-4 blogbutton" href="#">COMPARE WITH FRIENDS</a></li> -->
+							</ul>
+					</div>
+				</div>
 			</div>
-		</p>
-		<br>
-		<br>
-		<br>
-		<br>
+		</div>
+	</header>
 	
+	<div id="menu-container">
+		<div id="menu-1" class="homepage home-section container">
+			
+			<h2 style="color: #fff;" class="animated fadeInUp">GRAPH COMPARE</h2>
+				<br>
+				<br>
+				<br>
+				
+					<!-- <p class="animated fadeInRight"> -->
+						<div class="graphplot" style="width: 1000px; height:400px;">
+					{% autoescape off %}
+					{{ plot }}
+					{% endautoescape %}
+						</div>
 
+		</div>
+	
+		<div id="menu-2" class="content about-section container">
+			<h2 style="color: #fff;" class="animated fadeInRight">CONTEST TABLE</h3>
+				<br>
+
+				
 		<table class="table table-hover">
 			<thead>
 					
@@ -105,10 +129,13 @@
 			{% endfor %}
 		
 		</table>
-
-
+			
+			<br><br>
+	
+		</div>
 	</div>
-</header>
+	
+
 
 <br>
 <br><br>
@@ -156,3 +183,8 @@
     
 </body>
 </html>
+
+
+
+
+
