@@ -155,5 +155,59 @@ def same_contest():
 
     # print(common)
 
+#codechef compare
+def index(request):
+    url='https://competitive-coding-api.herokuapp.com/api/codechef/abhi1702'
+    r = requests.get(url)
+    content = r.json()
+    if (content['status'] != 'Success'): return -1
+    user1=content['contest_ratings']
 
-same_contest()
+    url = 'https://competitive-coding-api.herokuapp.com/api/codechef/suanmj18'
+    r = requests.get(url)
+    content = r.json()
+    if (content['status'] != 'Success'): return -1
+    user2 = content['contest_ratings']
+
+    all_contest=[]
+    user1_rank={}
+    for i in user1:
+        val=i['code']
+        all_contest.append(val)
+        user1_rank[val]=int(i['rating'])
+
+    user2_rank={}
+    for i in user2:
+        val=i['code']
+        if val not in all_contest:
+            all_contest.append(val)
+        user2_rank[val]=int(i['rating'])
+
+    y_user1=[]
+    y_user2=[]
+
+    for i in all_contest:
+        if i in user1_rank:
+            y_user1.append(user1_rank[i])
+        else:
+            y_user1.append(None)
+
+        if i in user2_rank:
+            y_user2.append(user2_rank[i])
+        else:
+            y_user2.append(None)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=all_contest, y=y_user1, connectgaps=True,
+                             mode='lines+markers', name='deepanshu_pali', line=dict(color='black', width=1)))
+
+    fig.add_trace(go.Scatter(x=all_contest, y=y_user2, connectgaps=True,
+                             mode='lines+markers', name='sumitthakur', line=dict(color='blue', width=1)))
+
+    fig.update_layout(title='Rating Change',
+                      yaxis_title='Rating')
+
+    plot_div = plot(fig, output_type='div')
+
+    print(plot_div)
+    return render(request, "index.html", context={'plot_div': plot_div})
