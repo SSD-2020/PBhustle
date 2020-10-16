@@ -1,207 +1,209 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-	<link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
 
-	<title>Pointblank</title>
+    <title>Pointblank</title>
 
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %">
 	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
-	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
-	<link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
-	
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
+
 </head>
+
 <body>
-	<header class="site-header container animated fadeInDown">
-		<div class="header-wrapper">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="site-branding">
-						<a href="{% url 'userhome' %}"><h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1></a>
-					</div>
-				</div>
-				<a href="#" class="toggle-nav hidden-md hidden-lg">
-					<i class="fa fa-bars"></i>
-				</a>
-				<div class="col-md-8">
-					<nav id="nav" class="main-navigation hidden-xs hidden-sm">
-						<ul class="main-menu">
-							<li><a  href="{% url 'userhome' %}">Home</a></li>
-							<li><a  href="{% url 'codeforces' %}">Codeforces</a></li>
-							<li><a  class=" active homebutton" href="{% url 'codechef' %}">Codechef</a></li>
-							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
-							<li><a href="{% url 'pbhustle' %}">PB Hustle</a></li>
-						</ul>
-					</nav>
-					<nav class="main-navigation menu-responsive hidden-md hidden-lg">
-						<ul class="main-menu">
-							<li><a  href="{% url 'userhome' %}">Home</a></li>
-							<li><a  href="{% url 'codeforces' %}">Codeforces</a></li>
-							<li><a  class=" active homebutton" href="{% url 'codechef' %}">Codechef</a></li>
-							<li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
-							<li><a href="{% url 'pbhustle' %}">PB Hustle</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
+    <header class="site-header container animated fadeInDown">
+        <div class="header-wrapper">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="site-branding">
+                        <a href="{% url 'userhome' %}">
+                            <h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1>
+                        </a>
+                    </div>
+                </div>
+                <a href="#" class="toggle-nav hidden-md hidden-lg">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="col-md-8">
+                    <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+                        <ul class="main-menu">
+                            <li><a href="{% url 'userhome' %}">Home</a></li>
+                            <li><a href="{% url 'codeforces' %}">Codeforces</a></li>
+                            <li><a class=" active homebutton" href="{% url 'codechef' %}">Codechef</a></li>
+                            <li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+                            <li><a href="{% url 'pbhustle' %}">PB Hustle</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="main-navigation menu-responsive hidden-md hidden-lg">
+                        <ul class="main-menu">
+                            <li><a href="{% url 'userhome' %}">Home</a></li>
+                            <li><a href="{% url 'codeforces' %}">Codeforces</a></li>
+                            <li><a class=" active homebutton" href="{% url 'codechef' %}">Codechef</a></li>
+                            <li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+                            <li><a href="{% url 'pbhustle' %}">PB Hustle</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 
 
-	<!-- <div id="menu-2" class="content about-section container"> -->
-		<div class="our-story">
-			<!-- <div class="story-bg animated fadeIn"></div> -->
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="inner-story animated fadeInRight text-center">
-						<h2>CODECHEF</h2>
-						<p>Cras placerat, est ac sollicitudin laoreet, ante enim egestas lorem, vel auctor nibh massa sit amet lacus. Cras mollis tellus id sollicitudin vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam gravida arcu</p>
-					<!-- </div> -->
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- <div id="menu-2" class="content about-section container"> -->
+    <div class="our-story">
+        <!-- <div class="story-bg animated fadeIn"></div> -->
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="inner-story animated fadeInRight text-center">
+                    <h2>CODECHEF</h2>
+                    <p>Cras placerat, est ac sollicitudin laoreet, ante enim egestas lorem, vel auctor nibh massa sit amet lacus. Cras mollis tellus id sollicitudin vulputate. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam gravida arcu</p>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<!-- 2nd menu end -->
+    <!-- 2nd menu end -->
 
 
-<header class="site-header container animated fadeInDown">
-	<div class="header-wrapper2">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="site-branding">
-						<ul class="main-menu">
-								<li><a class="show-1 active homebutton" href="#">USER INFO</a></li>
-								<li><a class="show-2 aboutbutton" href="#">RATING INFO</a></li>
-								<li><a class="show-3 projectbutton" href="#">CONTEST HISTORY</a></li>
-								<li><a class="show-4 blogbutton" href="#">COMPARE WITH FRIENDS</a></li>
-						</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
+    <header class="site-header container animated fadeInDown">
+        <div class="header-wrapper2">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="site-branding">
+                        <ul class="main-menu">
+                            <li><a class="show-1 active homebutton" href="#">USER INFO</a></li>
+                            <li><a class="show-2 aboutbutton" href="#">RATING INFO</a></li>
+                            <li><a class="show-3 projectbutton" href="#">CONTEST HISTORY</a></li>
+                            <li><a class="show-4 blogbutton" href="#">COMPARE WITH FRIENDS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="menu-container">
+        <div id="menu-1" class="homepage home-section container">
+            <h2 style="color: #fff;" class="animated fadeInUp">USER INFO</h3>
+                <br>
+                <br>
+                <table>
+                    {% for key,value in info.items %}
+                    <tr>
+                        <td style="padding-bottom: 10px; padding-right: 40px;">
+                            <h6 style="color: #fff;" class="animated fadeInRight">{{key }}</h6>
+                        </td>
+                        <td style="padding-bottom: 10px;">
+                            <h6 style="color: #fff;" class="animated fadeInLeft">{{value}}</h6>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+        </div>
+
+        <div id="menu-2" class="content about-section container">
+            <h2 style="color: #fff;" class="animated fadeInRight">RATING GRAPH</h3>
+                <br>
+                <div class="graphplot animated fadeInLeft" style="width: 1000px; height:400px;">
+                    {% autoescape off %}
+                    {{ plot }}
+                    {% endautoescape %}
+                </div>
+				<br>
+				<br>
+        </div>
 
 
-<div id="menu-container">
-	<div id="menu-1" class="homepage home-section container">
-		
-		<h2 style="color: #fff;" class="animated fadeInRight">USER INFO</h3>
-			<br>
-			<br>
-			<table >
-				{% for key,value in info.items %}
-				  <tr>
-					<td style="padding-bottom: 10px; padding-right: 40px;"><h6 style="color: #fff;"class="animated fadeInRight">{{key }}</h6>  </td>
-					<td style="padding-bottom: 10px;"> <h6 style="color: #fff;" class="animated fadeInRight">{{value}}</h6></td>
-				  </tr>
-				{% endfor %}
-				
-			</table>
-		
-	</div>
-
-	<div id="menu-2" class="content about-section container">
-		<p class="animated fadeInRight">
-				<div class="graphplot" style="width: 1000px; height:400px;">
-			{% autoescape off %}
-			{{ plot }}
-			{% endautoescape %}
-				</div>
-		</p>
-
-	</div>
 
 
+        <div id="menu-3" class="content project-section container">
+            <h2 style="color: #fff;" class="animated fadeInRight">CONTEST HISTORY</h2>
+            <br>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Contest ID</h5>
+                        </th>
+                        <th>
+                            <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Contest Name</h5>
+                        </th>
+                        <th>
+                            <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Rank</h5>
+                        </th>
+                        <th>
+                            <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Rating</h5>
+                        </th>
+                        <th>
+                            <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Change</h5>
+                        </th>
+                    </tr>
+                </thead>
+                {% for contest in contests %}
+                <tr>
+                    {% for key, value in contest.items %}
+                    <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{value}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
 
 
-	<div id="menu-3" class="content project-section container">
-		<h2 style="color: #fff;" class="animated fadeInRight">CONTEST HISTORY</h2>
-		<br>
+        </div>
 
-		<table class="table table-hover">
-			<thead>
-					
-				<tr >
-					<th><h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Contest ID</h5></th>
-					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Contest Name</h5></th>
-					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Rank</h5></th>
-					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Rating</h5></th>
-					<th><h5 style="color: #fff;text-align:center;"class="animated fadeInRight">Change</h5></th>
-				</tr>
+        <div id="menu-4" class="content blog-section container">
+            <h2 style="color: #fff;" class="animated fadeInRight">COMPARE WITH FRIENDS</h3>
+            <form action="codechefCompare">
+                    <label for="compare">Handle</label><br>
+                    <input type="text" id="compare" name="friend_id" value=""><br>
+                    <input type="submit" value="compare">
+            </form>
+        </div>
+    </div>
 
-			</thead>
-			{% for contest in contests %}
-
-				<tr>
-
-				{% for key, value in contest.items %}
-
-				<td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{value}}</td>
-			
-				{% endfor %}
-
-				</tr>
-
-			{% endfor %}
-
-		</table>
+    <br>
+    <br>
 
 
-	</div>
-
-		
-	<div id="menu-4" class="content blog-section container">
-		<h2 style="color: #fff;" class="animated fadeInRight">COMPARE WITH FRIENDS</h3>
-
-		<form action="codechefCompare">
-			<label for="compare">Handle</label><br>
-			<input type="text" id="compare" name="friend_id" value=""><br>
-		
-			<input type="submit" value="compare"> 
-		  </form> 
-
-	</div>
-
-</div>
-<br>
-<br>
-
-
-<footer class="site-footer container text-center">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="main-footer">
-				<ul class="social">
-					<li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
-					<li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
-					<li><a href="https://www.dsce.edu.in/">DSCE</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12 copyright">
-			<p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
-		</div>
-	</div>
-</footer>
+    <footer class="site-footer container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-footer">
+                    <ul class="social">
+                        <li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
+                        <li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
+                        <li><a href="https://www.dsce.edu.in/">DSCE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 copyright">
+                <p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
+            </div>
+        </div>
+    </footer>
 
 
-	<span class="border-top"></span>
-	<span class="border-left"></span>
-	<span class="border-right"></span>
-	<span class="border-bottom"></span>
-	<span class="shape-1"></span>
-	<span class="shape-2"></span>
+    <span class="border-top"></span>
+    <span class="border-left"></span>
+    <span class="border-right"></span>
+    <span class="border-bottom"></span>
+    <span class="shape-1"></span>
+    <span class="shape-2"></span>
 
-	<script src="{% static 'js/jquery.min.js' %}"></script>  
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/templatemo_custom.js' %}"></script>
-    
+
 </body>
 </html>
