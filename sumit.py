@@ -156,7 +156,7 @@ def same_contest():
     # print(common)
 
 #codechef compare
-def index(request):
+def codechef_compare(request):
     url='https://competitive-coding-api.herokuapp.com/api/codechef/abhi1702'
     r = requests.get(url)
     content = r.json()
@@ -169,24 +169,39 @@ def index(request):
     if (content['status'] != 'Success'): return -1
     user2 = content['contest_ratings']
 
+    #print(user2)
+
     all_contest=[]
+    temp=[]
     user1_rank={}
     for i in user1:
         val=i['code']
-        all_contest.append(val)
+        all_contest.append([val,int(i['getyear']),int(i['getmonth']),int(i['getday'])])
+        temp.append(val)
         user1_rank[val]=int(i['rating'])
 
     user2_rank={}
     for i in user2:
         val=i['code']
-        if val not in all_contest:
-            all_contest.append(val)
+        if val not in temp:
+            all_contest.append([val,int(i['getyear']),int(i['getmonth']),int(i['getday'])])
+            temp.append(val)
         user2_rank[val]=int(i['rating'])
+
+    contest=sorted(all_contest, key=lambda x: (x[1]*3,x[2]*2,x[3]))
+
+    #print(contest)
+
+    xd=[]
+    for i in contest:
+        xd.append(i[0])
+
+    #print(xd)
 
     y_user1=[]
     y_user2=[]
 
-    for i in all_contest:
+    for i in xd:
         if i in user1_rank:
             y_user1.append(user1_rank[i])
         else:
@@ -197,11 +212,14 @@ def index(request):
         else:
             y_user2.append(None)
 
+    #print(y_user1)
+    #print(y_user2)
+
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=all_contest, y=y_user1, connectgaps=True,
+    fig.add_trace(go.Scatter(x=xd, y=y_user1, connectgaps=True,
                              mode='lines+markers', name='deepanshu_pali', line=dict(color='black', width=1)))
 
-    fig.add_trace(go.Scatter(x=all_contest, y=y_user2, connectgaps=True,
+    fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
                              mode='lines+markers', name='sumitthakur', line=dict(color='blue', width=1)))
 
     fig.update_layout(title='Rating Change',
@@ -209,5 +227,6 @@ def index(request):
 
     plot_div = plot(fig, output_type='div')
 
-    print(plot_div)
-    return render(request, "index.html", context={'plot_div': plot_div})
+    #return render(request, "index.html", context={'plot_div': plot_div})
+
+    return render(request,"index.html",context={'plot_div':plot_div})
