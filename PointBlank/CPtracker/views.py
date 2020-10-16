@@ -72,7 +72,7 @@ def userhome(request):
     return render(
         request,'userhome.html',
         {
-            'name':  'deep',
+            'name':  backend_obj.data['name'],
             'email': backend_obj.data['email'],
             'college': backend_obj.data['college'],
             'branch': backend_obj.data['branch'],
