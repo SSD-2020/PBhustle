@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -7,15 +8,16 @@
     <link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
 
     <title>Pointblank</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/demo.css' %}">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/simple-line-icons.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/templatemo_style.css">
-    <link rel="stylesheet" href="css/reset.css"> 
-    <link rel="stylesheet" href="css/style.css"> 
-    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %">
+	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
+
 </head>
 
 <body>
@@ -84,7 +86,7 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="project-item one animated fadeInDown">
-                                    <img src="img/1.jpg" alt="">
+                                    <img src="{% static 'img/1.jpg' %}" alt="">
                                     <div class="overlay">
                                         <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
                                     </div>
@@ -92,7 +94,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="project-item two animated fadeInDown">
-                                    <img src="img/2.jpg" alt="">
+                                    <img src="{% static 'img/2.jpg' %}" alt="">
                                     <div class="overlay">
                                         <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
                                     </div>
@@ -100,7 +102,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="project-item three animated fadeInDown">
-                                    <img src="img/4.jpg" alt="">
+                                    <img src="{% static 'img/4.jpg' %}" alt="">
                                     <div class="overlay">
                                         <h4><a href="https://github.com/">Git Hub</a></h4>
                                     </div>
@@ -108,7 +110,7 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="project-item four animated fadeInDown">
-                                    <img src="img/3.jpg" alt="">
+                                    <img src="{% static 'img/3.jpg' %}" alt="">
                                     <div class="overlay">
                                         <h4><a href="https://atcoder.jp/">At Coders</a></h4>
                                     </div>
@@ -282,16 +284,16 @@
 
                         <div class="cd-signin-modal__block js-signin-modal-block" data-type="login">
                             <!-- log in form -->
-                            <form class="cd-signin-modal__form">
+                            <form class="cd-signin-modal__form" action="signin">
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">E-mail</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" type="email" placeholder="E-mail">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" name="emailid" type="email" placeholder="E-mail">
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
 
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Password</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text" placeholder="Password">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" name="password" type="text" placeholder="Password">
                                     <a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
@@ -310,35 +312,35 @@
                         </div> 
 
                         <div class="cd-signin-modal__block js-signin-modal-block" data-type="signup">
-                            <form class="cd-signin-modal__form">
+                            <form class="cd-signin-modal__form" action="signup">
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Name</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username"  name='name' type="text" placeholder="Username">
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
 
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" name="emailid" type="email" placeholder="E-mail">
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
 
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Password</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text" placeholder="Password">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" name="password" type="text" placeholder="Password">
                                     <a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
 
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">CodeChef Handle</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="CodeChef Handle">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" name="CC_id" type="email" placeholder="CodeChef Handle">
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
 
                                 <p class="cd-signin-modal__fieldset">
                                     <label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">CodeForces Handle</label>
-                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="CodeForces Handle">
+                                    <input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" name="CF_id" type="email" placeholder="CodeForces Handle">
                                     <span class="cd-signin-modal__error">Error message here!</span>
                                 </p>
 
@@ -401,8 +403,8 @@
                 <span class="shape-1"></span>
                 <span class="shape-2"></span>
 
-                <script src="js/placeholders.min.js"></script> 
-                <script src="js/main.js"></script>
+                <script src="{% static 'js/placeholders.min.js' %}"></script> 
+                <script src="{% static 'js/main.js' %}"></script>
 
                 <!-- <script src="js/jquery.min.js"></script>
 				<script src="js/templatemo_custom.js"></script> -->

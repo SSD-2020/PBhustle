@@ -4,12 +4,14 @@ from django.conf import settings
 
 
 urlpatterns= [
-    path('',views.userhome,name='userhome'),
-    path('codeforces/', views.codeforces, name='codeforces'),
-    path('codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
-    path('codechef/', views.codechef , name='codechef'),
-    path('codechef/codechefCompare/', views.codechefCompare, name='codechefCompare'),
-    path('hackerrank/', views.hackerrank, name='hackerrank'),
-    path('pbhustle/', views.pbhustle , name='pbhustle'),
+
+    path('',views.landingpage,name='landingpage'),
+    path('home/',views.userhome,name='userhome'),
+    path('home/codeforces/', views.codeforces, name='codeforces'),
+    path('home/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
+    path('home/codechef/', views.codechef , name='codechef'),
+    path('home/codechef/codechefCompare/', views.codechefCompare, name='codechefCompare'),
+    path('home/hackerrank/', views.hackerrank, name='hackerrank'),
+    path('home/pbhustle/', views.pbhustle , name='pbhustle'),
 
 ]

@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .main import *
+from .backend import firebase
 
 # Create your views here.
 
+backend_obj=firebase()
 
 
 data={
@@ -17,9 +19,36 @@ data={
     'HR_id': 'deepanshukumarp2',
 }
 
+
+    
+
+
+
+
+def landingpage(request):
+
+    return render(request,'landingpage.html')
+
+def signin(request):
+
+    emailid=request.GET(['emailid'])
+    password=request.GET(['password'])
+    backend_obj.SignIn(emailid,password)
+
+    return userhome(request)
+
+def signup(request):
+
+    emailid=request.GET(['emailid'])
+    password=request.GET(['password'])
+    backend_obj.SignUp(emailid,password)
+    backend_obj.PushData()
+
+    return userhome(request)
+
+
+
 def userhome(request):
-
-
 
     return render(
         request,'userhome.html',
@@ -34,6 +63,10 @@ def userhome(request):
             'HR_id': data['HR_id'],
         }
         )
+
+
+
+#### CP Stuff ------------------------------------------------------------/
 
 def codeforces(request):
 
