@@ -1,6 +1,4 @@
-
 import pyrebase
-
 
 
 class firebase:
@@ -20,6 +18,8 @@ class firebase:
 
         self.user=None
         self.auth=pyrebase.initialize_app(self.firebaseConfig).auth()
+        self.db=pyrebase.initialize_app(self.firebaseConfig).database()
+        self.data={}
 
 
     def SignIn(self,email,password):
@@ -30,9 +30,17 @@ class firebase:
 
         self.user=self.auth.create_user_with_email_and_password(email,password)
 
-    def PushData(self): 
+    def PushData(self,data):
+
+        self.db.child('users').child(self.user['localId']).push(data) 
+    
+    def GetData(self):
+
+        res=self.db.child("users").child(self.user['localId']).child('').get()
+        for have in res.each(): self.data=have.val()
+
         
-        pass
+        
 
 
         

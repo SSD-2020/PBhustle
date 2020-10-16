@@ -17,11 +17,13 @@ firebase= pyrebase.initialize_app(firebaseConfig)
 auth=firebase.auth()
 db=firebase.database()
 
-email=input("ID: ")
-password=input("password: ")
-user=auth.sign_in_with_email_and_password(email,password)
-print(user)
+# email=input("ID: ")
+# password=input("password: ")
+# user=auth.sign_in_with_email_and_password(email,password)
+# print(user)
 
+data={'a':'b'}
+db.push(data)
 
 
 

@@ -1,29 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .main import *
-from .backend import firebase
+from .backend import *
 
 # Create your views here.
 
 backend_obj=firebase()
 
 
-data={
-    'name':'Deepanshu Kumar Pali', 
-    'email': 'deepanshukumarpali@gmail.com',
-    'college' : 'Dayananda Sagar College of Engineering',
-    'branch' : 'Computer Science',
-    'CC_id': 'deepu217',
-    'CF_id': 'deepanshu_pali',
-    'HE_id': 'deepanshu424',
-    'HR_id': 'deepanshukumarp2',
-}
+# data={
+    # 'name':'Deepanshu Kumar Pali', 
+    # 'email': 'deepanshukumarpali@gmail.com',
+    # 'college' : 'Dayananda Sagar College of Engineering',
+    # 'branch' : 'Computer Science',
+    # 'CC_id': 'deepu217',
+    # 'CF_id': 'deepanshu_pali',
+    # 'HE_id': 'deepanshu424',
+    # 'HR_id': 'deepanshukumarp2',
+# }
 
 
     
-
-
-
 
 def landingpage(request):
 
@@ -31,40 +28,58 @@ def landingpage(request):
 
 def signin(request):
 
-    emailid=request.GET(['emailid'])
-    password=request.GET(['password'])
+    emailid=request.POST['emailid']
+    password=request.POST['password']
     backend_obj.SignIn(emailid,password)
+    # print(backend_obj.user)
 
     return userhome(request)
 
 def signup(request):
 
-    return userhome(request)
+    emailid=request.POST['emailid']
+    password=request.POST['password']
+    CF_id=request.POST['CF_id']
+    CC_id=request.POST['CC_id']
+    name=request.POST['name']
+    branch=request.POST['branch']
+    sem=request.POST['sem']
+    backend_obj.SignUp(emailid,password)
+
+    data={
+        'email': emailid,
+        'CC_id': CC_id,
+        'CF_id': CF_id,
+        'name': name, 
+        'college' : 'Dayananda Sagar College of Engineering',
+        'branch' : branch,
+        'sem': sem,
+        # 'HE_id': HE_id,
+        # 'HR_id': HR_id,
+    }
+
+    print(backend_obj.user)
+    backend_obj.PushData(data)
+
+    return landingpage(request)
 
 
 
 def userhome(request):
 
-    # emailid=request.GET['emailid']
-    # password=request.GET['password']
-    # backend_obj.SignIn(emailid,password)
-    # backend_obj.PushData()
-
     print(backend_obj.user)
-
-
+    backend_obj.GetData()
 
     return render(
         request,'userhome.html',
         {
-            'name':  data['name'],
-            'email': data['email'],
-            'college': data['college'],
-            'branch': data['branch'],
-            'CC_id': data['CC_id'],
-            'CF_id': data['CF_id'],
-            'HE_id': data['HE_id'],
-            'HR_id': data['HR_id'],
+            'name':  'deep',
+            'email': backend_obj.data['email'],
+            'college': backend_obj.data['college'],
+            'branch': backend_obj.data['branch'],
+            'sem': backend_obj.data['sem'],
+            'CC_id': backend_obj.data['CC_id'],
+            'CF_id': backend_obj.data['CF_id'],
         }
         )
 
@@ -74,7 +89,7 @@ def userhome(request):
 
 def codeforces(request):
 
-    CF_user=Codeforces(data['CF_id'])
+    CF_user=Codeforces(backend_obj.data['CF_id'])
     CF_user.fetch_data()
     CF_user.plot_data()
 
@@ -93,7 +108,7 @@ def codeforces(request):
 def codeforcesCompare(request):
 
     friend=request.GET['friend_id']
-    compare=CodeforceCompare(data['CF_id'],friend)
+    compare=CodeforceCompare(backend_obj.data['CF_id'],friend)
     compare.compare()
 
     return render(request, "codeforcescompare.html",{
@@ -106,7 +121,7 @@ def codeforcesCompare(request):
 def codechefCompare(request):
 
     friend=request.GET['friend_id']
-    compare=CodechefCompare(data['CC_id'],friend)
+    compare=CodechefCompare(backend_obj.data['CC_id'],friend)
     compare.compare()
 
 
@@ -121,7 +136,7 @@ def codechefCompare(request):
 
 def codechef(request):
 
-    CC_user=Codechef(data['CC_id'])
+    CC_user=Codechef(backend_obj.data['CC_id'])
     CC_user.fetch_data()
     CC_user.plot_data()
 
@@ -140,4 +155,6 @@ def hackerrank(request):
     return render(request,'hackerrank.html')
 
 def pbhustle(request):
+    
+    print(backend_obj.user)
     return render(request,'pbhustle.html')
