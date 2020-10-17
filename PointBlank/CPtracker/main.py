@@ -310,7 +310,20 @@ class CodechefCompare:
         if (content['status'] != 'Success'): return -1
         user2 = content['contest_ratings']
 
-        #print(user2)
+        #compare contests
+        d = defaultdict(int)
+        for i in user1:
+            d[i['code']] = i['rank']
+
+        for i in user2:
+            if i['code'] in d:
+
+                dif=int(i['rank']) - int(d[i['code']])
+                if(dif>=0): dif='+'+str(dif)
+                else: dif=str(dif)
+                    
+                self.compare_result.append((i['code'], i['name'], int(d[i['code']]),int(i['rank']),dif))
+                            
 
         all_contest=[]
         temp=[]
@@ -330,8 +343,6 @@ class CodechefCompare:
             user2_rank[val]=int(i['rating'])
 
         contest=sorted(all_contest, key=lambda x: (x[1]*3,x[2]*2,x[3]))
-        self.compare_result=contest
-
 
         xd=[]
         for i in contest:
