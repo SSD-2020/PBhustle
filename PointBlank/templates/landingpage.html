@@ -100,11 +100,11 @@
         </div>
     </div>
 
-    <div id="id01" class="modal">
+    <div id="id01" class="modal" background-color:#32353a;>
 
         <form class="modal-content animate" action="/signin/" name='signin' method="POST">
             {% csrf_token %}
-            <div class="container">
+            <div class="container" style="background-color:#32353a;">
                 <h1>Sign In</h1>
                 <p>Please enter credentials.</p>
                 <hr>
@@ -120,7 +120,7 @@
                 </label>
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
+            <div class="container" style="background-color: #32353a">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
 
                 <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')"> <a href="#">
