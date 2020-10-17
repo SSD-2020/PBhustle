@@ -29,13 +29,23 @@ class Codechef:
 
         # USER INFORMATION 
 
+        temp={}
         for i in content:
             if(i in ['rating', 'stars', 'highest_rating', 'global_rank', 'country_rank']):
-                self.user_info[i]=content[i]
+                temp[i]=content[i]
 
         for i in content['user_details']:
-            self.user_info[i]=content['user_details'][i]
+            temp[i]=content['user_details'][i]
 
+
+        self.user_info={
+
+            "User Handle" : temp['username'],
+            "Name" : temp['name'],
+            "Current Rating" : temp['rating'],
+            "Maximum Rating" : temp['highest_rating'],
+
+        }
         # USER CONTESTS
         temp=[]
 
