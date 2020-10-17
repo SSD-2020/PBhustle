@@ -118,7 +118,17 @@ class Codeforces:
         if(data_codeforces['status']!='OK'): return
         self.user_valid=True
         
-        self.user_info=data_codeforces['result'][0]
+        temp=data_codeforces['result'][0]
+        # print(temp)
+
+        self.user_info={
+
+            "User Handle" : temp['handle'],
+            "Name" : temp['firstName']+'+'+temp['lastName'],
+            "Current Rating" : str(temp['rating'])+ ' ( ' + temp['rank'] +' )',
+            "Maximum Rating" : str(temp['maxRating'])+ ' ( ' + temp['maxRank'] +' )',
+
+        }
 
 
         # USER CONTESTS
@@ -379,8 +389,8 @@ class CodechefCompare:
 
 
 
-# CF_user=Codeforces('deepanshu_pali')
-# CF_user.fetch_data()
+CF_user=Codeforces('deepanshu_pali')
+CF_user.fetch_data()
 # CF_user.compare('sumitthakur')
 # CF_user.plot_data()
 
