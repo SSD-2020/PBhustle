@@ -9,9 +9,9 @@ firebase_user=firebase()
 
     
 
-def landingpage(request,SignUp=False):
+def landingpage(request,SignUp=False,logOut=False):
 
-    if(not SignUp and firebase_user.user!=None): return userhome(request)
+    if(not logOut and firebase_user.user!=None): return userhome(request)
 
     firebase_user.Clear()
     return render(request,'landingpage.html',{'SignUp':SignUp})
@@ -71,6 +71,10 @@ def userhome(request):
             'CF_id': firebase_user.data['CF_id'],
         }
         )
+
+def logout(request):
+    return landingpage(request,False,True)
+
 
 
 

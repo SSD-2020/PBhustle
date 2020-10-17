@@ -8,6 +8,7 @@ urlpatterns= [
     path('',views.landingpage,name='landingpage'),
     path('signin/',views.signin,name='signin'),
     path('signup/',views.signup,name='signup'),
+    path('logout/',views.logout,name='logout'),
     path('userhome/',views.userhome,name='userhome'),
     path('userhome/codeforces/', views.codeforces, name='codeforces'),
     path('userhome/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
