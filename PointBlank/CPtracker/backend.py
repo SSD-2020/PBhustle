@@ -22,6 +22,14 @@ class firebase:
         self.data={}
 
 
+    def Clear(self):
+        
+        self.user=None
+        self.auth=pyrebase.initialize_app(self.firebaseConfig).auth()
+        self.db=pyrebase.initialize_app(self.firebaseConfig).database()
+        self.data={}
+
+
     def SignIn(self,email,password):
 
         self.user=self.auth.sign_in_with_email_and_password(email,password)
