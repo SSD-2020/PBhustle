@@ -5,33 +5,20 @@ from .backend import *
 
 # Create your views here.
 
-backend_obj=firebase()
-
-
-# data={
-    # 'name':'Deepanshu Kumar Pali', 
-    # 'email': 'deepanshukumarpali@gmail.com',
-    # 'college' : 'Dayananda Sagar College of Engineering',
-    # 'branch' : 'Computer Science',
-    # 'CC_id': 'deepu217',
-    # 'CF_id': 'deepanshu_pali',
-    # 'HE_id': 'deepanshu424',
-    # 'HR_id': 'deepanshukumarp2',
-# }
-
+firebase_user=firebase()
 
     
 
-def landingpage(request):
+def landingpage(request,SignUp=False):
 
-    return render(request,'landingpage.html')
+    return render(request,'landingpage.html',{'SignUp':SignUp})
 
 def signin(request):
 
     emailid=request.POST['emailid']
     password=request.POST['password']
-    backend_obj.SignIn(emailid,password)
-    # print(backend_obj.user)
+    firebase_user.SignIn(emailid,password)
+    # print(firebase_user.user)
 
     return userhome(request)
 
@@ -44,7 +31,7 @@ def signup(request):
     name=request.POST['name']
     branch=request.POST['branch']
     sem=request.POST['sem']
-    backend_obj.SignUp(emailid,password)
+    firebase_user.SignUp(emailid,password)
 
     data={
         'email': emailid,
@@ -58,27 +45,27 @@ def signup(request):
         # 'HR_id': HR_id,
     }
 
-    backend_obj.PushData(data)
+    firebase_user.PushData(data)
 
-    return landingpage(request)
+    return landingpage(request,True)
 
 
 
 def userhome(request):
 
-    print(backend_obj.user)
-    backend_obj.GetData()
+    print(firebase_user.user)
+    firebase_user.GetData()
 
     return render(
         request,'userhome.html',
         {
-            'name':  backend_obj.data['name'],
-            'email': backend_obj.data['email'],
-            'college': backend_obj.data['college'],
-            'branch': backend_obj.data['branch'],
-            'sem': backend_obj.data['sem'],
-            'CC_id': backend_obj.data['CC_id'],
-            'CF_id': backend_obj.data['CF_id'],
+            'name':  firebase_user.data['name'],
+            'email': firebase_user.data['email'],
+            'college': firebase_user.data['college'],
+            'branch': firebase_user.data['branch'],
+            'sem': firebase_user.data['sem'],
+            'CC_id': firebase_user.data['CC_id'],
+            'CF_id': firebase_user.data['CF_id'],
         }
         )
 
@@ -88,7 +75,7 @@ def userhome(request):
 
 def codeforces(request):
 
-    CF_user=Codeforces(backend_obj.data['CF_id'])
+    CF_user=Codeforces(firebase_user.data['CF_id'])
     CF_user.fetch_data()
     CF_user.plot_data()
 
@@ -107,7 +94,7 @@ def codeforces(request):
 def codeforcesCompare(request):
 
     friend=request.GET['friend_id']
-    compare=CodeforceCompare(backend_obj.data['CF_id'],friend)
+    compare=CodeforceCompare(firebase_user.data['CF_id'],friend)
     compare.compare()
 
     return render(request, "codeforcescompare.html",{
@@ -120,7 +107,7 @@ def codeforcesCompare(request):
 def codechefCompare(request):
 
     friend=request.GET['friend_id']
-    compare=CodechefCompare(backend_obj.data['CC_id'],friend)
+    compare=CodechefCompare(firebase_user.data['CC_id'],friend)
     compare.compare()
 
 
@@ -135,7 +122,7 @@ def codechefCompare(request):
 
 def codechef(request):
 
-    CC_user=Codechef(backend_obj.data['CC_id'])
+    CC_user=Codechef(firebase_user.data['CC_id'])
     CC_user.fetch_data()
     CC_user.plot_data()
 
@@ -155,5 +142,5 @@ def hackerrank(request):
 
 def pbhustle(request):
     
-    print(backend_obj.user)
+    print(firebase_user.user)
     return render(request,'pbhustle.html')
