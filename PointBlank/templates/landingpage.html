@@ -8,12 +8,10 @@
     <link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
 
     <title>Pointblank</title>
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}"> 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-    <link rel="stylesheet" href="{% static 'css/demo.css' %}">
+
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %">
+    <!-- <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %"> -->
 	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
@@ -58,7 +56,6 @@
 	<div id="id01" class="modal">
   
         <form class="modal-content animate" action="/signin/" name='signin' method="POST">
-
             {% csrf_token %}
 		  <div class="container">
 			<label for="uname"><b>Username</b></label>
@@ -74,11 +71,24 @@
 		  </div>
 	  
 		  <div class="container" style="background-color:#f1f1f1">
-			<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            
             <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')" > <a href="#"><p style="color: darkslategray;">Forgot password?</p></a></span>
 		  </div>
 		</form>
-	  </div>
+      </div>
+      
+      <!-- <script>
+        // Get the modal
+        var modal1 = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal1) {
+            modal1.style.display = "none";
+          }
+        }
+    </script> -->
 
 
 	  <div id="id02" class="modal">
@@ -97,23 +107,29 @@
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="emailid" required>
 
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+
+       <label for="Codeforces"><b>Codeforces</b></label>
+	  <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
+
+	  <label for="Codechef"><b>Codechef</b></label>
+      <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
+      
+      <label for="HackerRank"><b>HackerRank</b></label>
+      <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
+
       <label for="branch"><b>Branch</b></label>
       <input type="text" placeholder="Enter Branch" name="branch" required>
 
       <label for="sem"><b>Semester</b></label>
       <input type="text" placeholder="Enter Semester" name="sem" required>
 
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
 
-      <label for="re_password"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="re_password" required>
+      <!-- <label for="re_password"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="re_password" required> -->
 	  
-	  <label for="Codeforces"><b>Codeforces</b></label>
-	  <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
-
-	  <label for="Codechef"><b>Codechef</b></label>
-      <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
+	 
     
 
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
@@ -127,19 +143,9 @@
 	  </div>
 
 
-<script>
-			// Get the modal
-			var modal = document.getElementById('id01');
-			
-			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
-			  if (event.target == modal) {
-				modal.style.display = "none";
-			  }
-            }
-        </script>
-<script>         
 
+<script>         
+                
             var modal_signup = document.getElementById('id02');
 			
 			// When the user clicks anywhere outside of the modal, close it
@@ -420,8 +426,6 @@
                 <span class="shape-1"></span>
                 <span class="shape-2"></span>
 
-                <script src="{% static 'js/placeholders.min.js' %}"></script> 
-                <script src="{% static 'js/main.js' %}"></script>
 
                 <!-- <script src="js/jquery.min.js"></script>
 				<script src="js/templatemo_custom.js"></script> -->
