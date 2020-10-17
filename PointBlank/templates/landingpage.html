@@ -9,6 +9,7 @@
 
     <title>Pointblank</title>
 
+    <script src="{% static 'js/notify.js' %}"></script>
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %"> -->
@@ -16,9 +17,28 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
-
-
     <style>
+        .alert {
+          padding: 20px;
+          background-color: #f44336;
+          color: white;
+        }
+        
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        
+        .closebtn:hover {
+          color: black;
+        }
+    
         html,
         body {
             height: 100%;
@@ -136,7 +156,10 @@
             </div>
         </form>
     </div>
-
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Hello {{user}}</strong> Your account has been created!! Welcome!!.
+      </div>
 
 
     <script>
@@ -397,7 +420,15 @@
                     </div>
                 </div>
             </div>
-
+<script>            $.notify({
+	title: "Welcome:",
+	message: "This plugin has been provided to you by Robert McIntosh aka mouse0270",
+  animate: {
+		enter: 'animated fadeInDown',
+		exit: 'animated fadeOutUp'
+	}
+});
+</script>
 
 
             <footer class="site-footer container text-center" style="bottom: 0px;">
@@ -429,8 +460,7 @@
             <span class="shape-2"></span>
 
 
-            <!-- <script src="js/jquery.min.js"></script>
-				<script src="js/templatemo_custom.js"></script> -->
+            <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
 </body>
 
 </html>
