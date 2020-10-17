@@ -288,89 +288,76 @@ class CodechefCompare:
         self.plot=0
 
     def compare(self):
+        url='https://competitive-coding-api.herokuapp.com/api/codechef/'+self.user
+        r = requests.get(url)
+        content = r.json()
+        if (content['status'] != 'Success'): return -1
+        user1=content['contest_ratings']
 
-        
-        user_obj=Codechef(self.user)
-        user_obj.fetch_data()
+        url = 'https://competitive-coding-api.herokuapp.com/api/codechef/'+self.friend
+        r = requests.get(url)
+        content = r.json()
+        if (content['status'] != 'Success'): return -1
+        user2 = content['contest_ratings']
 
-        friend_obj=Codechef(self.friend)
-        friend_obj.fetch_data()
+        #print(user2)
 
-        if(not friend_obj.user_valid): return
-        self.friend_valid=True
-
-        user_contests=user_obj.user_contests[::-1]
-        friend_contests=friend_obj.user_contests[::-1]
-
-
-        d=defaultdict(int)
-
-        for i in user_contests:
-            d[i['code']]=i['rank']
-        
-
-        for i in friend_contests:
-            if i['code'] in d:
-
-                dif=int(i['rank'])-int(d[i['code']])
-                if(dif>=0): dif='+'+str(dif)
-                else: dif=str(dif)
-
-                self.compare_result.append([i['code'],i['name'],d[i['code']],i['rank'],dif])
-
-
-
-        all_Contest=[]
+        all_contest=[]
         temp=[]
-
         user1_rank={}
-        for i in user_contests:
-            cno=i['code']
-            all_Contest.append(cno)
-            user1_rank[cno]=i['rating']
-            temp.append(cno)
-
+        for i in user1:
+            val=i['code']
+            all_contest.append([val,int(i['getyear']),int(i['getmonth']),int(i['getday'])])
+            temp.append(val)
+            user1_rank[val]=int(i['rating'])
 
         user2_rank={}
-        for i in friend_contests:
-            cno=i['code']
-            if cno not in temp: 
-                all_Contest.append(cno)
-                temp.append(cno)
-            user2_rank[cno]=i['rating']
+        for i in user2:
+            val=i['code']
+            if val not in temp:
+                all_contest.append([val,int(i['getyear']),int(i['getmonth']),int(i['getday'])])
+                temp.append(val)
+            user2_rank[val]=int(i['rating'])
+
+        contest=sorted(all_contest, key=lambda x: (x[1]*3,x[2]*2,x[3]))
+        self.compare_result=contest
+
+
+        xd=[]
+        for i in contest:
+            xd.append(i[0])
+
+        #print(xd)
 
         y_user1=[]
         y_user2=[]
 
-        # print(all_Contest)
-        all_Contest=all_Contest[::-1]
-
-        print(all_Contest)
-
-        for i in all_Contest:
+        for i in xd:
             if i in user1_rank:
                 y_user1.append(user1_rank[i])
             else:
                 y_user1.append(None)
-            
+
             if i in user2_rank:
                 y_user2.append(user2_rank[i])
             else:
                 y_user2.append(None)
 
-        xd=[i for i in range(1,len(all_Contest)+1)]
+        #print(y_user1)
+        #print(y_user2)
 
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=xd, y=y_user1, connectgaps=True,
-                    mode='lines+markers',name=self.user,line = dict(color='black', width=1)))
+                                mode='lines+markers', name='deepanshu_pali', line=dict(color='black', width=1)))
 
-        
         fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
-                    mode='lines+markers',name=self.friend,line = dict(color='blue', width=1)))
+                                mode='lines+markers', name='sumitthakur', line=dict(color='blue', width=1)))
 
-        fig.update_layout(title='Rating Change',yaxis_title='Rating')
+        fig.update_layout(title='Rating Change',
+                        yaxis_title='Rating')
 
-        self.plot=plot(fig, output_type='div')
+        self.plot = plot(fig, output_type='div')
+
 
     
 
