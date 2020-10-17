@@ -149,15 +149,26 @@
 
                 <!-- <label for="re_password"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="re_password" required> -->
+<script>
+    function a(){
+                    var notice =getElementById('noti01');
 
+                    notice.style.display="block";
+                }
 
+    function b(){
+        document.getElementById('id02').style.display='none';
 
+    }
+
+</script>
+                
 
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                 <div class="clearfix">
                     <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signupbtn" onclick="getElementById('noti01').style.display='block'">Sign Up</button>
+                    <button type="submit" class="signupbtn" onclick="a();b();">Sign Up</button>
                 </div>
             </div>
         </form>
