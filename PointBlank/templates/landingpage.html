@@ -76,6 +76,12 @@
         </div>
     </header>
 
+    
+    <div class="alert" id="noti01" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Hello {{user}}</strong> Your account has been created!! Welcome!!.
+      </div>
+
     <div id="id01" class="modal">
 
         <form class="modal-content animate" action="/signin/" name='signin' method="POST">
@@ -151,15 +157,12 @@
 
                 <div class="clearfix">
                     <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                    <button type="submit" class="signupbtn">Sign Up</button>
+                    <button type="submit" class="signupbtn" onclick="getElementById('noti01').style.display='block'">Sign Up</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="alert">
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-        <strong>Hello {{user}}</strong> Your account has been created!! Welcome!!.
-      </div>
+
 
 
     <script>
