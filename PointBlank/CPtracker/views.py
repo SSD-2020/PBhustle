@@ -11,6 +11,8 @@ firebase_user=firebase()
 
 def landingpage(request,SignUp=False):
 
+    if(not SignUp and firebase_user.user!=None): return userhome(request)
+
     firebase_user.Clear()
     return render(request,'landingpage.html',{'SignUp':SignUp})
 
