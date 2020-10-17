@@ -12,18 +12,21 @@
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %"> -->
-	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
 
 
     <style>
-           html, body{height: 100%;}
+        html,
+        body {
+            height: 100%;
+        }
 
-            footer {
-                bottom: -50px;
-            }
+        footer {
+            bottom: -50px;
+        }
     </style>
 
 
@@ -31,148 +34,131 @@
 
 <body>
     <header class="site-header container animated fadeInDown">
-		<div class="header-wrapper">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="site-branding">
+        <div class="header-wrapper">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="site-branding">
                         <h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1>
-					</div>
-				</div>
-				<a href="#" class="toggle-nav hidden-md hidden-lg">
-					<i class="fa fa-bars"></i>
-				</a>
-				<div class="col-md-8">
-					<nav id="nav" class="main-navigation hidden-xs hidden-sm">
-						<ul class="main-menu">
-							<li>  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SIGN IN</button>  </li>
-							<li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</button> </li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header>
-					
-	<div id="id01" class="modal">
-  
+                    </div>
+                </div>
+                <a href="#" class="toggle-nav hidden-md hidden-lg">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="col-md-8">
+                    <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+                        <ul class="main-menu">
+                            <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SIGN IN</button> </li>
+                            <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</button> </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="id01" class="modal">
+
         <form class="modal-content animate" action="/signin/" name='signin' method="POST">
             {% csrf_token %}
-		  <div class="container">
+            <div class="container">
                 <h1>Sign In</h1>
                 <p>Please enter credentials.</p>
                 <hr>
-			<label for="uname"><b>Username</b></label>
-			<input type="text" placeholder="Enter Username" name="emailid" required>
-	  
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Enter Password" name="password" required>
-			  
-			<button type="submit">Login</button>
-			<label>
-			  <input type="checkbox" checked="checked" name="remember"> Remember me
-			</label>
-		  </div>
-	  
-		  <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            
-            <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')" > <a href="#"><p style="color: darkslategray;">Forgot password?</p></a></span>
-		  </div>
-		</form>
-      </div>
-      
-      <!-- <script>
-        // Get the modal
-        var modal1 = document.getElementById('id01');
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal1) {
-            modal1.style.display = "none";
-          }
-        }
-    </script> -->
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="emailid" required>
 
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
 
-	  <div id="id02" class="modal">
-  
-		<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form class="modal-content" action="/signup/" name='signup' method="POST">
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+
+                <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')"> <a href="#">
+                        <p style="color: darkslategray;">Forgot password?</p>
+                    </a></span>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal">
+
+        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content" action="/signup/" name='signup' method="POST">
             {% csrf_token %}
             <div class="container">
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr>
-            
-      <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="name" required>
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="emailid" required>
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Enter Name" name="name" required>
 
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="emailid" required>
 
-       <label for="Codeforces"><b>Codeforces</b></label>
-	  <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
 
-	  <label for="Codechef"><b>Codechef</b></label>
-      <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
-      
-      <label for="HackerRank"><b>HackerRank</b></label>
-      <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
+                <label for="Codeforces"><b>Codeforces</b></label>
+                <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
 
-      <label for="branch"><b>Branch</b></label>
-      <input type="text" placeholder="Enter Branch" name="branch" required>
+                <label for="Codechef"><b>Codechef</b></label>
+                <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
 
-      <label for="sem"><b>Semester</b></label>
-      <input type="text" placeholder="Enter Semester" name="sem" required>
+                <label for="HackerRank"><b>HackerRank</b></label>
+                <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
+
+                <label for="branch"><b>Branch</b></label>
+                <input type="text" placeholder="Enter Branch" name="branch" required>
+
+                <label for="sem"><b>Semester</b></label>
+                <input type="text" placeholder="Enter Semester" name="sem" required>
 
 
-      <!-- <label for="re_password"><b>Repeat Password</b></label>
+                <!-- <label for="re_password"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="re_password" required> -->
-	  
-	 
-    
 
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn" >Sign Up</button>
-      </div>
+
+
+                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </div>
+        </form>
     </div>
-  </form>
-	  </div>
 
 
 
-<script>         
-            var modal1= document.getElementById('id02');
-            var modal2= document.getElementById('id01')
+    <script>
+        var modal1 = document.getElementById('id02');
+        var modal2 = document.getElementById('id01')
 
-            window.onclick = function(event) {
-			  if (event.target == modal1||event.target == modal2) {
-                modal1.style.display = "none"; 
-                 modal2.style.display = "none";
-			  }
+        window.onclick = function(event) {
+            if (event.target == modal1 || event.target == modal2) {
+                modal1.style.display = "none";
+                modal2.style.display = "none";
             }
+        }
 
-        //     document.onkeyup(function(e) {
-        //  if (e.key === "Escape") { console.log('fuck');
-        //   }
-        //     });
 
-            document.onkeyup = function (event) {
+
+        document.onkeyup = function(event) {
             if (event.which === "Escape" || event.keyCode == 27) {
-                modal1.style.display = "none"; 
-                 modal2.style.display = "none";
+                modal1.style.display = "none";
+                modal2.style.display = "none";
             }
-};
-			
-</script>
-
-
+        };
+    </script>
     <div id="menu-container">
         <div id="menu-1" class="homepage home-section container">
             <div class="home-intro text-center">
@@ -194,8 +180,8 @@
                             <h2>Pb Hustle</h2>
                             <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah
                                 BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                            <br>      
-                                                  <br>
+                            <br>
+                            <br>
 
                             <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">DSCE Blog</a>
                             <br>
@@ -240,7 +226,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="home-projects">
                         <div class="row">
 
@@ -256,7 +242,7 @@
                                     </div>
                                     <div class="col-md-2 col-sm-6">
                                         <div class="project-item two animated fadeInLeft">
-                                            <img src="{% static 'img/2.jpg' %}"  alt="">
+                                            <img src="{% static 'img/2.jpg' %}" alt="">
                                             <div class="overlay">
                                                 <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
                                             </div>
@@ -382,66 +368,69 @@
                                 </div>
 
                             </div>
-  <div class="col-md-6 col-sm-12">
-                            <div class="project-title animated fadeInUp">
-                                <h2>icpc</h2>
-                                <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                                <br>
-                                <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">ICPC</a>
-                                <br>
-                                <br>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="project-title animated fadeInUp">
+                                    <h2>icpc</h2>
+                                    <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                                    <br>
+                                    <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">ICPC</a>
+                                    <br>
+                                    <br>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="project-title animated fadeInDown">
-                                <h2>Placement team</h2>
-                                <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                                <br>
-                                <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">PLACEMENT</a>
-                                <br>
-                                <br>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="project-title animated fadeInDown">
+                                    <h2>Placement team</h2>
+                                    <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                                    <br>
+                                    <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">PLACEMENT</a>
+                                    <br>
+                                    <br>
 
-                        </div>
+                                </div>
 
-                      
+
 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                
-                
 
-                <footer class="site-footer container text-center" style="bottom: 0px;">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="main-footer">
-                                <ul class="social">
-                                    <li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
-                                    <li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
-                                    <li><a href="https://www.dsce.edu.in/">DSCE</a></li>
-                                </ul>
-                            </div>
+
+
+            <footer class="site-footer container text-center" style="bottom: 0px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-footer">
+                            <ul class="social">
+                                <li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
+                                <li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
+                                <li><a href="https://www.dsce.edu.in/">DSCE</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 copyright">
-                            <p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 copyright">
+                        <p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
+                        <p> Wanna check <a href="https://github.com/SSD-2020/PBhustle">Under the Hood</a></p>
+
                     </div>
-                </footer>
+                </div>
+            </footer>
 
-                <span class="border-top"></span>
-                <span class="border-left"></span>
-                <span class="border-right"></span>
-                <span class="border-bottom"></span>
-                <span class="shape-1"></span>
-                <span class="shape-2"></span>
+            <span class="border-top"></span>
+            <span class="border-left"></span>
+            <span class="border-right"></span>
+            <span class="border-bottom"></span>
+            <span class="shape-1"></span>
+            <span class="shape-2"></span>
 
 
-                <!-- <script src="js/jquery.min.js"></script>
+            <!-- <script src="js/jquery.min.js"></script>
 				<script src="js/templatemo_custom.js"></script> -->
 </body>
+
 </html>
