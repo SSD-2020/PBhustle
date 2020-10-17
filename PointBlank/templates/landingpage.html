@@ -58,6 +58,9 @@
         <form class="modal-content animate" action="/signin/" name='signin' method="POST">
             {% csrf_token %}
 		  <div class="container">
+                <h1>Sign In</h1>
+                <p>Please enter credentials.</p>
+                <hr>
 			<label for="uname"><b>Username</b></label>
 			<input type="text" placeholder="Enter Username" name="emailid" required>
 	  
@@ -155,6 +158,17 @@
 			  }
             }
 
+        //     document.onkeyup(function(e) {
+        //  if (e.key === "Escape") { console.log('fuck');
+        //   }
+        //     });
+
+            document.onkeyup = function (event) {
+            if (event.which === "Escape" || event.keyCode == 27) {
+                modal1.style.display = "none"; 
+                 modal2.style.display = "none";
+            }
+};
 			
 </script>
 
