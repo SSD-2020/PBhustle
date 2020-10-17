@@ -124,7 +124,7 @@ class Codeforces:
         self.user_info={
 
             "User Handle" : temp['handle'],
-            "Name" : temp['firstName']+'+'+temp['lastName'],
+            "Name" : temp['firstName']+' '+temp['lastName'],
             "Current Rating" : str(temp['rating'])+ ' ( ' + temp['rank'] +' )',
             "Maximum Rating" : str(temp['maxRating'])+ ' ( ' + temp['maxRank'] +' )',
 
