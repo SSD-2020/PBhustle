@@ -131,6 +131,14 @@ class Codeforces:
         temp=data_codeforces['result'][0]
         # print(temp)
 
+        try: temp['lastName']=temp['lastName']
+        except: temp['lastName']=" "
+
+        try: temp['firstName']=temp['firstName']
+        except: temp['firstName']="[ Not Given On Codeforces ]"
+
+
+
         self.user_info={
 
             "User Handle" : temp['handle'],
@@ -410,8 +418,8 @@ class CodechefCompare:
 
 
 
-CF_user=Codeforces('deepanshu_pali')
-CF_user.fetch_data()
+# CF_user=Codeforces('sparshkesari98')
+# CF_user.fetch_data()
 # CF_user.compare('sumitthakur')
 # CF_user.plot_data()
 
