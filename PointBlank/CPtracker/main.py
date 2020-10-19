@@ -404,14 +404,14 @@ class CodechefCompare:
 
 
 
-# CC_user=Codechef('deepu217')
-# CC_user.fetch_data()
+CC_user=Codechef('deepu217')
+CC_user.fetch_data()
 
-# print(CC_user.user_valid)
-# print()
+print(CC_user.user_valid)
+print()
 
-# print(CC_user.user_info)
-# print()
+print(CC_user.user_info)
+print()
 
 # print(CC_user.user_contests)
 # print()

@@ -123,6 +123,23 @@ def codeforces(request):
         )
 
 
+def codechef(request):
+
+    CC_user=Codechef(firebase_user.data['CC_id'])
+    CC_user.fetch_data()
+    CC_user.plot_data()
+
+    return render(
+        request,
+        'codechef.html',
+        {
+            'plot':CC_user.plot,
+            'info':CC_user.user_info,
+            'contests':CC_user.user_contests[::-1]
+            }
+        )
+
+
 def codeforcesCompare(request):
 
     friend=request.GET['friend_id']
@@ -150,23 +167,6 @@ def codechefCompare(request):
         }
         )
 
-
-
-def codechef(request):
-
-    CC_user=Codeforces(firebase_user.data['CC_id'])
-    CC_user.fetch_data()
-    CC_user.plot_data()
-
-    return render(
-        request,
-        'codechef.html',
-        {
-            'plot':CC_user.plot,
-            'info':CC_user.user_info,
-            'contests':CC_user.user_contests[::-1]
-            }
-        )
 
 
 def hackerrank(request):
