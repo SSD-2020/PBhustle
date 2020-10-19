@@ -47,10 +47,19 @@ class firebase:
         res=self.db.child("users").child(self.user['localId']).child('').get()
         for have in res.each(): self.data=have.val()
 
-    def InValidEmailID(self, emailid):
+    def EmailExist(self, emailid):
+
+        users=self.db.child("users").get().val()
+        uid=[]
+        for i in users: uid.append(users[i][list(users[i].keys())[0]])
+
+        for user in uid:
+            if(user['email']==emailid): return True
+
         return False
 
-        
+# f=firebase()
+# print(f.InValidEmailID('deepanshukumarpali@gmail.com'))      
         
 
 

@@ -33,8 +33,6 @@ def signin(request):
     password=request.POST['password']
     # print(firebase_user.user)
 
-    if(firebase_user.InValidEmailID(emailid)): return landingpage(request,False,False,(True,False,False,False))
-
     try: firebase_user.SignIn(emailid,password)
     except: return landingpage(request,False,False,(False,True,False,False))
     
@@ -42,8 +40,6 @@ def signin(request):
     return userhome(request)
 
 def signup(request):
-
-    global CF_user,CC_user
 
     emailid=request.POST['emailid']
     password=request.POST['password']
@@ -71,12 +67,14 @@ def signup(request):
     CC_user=Codechef(data['CC_id'])
     CC_user.fetch_data()
 
-    if(CF_user.user_valid and CC_user.user_valid):
+    emailid_exist=firebase_user.EmailExist(emailid)
+
+    if(CF_user.user_valid and CC_user.user_valid and not emailid_exist):
         firebase_user.SignUp(emailid,password)
         firebase_user.PushData(data)
         return landingpage(request,True,False,(False,False,not CF_user.user_valid,not CC_user.user_valid))
 
-    return landingpage(request,False,False,(False,False,not CF_user.user_valid,not CC_user.user_valid))
+    return landingpage(request,False,False,(emailid_exist,False,not CF_user.user_valid,not CC_user.user_valid))
 
 
 
