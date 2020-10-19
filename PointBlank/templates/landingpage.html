@@ -30,6 +30,10 @@
             background: red;
             color: white;
             padding: 10px;
+            position: absolute;
+
+            z-index:5;
+        margin-top: -50px;
             text-align: center;
             margin-left: 150px;
             margin-right: 20px;
@@ -85,12 +89,10 @@
                 </div>
             </div>
         </div>
-    </header>
+             </header>
 
     <!-- Welcome mesage account has been created -->
     {% if SignUp %}
-    <div class="home-projects">
-        <div class="row">
 
                
 
@@ -100,18 +102,13 @@
                 </div>
                 
 
-        </div>
-    </div>
     {% endif %}
     <!-- Welcome div ends -->
 
 
         <!-- Email already exists -->
         {% if inValid_Email %}
-        <div class="home-projects">
-            <div class="row">
-
-                
+                     
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -119,35 +116,27 @@
                     </div>
                 
 
-            </div>
-        </div>
+            
         {% endif %}
         <!-- Welcome div ends -->
 
 
         <!-- Code forces id doesnt exist already exists -->
         {% if inValid_CF %}
-        <div class="home-projects">
-            <div class="row">
+      
 
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codeforces id doesnt exists.!!
                     </div>
-                
-
-            </div>
-        </div>
+                    
         {% endif %}
         <!-- Welcome div ends -->
 
 
         <!-- Code chef id doesnt exist already exists -->
         {% if inValid_CF %}
-        <div class="home-projects">
-            <div class="row">
-
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -155,26 +144,20 @@
                     </div>
                 
 
-            </div>
-        </div>
+        
         {% endif %}
         <!-- Welcome div ends -->
 
 
          <!--  Wrong Password Login Attempt -->
          {% if inValid_Pass %}
-         <div class="home-projects">
-            <div class="row">
+   
 
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Wrong Password, Try Again!!
-                    </div>
-                
-
-            </div>
-        </div>
+                     </div>
         {% endif %}
         <!-- Welcome div ends -->
 
