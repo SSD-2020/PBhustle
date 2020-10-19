@@ -1,571 +1,479 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
-
-    <title>Pointblank</title>
-
-    <script src="{% static 'js/notify.js' %}"></script>
-
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %"> -->
-    <link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
-    <style>
-        .alert {
-          padding: 20px;
-          background-color: #f44336;
-          color: white;
-          width: 80%;
-        /* margin: auto; */
-        /* align-items: center; */
-          /* animation: fadeOut 2s forwards;
-            animation-delay: 2s; */
-            background: red;
-            color: white;
-            padding: 10px;
-            position: absolute;
-            margin-bottom: 50px;
-            /* z-index:5; */
-             margin-top: -80px;
-            text-align: center;
-            margin-left: 150px;
-            margin-right: 20px;
-        }
-        
-        .closebtn {
-          margin-left: 15px;
-          color: white;
-          font-weight: bold;
-          float: right;
-          font-size: 22px;
-          line-height: 20px;
-          cursor: pointer;
-          transition: 0.3s;
-        }
-        
-        .closebtn:hover {
-          color: black;
-        }
-    
-        html,
-        body {
-            height: 100%;
-        }
-
-        footer {
-            bottom: -50px;
-        }
-    </style>
-
-
-</head>
-
-<body>
-    <header class="site-header container animated fadeInDown">
-        <div class="header-wrapper">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+      <link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
+      <title>Pointblank</title>
+      <script src="{% static 'js/notify.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %"> -->
+      <link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
+      <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+      <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
+      <style>
+         .alert {
+         padding: 20px;
+         background-color: #f44336;
+         color: white;
+         width: 80%;
+         /* margin: auto; */
+         /* align-items: center; */
+         /* animation: fadeOut 2s forwards;
+         animation-delay: 2s; */
+         background: red;
+         color: white;
+         padding: 10px;
+         position: absolute;
+         margin-bottom: 50px;
+         /* z-index:5; */
+         margin-top: -80px;
+         text-align: center;
+         margin-left: 150px;
+         margin-right: 20px;
+         }
+         .closebtn {
+         margin-left: 15px;
+         color: white;
+         font-weight: bold;
+         float: right;
+         font-size: 22px;
+         line-height: 20px;
+         cursor: pointer;
+         transition: 0.3s;
+         }
+         .closebtn:hover {
+         color: black;
+         }
+         html,
+         body {
+         height: 100%;
+         }
+         footer {
+         bottom: -50px;
+         }
+      </style>
+   </head>
+   <body>
+      <header class="site-header container animated fadeInDown">
+         <div class="header-wrapper">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="site-branding">
-                        <h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1>
-                    </div>
-                </div>
-                <a href="#" class="toggle-nav hidden-md hidden-lg">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <div class="col-md-8">
-                    <nav id="nav" class="main-navigation hidden-xs hidden-sm">
-                        <ul class="main-menu">
-                            <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SIGN IN</button> </li>
-                            <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</button> </li>
-                        </ul>
-                    </nav>
-                </div>
+               <div class="col-md-4">
+                  <div class="site-branding">
+                     <h1><span style="color: green;">&lt;.&nbsp;&gt;</span> POINT BLANK</h1>
+                  </div>
+               </div>
+               <a href="#" class="toggle-nav hidden-md hidden-lg">
+               <i class="fa fa-bars"></i>
+               </a>
+               <div class="col-md-8">
+                  <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+                     <ul class="main-menu">
+                        <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">SIGN IN</button> </li>
+                        <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</button> </li>
+                     </ul>
+                  </nav>
+               </div>
             </div>
-        </div>
-             </header>
-
-    <!-- Welcome mesage account has been created -->
-    {% if SignUp %}
-
-               
-
-                <div class="alert" style="background-color: green;">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>WELCOME, </strong> Your account has been created!!.
-                </div>
-                
-
-    {% endif %}
-    <!-- Welcome div ends -->
-
-
-        <!-- Email already exists -->
-        {% if inValid_Email %}
-                     
-
-                    <div class="alert" style="background-color:red;">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Email already exsists.!!
-                    </div>
-                
-
-            
-        {% endif %}
-        <!-- Welcome div ends -->
-
-
-        <!-- Code forces id doesnt exist already exists -->
-        {% if inValid_CF %}
-      
-
-
-                    <div class="alert" style="background-color:red;">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codeforces id doesnt exists.!!
-                    </div>
-                    
-        {% endif %}
-        <!-- Welcome div ends -->
-
-
-        <!-- Code chef id doesnt exist already exists -->
-        {% if inValid_CC %}
-
-                    <div class="alert" style="background-color:red;">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codechef id doesnt exists.!!
-                    </div>
-                
-
-        
-        {% endif %}
-        <!-- Welcome div ends -->
-
-
-         <!--  Wrong Password Login Attempt -->
-         {% if inValid_Pass %}
-   
-
-
-                    <div class="alert" style="background-color:red;">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Wrong Email/Password, Try Again!!
-                     </div>
-        {% endif %}
-        <!-- Welcome div ends -->
-
-    <div id="id01" class="modal" background-color:#32353a;>
-
-        <form class="modal-content animate" action="/signin/" name='signin' method="POST">
+         </div>
+      </header>
+      <!-- Welcome mesage account has been created -->
+      {% if SignUp %}
+      <div class="alert" style="background-color: green;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>WELCOME, </strong> Your account has been created!!.
+      </div>
+      {% endif %}
+      <!-- Welcome div ends -->
+      <!-- Email already exists -->
+      {% if inValid_Email %}
+      <div class="alert" style="background-color:red;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Email already exsists.!!
+      </div>
+      {% endif %}
+      <!-- Welcome div ends -->
+      <!-- Code forces id doesnt exist already exists -->
+      {% if inValid_CF %}
+      <div class="alert" style="background-color:red;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codeforces id doesnt exists.!!
+      </div>
+      {% endif %}
+      <!-- Welcome div ends -->
+      <!-- Code chef id doesnt exist already exists -->
+      {% if inValid_CC %}
+      <div class="alert" style="background-color:red;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codechef id doesnt exists.!!
+      </div>
+      {% endif %}
+      <!-- Welcome div ends -->
+      <!--  Wrong Password Login Attempt -->
+      {% if inValid_Pass %}
+      <div class="alert" style="background-color:red;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Wrong Email/Password, Try Again!!
+      </div>
+      {% endif %}
+      <!-- Welcome div ends -->
+      <div id="id01" class="modal" background-color:#32353a;>
+         <form class="modal-content animate" action="/signin/" name='signin' method="POST">
             {% csrf_token %}
             <div class="container" style="background-color:#32353a;">
-                <h1>Sign In</h1>
-                <p>Please enter credentials.</p>
-                <hr>
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="emailid" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
-
-                <button type="submit" style="background-color: green;">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-                 <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')"> 
-                    <a href="#"><p style="color: darkslategray;"> Forgot password?</p></a></span>
+               <h1>Sign In</h1>
+               <p>Please enter credentials.</p>
+               <hr>
+               <label for="uname"><b>Username</b></label>
+               <input type="text" placeholder="Enter Username" name="emailid" required>
+               <label for="psw"><b>Password</b></label>
+               <input type="password" placeholder="Enter Password" name="password" required>
+               <button type="submit" style="background-color: green;">Login</button>
+               <label>
+               <input type="checkbox" checked="checked" name="remember"> Remember me
+               </label>
+               <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')">
+                  <a href="#">
+                     <p style="color: darkslategray;"> Forgot password?</p>
+                  </a>
+               </span>
             </div>
-
             <!-- <div class="container" style="background-color: #32353a"> -->
-                <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
-
-                <!-- <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')"> 
-                    <a href="#"><p style="color: darkslategray;"> Forgot password?</p></a></span> -->
-            </div>
-        </form>
-    </div>
-
-
-    <div id="id02" class="modal">
-
-        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <form class="modal-content" action="/signup/" name='signup' method="POST">
+            <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
+            <!-- <span class="psw" onClick="alert('Mail us at ssd.projects.org@gmail.com')"> 
+               <a href="#"><p style="color: darkslategray;"> Forgot password?</p></a></span> -->
+      </div>
+      </form>
+      </div>
+      <div id="id02" class="modal">
+         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+         <form class="modal-content" action="/signup/" name='signup' method="POST">
             {% csrf_token %}
             <div class="container" style="background-color:#32353a;">
-                <h1>Sign Up</h1>
-                <p>Please fill in this form to create an account.</p>
-                <hr>
-
-                <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="name" required>
-
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="emailid" required>
-
-                <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" minlength="6" required>
-
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="Codeforces"><b>Codeforces</b></label>
-                        <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
-
-                    </div>
-
-                    <div class="col-md-6 col-sm-12">
-                            <label for="Codechef"><b>Codechef</b></label>
-                            <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
-
-
-                    </div>
-
-                    <div class="col-md-6 col-sm-12">
-                          <label for="branch"><b>Branch</b></label>
-                          <input type="text" placeholder="Enter Branch" name="branch" required>
-                      </div>
-
-                      <div class="col-md-6 col-sm-12">
-                         <label for="sem"><b>Semester</b></label>
-                       <input type="text" placeholder="Enter Semester" name="sem" minlength="1" min="1" max="8" required>
-
-                      </div>
-                </div>
-
-                <!-- <div>
-                            
-                            
-                            <label for="HackerRank"><b>HackerRank</b></label>
-                            <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
-
-                          
-
-                           
-              </div> -->
-               
-                <!-- <label for="re_password"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="re_password" required> -->
-                
-
-                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-                <div class="clearfix">
-                    <div class="col-md-3 col-sm-12">
-
-                        <!-- <button type="button" class="cancelbtn" style="background-color: green; width: 100%;">Sign Up</button> -->
-                        </div>
-                    <div class=" col-sm-12">
-
-                        <button type="button" class="cancelbtn" style="background-color: green; width: 100%;">Sign Up</button>
-                        </div>
-                    <!-- <div class="col-md-6 col-sm-12"> -->
-                        <!-- <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" style="width: 50%;">Cancel</button>
-                    </div>
-                   -->
-                </div>
+               <h1>Sign Up</h1>
+               <p>Please fill in this form to create an account.</p>
+               <hr>
+               <label for="name"><b>Name</b></label>
+               <input type="text" placeholder="Enter Name" name="name" required>
+               <label for="email"><b>Email</b></label>
+               <input type="text" placeholder="Enter Email" name="emailid" required>
+               <label for="password"><b>Password</b></label>
+               <input type="password" placeholder="Enter Password" name="password" minlength="6" required>
+               <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Codeforces"><b>Codeforces</b></label>
+                     <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Codechef"><b>Codechef</b></label>
+                     <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="branch"><b>Branch</b></label>
+                     <input type="text" placeholder="Enter Branch" name="branch" required>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="sem"><b>Semester</b></label>
+                     <input type="text" placeholder="Enter Semester" name="sem" minlength="1" min="1" max="8" required>
+                  </div>
+               </div>
+               <!-- <div>
+                  <label for="HackerRank"><b>HackerRank</b></label>
+                  <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
+                  
+                  
+                  
+                  
+                  </div> -->
+               <!-- <label for="re_password"><b>Repeat Password</b></label>
+                  <input type="password" placeholder="Repeat Password" name="re_password" required> -->
+               <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+               <div class="clearfix">
+                  <div class="col-md-3 col-sm-12">
+                     <!-- <button type="button" class="cancelbtn" style="background-color: green; width: 100%;">Sign Up</button> -->
+                  </div>
+                  <div class=" col-sm-12">
+                     <button type="button" class="cancelbtn" style="background-color: green; width: 100%;">Sign Up</button>
+                  </div>
+                  <!-- <div class="col-md-6 col-sm-12"> -->
+                  <!-- <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" style="width: 50%;">Cancel</button>
+                     </div>
+                     -->
+               </div>
             </div>
-        </form>
-    </div>
-
-
-
-    <script>
-        var modal1 = document.getElementById('id02');
-        var modal2 = document.getElementById('id01')
-
-        window.onclick = function(event) {
-            if (event.target == modal1 || event.target == modal2) {
-                modal1.style.display = "none";
-                modal2.style.display = "none";
-            }
-        }
-
-
-
-        document.onkeyup = function(event) {
-            if (event.which === "Escape" || event.keyCode == 27) {
-                modal1.style.display = "none";
-                modal2.style.display = "none";
-            }
-        };
-    </script>
-    <div id="menu-container">
-        <div id="menu-1" class="homepage home-section container">
-            <div class="home-intro text-center">
-                <h2 class="welcome-title animated fadeInLeft">WE ARE POINT BLANK</h2>
-                <p class="animated fadeInRight">Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
-                    Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah vBlah Blah Blah Blah Blah Blah
-                    Blah Blah Blah Blah Blah Blah </p>
-                <ul class="list-icons animated fadeInUp">
-                    <li><i class="icon-trophy"></i></li>
-                    <li><i class="icon-badge"></i></li>
-                    <li><i class="icon-magic-wand"></i></li>
-                    <li><i class="icon-screen-desktop"></i></li>
-                </ul>
-            </div>
-            <div class="home-projects">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <div class="project-title animated fadeInUp">
-                            <h2>Pb Hustle</h2>
-                            <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah
-                                BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                            <br>
-                            <br>
-
-                            <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">DSCE Blog</a>
-                            <br>
-                            <br>
-
+         </form>
+      </div>
+      <script>
+         var modal1 = document.getElementById('id02');
+         var modal2 = document.getElementById('id01')
+         
+         window.onclick = function(event) {
+             if (event.target == modal1 || event.target == modal2) {
+                 modal1.style.display = "none";
+                 modal2.style.display = "none";
+             }
+         }
+         
+         
+         
+         document.onkeyup = function(event) {
+             if (event.which === "Escape" || event.keyCode == 27) {
+                 modal1.style.display = "none";
+                 modal2.style.display = "none";
+             }
+         };
+      </script>
+      <div id="menu-container">
+      <div id="menu-1" class="homepage home-section container">
+         <div class="home-intro text-center">
+            <h2 class="welcome-title animated fadeInLeft">WE ARE POINT BLANK</h2>
+            <p class="animated fadeInRight">Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah
+               Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah vBlah Blah Blah Blah Blah Blah
+               Blah Blah Blah Blah Blah Blah 
+            </p>
+            <ul class="list-icons animated fadeInUp">
+               <li><i class="icon-trophy"></i></li>
+               <li><i class="icon-badge"></i></li>
+               <li><i class="icon-magic-wand"></i></li>
+               <li><i class="icon-screen-desktop"></i></li>
+            </ul>
+         </div>
+         <div class="home-projects">
+            <div class="row">
+               <div class="col-md-6 col-sm-12">
+                  <div class="project-title animated fadeInUp">
+                     <h2>Pb Hustle</h2>
+                     <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah
+                        BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah
+                     </p>
+                     <br>
+                     <br>
+                     <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">DSCE Blog</a>
+                     <br>
+                     <br>
+                  </div>
+               </div>
+               <div class="project-home-holder col-md-6 col-sm-12">
+                  <div class="row">
+                     <div class="col-md-6 col-sm-6">
+                        <div class="project-item one animated fadeInDown">
+                           <img src="{% static 'img/1.jpg' %}" alt="">
+                           <div class="overlay">
+                              <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
+                           </div>
                         </div>
-                    </div>
-                    <div class="project-home-holder col-md-6 col-sm-12">
+                     </div>
+                     <div class="col-md-6 col-sm-6">
+                        <div class="project-item two animated fadeInDown">
+                           <img src="{% static 'img/2.jpg' %}" alt="">
+                           <div class="overlay">
+                              <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6">
+                        <div class="project-item three animated fadeInDown">
+                           <img src="{% static 'img/4.jpg' %}" alt="">
+                           <div class="overlay">
+                              <h4><a href="https://github.com/">Git Hub</a></h4>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6">
+                        <div class="project-item four animated fadeInDown">
+                           <img src="{% static 'img/3.jpg' %}" alt="">
+                           <div class="overlay">
+                              <h4><a href="https://atcoder.jp/">At Coders</a></h4>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- <div class="home-projects">
+                  <div class="row">
+                  
+                      <div class="project-home-holder col-md-12 col-sm-12">
+                          <div class="row">
+                              <div class="col-md-2 col-sm-6">
+                                  <div class="project-item three animated fadeInLeft">
+                                      <img src="{% static 'img/1.jpg' %}" alt="">
+                                      <div class="overlay">
+                                          <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2 col-sm-6">
+                                  <div class="project-item two animated fadeInLeft">
+                                      <img src="{% static 'img/2.jpg' %}" alt="">
+                                      <div class="overlay">
+                                          <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2 col-sm-6">
+                                  <div class="project-item one animated fadeInLeft">
+                                      <img src="{% static 'img/4.jpg' %}" alt="">
+                                      <div class="overlay">
+                                          <h4><a href="https://github.com/">Git Hub</a></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2 col-sm-6">
+                                  <div class="project-item one animated fadeInRight">
+                                      <img src="{% static 'img/5.jpg' %}" alt="">
+                                      <div class="overlay">
+                                          <h4><a href="https://atcoder.jp/">GeeksForGeeks</a></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2 col-sm-6">
+                                  <div class="project-item two animated fadeInRight">
+                                      <img src="{% static 'img/6.jpg' %}" alt="">
+                                      <div class="overlay">
+                                          <h4><a href="https://atcoder.jp/">HackerRank</a></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2 col-sm-6">
+                                  <div class="project-item three animated fadeInRight">
+                                      <img src="{% static 'img/3.jpg' %}" alt="">
+                                      <div class="overlay">
+                                          <h4><a href="https://atcoder.jp/">At Coders</a></h4>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <br>
+                  <br>
+                  -->
+               <div class="col-md-6 col-sm-12">
+                  <div class="project-title animated fadeInUp">
+                     <h2>icpc</h2>
+                     <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                     <br>
+                     <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">ICPC</a>
+                     <br>
+                     <br>
+                  </div>
+               </div>
+               <div class="col-md-6 col-sm-12">
+                  <div class="project-title animated fadeInDown">
+                     <h2>Placement team</h2>
+                     <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                     <br>
+                     <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">PLACEMENT</a>
+                     <br>
+                     <br>
+                  </div>
+               </div>
+               <div class="home-projects">
+                  <div class="row">
+                     <div class="project-home-holder col-md-12 col-sm-12">
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="project-item one animated fadeInDown">
-                                    <img src="{% static 'img/1.jpg' %}" alt="">
-                                    <div class="overlay">
-                                        <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="project-item two animated fadeInDown">
-                                    <img src="{% static 'img/2.jpg' %}" alt="">
-                                    <div class="overlay">
-                                        <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="project-item three animated fadeInDown">
-                                    <img src="{% static 'img/4.jpg' %}" alt="">
-                                    <div class="overlay">
-                                        <h4><a href="https://github.com/">Git Hub</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="project-item four animated fadeInDown">
-                                    <img src="{% static 'img/3.jpg' %}" alt="">
-                                    <div class="overlay">
-                                        <h4><a href="https://atcoder.jp/">At Coders</a></h4>
-                                    </div>
-                                </div>
-                            </div>
+                           <div class="col-md-2 col-sm-6">
+                              <div class="project-item one animated fadeInLeft">
+                                 <img src="{% static 'img/1.jpg' %}" alt="">
+                                 <div class="overlay">
+                                    <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-2 col-sm-6">
+                              <div class="project-item two animated fadeInLeft">
+                                 <img src="{% static 'img/2.jpg' %}" alt="">
+                                 <div class="overlay">
+                                    <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-2 col-sm-6">
+                              <div class="project-item three animated fadeInLeft">
+                                 <img src="{% static 'img/4.jpg' %}" alt="">
+                                 <div class="overlay">
+                                    <h4><a href="https://github.com/">Git Hub</a></h4>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-2 col-sm-6">
+                              <div class="project-item three animated fadeInRight">
+                                 <img src="{% static 'img/5.jpg' %}" alt="">
+                                 <div class="overlay">
+                                    <h4><a href="https://atcoder.jp/">GeeksForGeeks</a></h4>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-2 col-sm-6">
+                              <div class="project-item two animated fadeInRight">
+                                 <img src="{% static 'img/6.jpg' %}" alt="">
+                                 <div class="overlay">
+                                    <h4><a href="https://atcoder.jp/">HackerRank</a></h4>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-2 col-sm-6">
+                              <div class="project-item one animated fadeInRight">
+                                 <img src="{% static 'img/3.jpg' %}" alt="">
+                                 <div class="overlay">
+                                    <h4><a href="https://atcoder.jp/">At Coders</a></h4>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-
-
-                    <!-- <div class="home-projects">
-                        <div class="row">
-
-                            <div class="project-home-holder col-md-12 col-sm-12">
-                                <div class="row">
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="project-item three animated fadeInLeft">
-                                            <img src="{% static 'img/1.jpg' %}" alt="">
-                                            <div class="overlay">
-                                                <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="project-item two animated fadeInLeft">
-                                            <img src="{% static 'img/2.jpg' %}" alt="">
-                                            <div class="overlay">
-                                                <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="project-item one animated fadeInLeft">
-                                            <img src="{% static 'img/4.jpg' %}" alt="">
-                                            <div class="overlay">
-                                                <h4><a href="https://github.com/">Git Hub</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="project-item one animated fadeInRight">
-                                            <img src="{% static 'img/5.jpg' %}" alt="">
-                                            <div class="overlay">
-                                                <h4><a href="https://atcoder.jp/">GeeksForGeeks</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="project-item two animated fadeInRight">
-                                            <img src="{% static 'img/6.jpg' %}" alt="">
-                                            <div class="overlay">
-                                                <h4><a href="https://atcoder.jp/">HackerRank</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="project-item three animated fadeInRight">
-                                            <img src="{% static 'img/3.jpg' %}" alt="">
-                                            <div class="overlay">
-                                                <h4><a href="https://atcoder.jp/">At Coders</a></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <div class="project-title animated fadeInUp">
+                        <h2>icpc</h2>
+                        <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                        <br>
+                        <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">ICPC</a>
                         <br>
                         <br>
- -->
-
-                        <div class="col-md-6 col-sm-12">
-                            <div class="project-title animated fadeInUp">
-                                <h2>icpc</h2>
-                                <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                                <br>
-                                <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">ICPC</a>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="project-title animated fadeInDown">
-                                <h2>Placement team</h2>
-                                <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                                <br>
-                                <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">PLACEMENT</a>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-
-
-                        <div class="home-projects">
-                            <div class="row">
-
-                                <div class="project-home-holder col-md-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="project-item one animated fadeInLeft">
-                                                <img src="{% static 'img/1.jpg' %}" alt="">
-                                                <div class="overlay">
-                                                    <h4><a href="https://www.codechef.com/">CODECHEF</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="project-item two animated fadeInLeft">
-                                                <img src="{% static 'img/2.jpg' %}" alt="">
-                                                <div class="overlay">
-                                                    <h4><a href="https://codeforces.com/">CODEFORCES</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="project-item three animated fadeInLeft">
-                                                <img src="{% static 'img/4.jpg' %}" alt="">
-                                                <div class="overlay">
-                                                    <h4><a href="https://github.com/">Git Hub</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="project-item three animated fadeInRight">
-                                                <img src="{% static 'img/5.jpg' %}" alt="">
-                                                <div class="overlay">
-                                                    <h4><a href="https://atcoder.jp/">GeeksForGeeks</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="project-item two animated fadeInRight">
-                                                <img src="{% static 'img/6.jpg' %}" alt="">
-                                                <div class="overlay">
-                                                    <h4><a href="https://atcoder.jp/">HackerRank</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="project-item one animated fadeInRight">
-                                                <img src="{% static 'img/3.jpg' %}" alt="">
-                                                <div class="overlay">
-                                                    <h4><a href="https://atcoder.jp/">At Coders</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="project-title animated fadeInUp">
-                                    <h2>icpc</h2>
-                                    <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                                    <br>
-                                    <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">ICPC</a>
-                                    <br>
-                                    <br>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="project-title animated fadeInDown">
-                                    <h2>Placement team</h2>
-                                    <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
-                                    <br>
-                                    <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">PLACEMENT</a>
-                                    <br>
-                                    <br>
-
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <div class="project-title animated fadeInDown">
+                        <h2>Placement team</h2>
+                        <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                        <br>
+                        <a href="https://forum.dsce.in/t/pb-hustle-solution-links/183" class="pink-button">PLACEMENT</a>
+                        <br>
+                        <br>
+                     </div>
+                  </div>
+               </div>
             </div>
-
-
-
-            <footer class="site-footer container text-center" style="bottom: 0px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="main-footer">
-                            <ul class="social">
-                                <li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
-                                <li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
-                                <li><a href="https://www.dsce.edu.in/">DSCE</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 copyright">
-                        <p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
-                        <p> Wanna check <a href="https://github.com/SSD-2020/PBhustle">Under the Hood</a>?</p>
-
-                    </div>
-                </div>
-            </footer>
-
-            <span class="border-top"></span>
-            <span class="border-left"></span>
-            <span class="border-right"></span>
-            <span class="border-bottom"></span>
-            <span class="shape-1"></span>
-            <span class="shape-2"></span>
-
-
-            <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
-</body>
-
+         </div>
+      </div>
+      <footer class="site-footer container text-center" style="bottom: 0px;">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="main-footer">
+                  <ul class="social">
+                     <li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
+                     <li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
+                     <li><a href="https://www.dsce.edu.in/">DSCE</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12 copyright">
+               <p>Copyright &copy; 2020 <a href="#">Point Blank@ DSCE</a></p>
+               <p> Wanna check <a href="https://github.com/SSD-2020/PBhustle">Under the Hood</a>?</p>
+            </div>
+         </div>
+      </footer>
+      <span class="border-top"></span>
+      <span class="border-left"></span>
+      <span class="border-right"></span>
+      <span class="border-bottom"></span>
+      <span class="shape-1"></span>
+      <span class="shape-2"></span>
+      <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
+   </body>
 </html>
