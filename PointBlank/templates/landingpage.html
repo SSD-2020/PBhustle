@@ -22,13 +22,16 @@
           padding: 20px;
           background-color: #f44336;
           color: white;
+          width: 80%;
+        /* margin: auto; */
+        /* align-items: center; */
           animation: fadeOut 2s forwards;
             animation-delay: 2s;
             background: red;
             color: white;
             padding: 10px;
             text-align: center;
-            margin-left: 20px;
+            margin-left: 150px;
             margin-right: 20px;
         }
         
@@ -84,13 +87,13 @@
         </div>
     </header>
 
-    
+    <!-- Welcome mesage account has been created -->
     <div class="home-projects">
         <div class="row">
 
                 {% if SignUp %}
 
-                <div class="alert" >
+                <div class="alert" style="background-color: green;">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <strong>WELCOME, </strong> Your account has been created!!.
                 </div>
@@ -99,6 +102,53 @@
 
         </div>
     </div>
+    <!-- Welcome div ends -->
+
+
+        <!-- Email already exists -->
+        <div class="home-projects">
+            <div class="row">
+
+                    <div class="alert" style="background-color:red;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Email already exsists.!!
+                    </div>
+                
+
+            </div>
+        </div>
+        <!-- Welcome div ends -->
+
+
+        <!-- Code forces id doesnt exist already exists -->
+        <div class="home-projects">
+            <div class="row">
+
+                    <div class="alert" style="background-color:red;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codeforces id doesnt exists.!!
+                    </div>
+                
+
+            </div>
+        </div>
+        <!-- Welcome div ends -->
+
+
+        <!-- Code chef id doesnt exist already exists -->
+        <div class="home-projects">
+            <div class="row">
+
+                    <div class="alert" style="background-color:red;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codechef id doesnt exists.!!
+                    </div>
+                
+
+            </div>
+        </div>
+        <!-- Welcome div ends -->
+
 
     <div id="id01" class="modal" background-color:#32353a;>
 
