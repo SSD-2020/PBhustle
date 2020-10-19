@@ -47,6 +47,9 @@ class firebase:
         res=self.db.child("users").child(self.user['localId']).child('').get()
         for have in res.each(): self.data=have.val()
 
+    def InValidEmailID(self, emailid):
+        return False
+
         
         
 

@@ -9,23 +9,41 @@ firebase_user=firebase()
 
     
 
-def landingpage(request,SignUp=False,logOut=False):
+def landingpage(request,SignUp=False,logOut=False,inValid=(False,False,False,False)):
 
     if(not logOut and firebase_user.user!=None): return userhome(request)
 
     firebase_user.Clear()
-    return render(request,'landingpage.html',{'SignUp':SignUp})
+    return render(request,'landingpage.html',{
+        'SignUp':SignUp ,
+        'inValid_Email': inValid[0],
+        'inValid_CF': inValid[2],
+        'inValid_CC': inValid[3],
+        'inValid_Pass': inValid[1]
+
+        }
+        )
+
+
+
 
 def signin(request):
 
     emailid=request.POST['emailid']
     password=request.POST['password']
-    firebase_user.SignIn(emailid,password)
     # print(firebase_user.user)
 
+    if(firebase_user.InValidEmailID(emailid)): return landingpage(request,False,False,(True,False,False,False))
+
+    try: firebase_user.SignIn(emailid,password)
+    except: return landingpage(request,False,False,(False,True,False,False))
+    
+    firebase_user.GetData()
     return userhome(request)
 
 def signup(request):
+
+    global CF_user,CC_user
 
     emailid=request.POST['emailid']
     password=request.POST['password']
@@ -34,7 +52,6 @@ def signup(request):
     name=request.POST['name']
     branch=request.POST['branch']
     sem=request.POST['sem']
-    firebase_user.SignUp(emailid,password)
 
     data={
         'email': emailid,
@@ -48,16 +65,25 @@ def signup(request):
         # 'HR_id': HR_id,
     }
 
-    firebase_user.PushData(data)
+    CF_user=Codeforces(data['CF_id'])
+    CF_user.fetch_data()
 
-    return landingpage(request,True)
+    CC_user=Codechef(data['CC_id'])
+    CC_user.fetch_data()
+
+    if(CF_user.user_valid and CC_user.user_valid):
+        firebase_user.SignUp(emailid,password)
+        firebase_user.PushData(data)
+        return landingpage(request,True,False,(False,False,not CF_user.user_valid,not CC_user.user_valid))
+
+    return landingpage(request,False,False,(False,False,not CF_user.user_valid,not CC_user.user_valid))
 
 
 
 def userhome(request):
 
     print(firebase_user.user)
-    firebase_user.GetData()
+
 
     return render(
         request,'userhome.html',
@@ -72,6 +98,8 @@ def userhome(request):
         }
         )
 
+        
+
 def logout(request):
     return landingpage(request,False,True)
 
@@ -85,7 +113,6 @@ def codeforces(request):
     CF_user=Codeforces(firebase_user.data['CF_id'])
     CF_user.fetch_data()
     CF_user.plot_data()
-
 
     return render( 
         request,
@@ -129,7 +156,7 @@ def codechefCompare(request):
 
 def codechef(request):
 
-    CC_user=Codechef(firebase_user.data['CC_id'])
+    CC_user=Codeforces(firebase_user.data['CC_id'])
     CC_user.fetch_data()
     CC_user.plot_data()
 

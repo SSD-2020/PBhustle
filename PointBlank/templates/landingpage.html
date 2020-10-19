@@ -88,26 +88,30 @@
     </header>
 
     <!-- Welcome mesage account has been created -->
+    {% if SignUp %}
     <div class="home-projects">
         <div class="row">
 
-                {% if SignUp %}
+               
 
                 <div class="alert" style="background-color: green;">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <strong>WELCOME, </strong> Your account has been created!!.
                 </div>
                 
-                {% endif %}
 
         </div>
     </div>
+    {% endif %}
     <!-- Welcome div ends -->
 
 
         <!-- Email already exists -->
+        {% if inValid_Email %}
         <div class="home-projects">
             <div class="row">
+
+                
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -117,12 +121,15 @@
 
             </div>
         </div>
+        {% endif %}
         <!-- Welcome div ends -->
 
 
         <!-- Code forces id doesnt exist already exists -->
+        {% if inValid_CF %}
         <div class="home-projects">
             <div class="row">
+
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -132,12 +139,15 @@
 
             </div>
         </div>
+        {% endif %}
         <!-- Welcome div ends -->
 
 
         <!-- Code chef id doesnt exist already exists -->
+        {% if inValid_CF %}
         <div class="home-projects">
             <div class="row">
+
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -147,12 +157,15 @@
 
             </div>
         </div>
+        {% endif %}
         <!-- Welcome div ends -->
 
 
          <!--  Wrong Password Login Attempt -->
+         {% if inValid_Pass %}
          <div class="home-projects">
             <div class="row">
+
 
                     <div class="alert" style="background-color:red;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -162,6 +175,7 @@
 
             </div>
         </div>
+        {% endif %}
         <!-- Welcome div ends -->
 
     <div id="id01" class="modal" background-color:#32353a;>
