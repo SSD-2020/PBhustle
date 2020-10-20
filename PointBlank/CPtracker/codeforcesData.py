@@ -94,13 +94,15 @@ class Codeforces:
 
         fig.update_layout(
             xaxis_title='Contest',
-            yaxis_title='Rating'
+            yaxis_title='Rating',
+            width=1100,
+            height=500
             )
 
         fig.layout.plot_bgcolor = '#32353a'
         fig.layout.paper_bgcolor = '#32353a'
         fig.layout.font={'color':'white'}
-        
+
         self.plot=plot(fig, output_type='div')
 
 

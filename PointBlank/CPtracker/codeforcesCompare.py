@@ -99,7 +99,7 @@ class CodeforceCompare:
         fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
                     mode='lines+markers',name=self.friend,line = dict(color='white', width=1)))
 
-        fig.update_layout(title='Rating Change',yaxis_title='Rating')
+        fig.update_layout(title='Rating Change',yaxis_title='Rating',width=1100,height=500)
 
         fig.layout.plot_bgcolor = '#32353a'
         fig.layout.paper_bgcolor = '#32353a'
