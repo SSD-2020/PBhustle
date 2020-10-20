@@ -90,7 +90,7 @@ class Codechef:
             y=yd,
             mode='lines+markers',
             name='lines+markers',
-            line = dict(color='black', width=1)
+            line = dict(color='white', width=1)
             )
         )
 
@@ -98,6 +98,10 @@ class Codechef:
             xaxis_title='Contests',
             yaxis_title='Rating'
             )
+
+        fig.layout.plot_bgcolor = '#32353a'
+        fig.layout.paper_bgcolor = '#32353a'
+        fig.layout.font={'color':'white'}
 
         self.plot=plot(fig, output_type='div')
 
