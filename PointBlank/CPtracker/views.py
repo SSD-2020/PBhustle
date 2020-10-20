@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .main import *
+from .codechefCompare import *
+from .codeforcesCompare import *
+from .codechefData import *
+from .codeforcesData import *
 from .backend import *
 
 # Create your views here.
