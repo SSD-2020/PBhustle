@@ -230,3 +230,15 @@ def codechef_compare(request):
     #return render(request, "index.html", context={'plot_div': plot_div})
 
     return render(request,"index.html",context={'plot_div':plot_div})
+
+#pb hustle_contest
+import gspread
+
+gc = gspread.service_account(filename='credentials.json')
+sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
+sheet_ins=sh.get_worksheet(3)
+#print(sheet_ins.col_count)
+record = sheet_ins.get_all_records()
+for i in record:
+    print(i)
+    print()
