@@ -157,9 +157,10 @@ ul.main-menu li {
 }
 
 ul.main-menu li a {
-    padding: 10px 15px;
+    padding: 12px 10px;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 ul.main-menu li a.active {
