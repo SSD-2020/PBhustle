@@ -89,6 +89,53 @@
             </div>
          </div>
       </header>
+<!-- ----------  Login nav bar-------- -->
+<header class="site-header container animated fadeInDown">
+   <div class="header-wrapper">
+       <div class="row">
+           <div class="col-md-4">
+               <div class="site-branding">
+                   <a href="{% url 'userhome' %}">
+                     <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span><span style="color: darkgreen;">POINT</span> BLANK</h1>
+                   </a>
+               </div>
+           </div>
+           <a href="#" class="toggle-nav hidden-md hidden-lg">
+               <i class="fa fa-bars"></i>
+           </a>
+           <div class="col-md-8">
+               <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+                   <ul class="main-menu">
+                     <li><a class=" active2 homebutton" href="{% url 'userhome' %}">Dashboard</a></li>
+                     <li><a href="{% url 'codeforces' %}">codeforces</a></li>
+                       <li><a href="{% url 'codechef' %}">codechef</a></li>
+                       <li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+                       <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+                       <li><a href="{% url 'logout' %}">log out</a></li>
+
+                   </ul>
+               </nav>
+               <nav class="main-navigation menu-responsive hidden-md hidden-lg">
+                   <ul class="main-menu">
+                       <li><a class=" active2 homebutton" href="{% url 'userhome' %}">Dashboard</a></li>
+                       <li><a href="{% url 'codeforces' %}">codeforces</a></li>
+                       <li><a href="{% url 'codechef' %}">codechef</a></li>
+                       <li><a href="{% url 'hackerrank' %}">HackerRank</a></li>
+                       <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+                       <li><a href="{% url 'logout' %}">log out</a></li>
+
+                   </ul>
+               </nav>
+           </div>
+       </div>
+   </div>
+</header>
+
+<!-- -----------------------------------loggedin nav bar ends -->
+
+
+
+
       <!-- Welcome mesage account has been created -->
       {% if SignUp %}
       <div class="alert" style="background-color: green;">
@@ -252,7 +299,7 @@
                <div class="col-md-6 col-sm-12">
                   <div class="project-title animated zoomInLeft " style="height: 420px;">
                      <h2>Pb Hustle</h2>
-                     <p style="animated zoomInLeft ">
+                     <p style="animated zoomInLeft">
                         <a >PB HUSTLE</a> is our signature weekly offering which runs for 2 hours. Programmers compete neck to neck for the top positions. 
                         This contest, contains 6 questions, needs quick decisions and active coding skills to prove one’s might.
                      </p>
