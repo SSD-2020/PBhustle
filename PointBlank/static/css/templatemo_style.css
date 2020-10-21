@@ -610,7 +610,7 @@ span.offer-right {
 .blog-item {
     position: relative;
     overflow: hidden;
-    @extned %clearfix;;padding: 20px;
+    /* %clearfix;;padding: 20px; */
     color: #6d747e;
     text-align: center;
     margin-bottom: 30px;
