@@ -271,6 +271,7 @@ h2.welcome-title {
     -moz-animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
+    
 }
 
 .project-item {
@@ -1009,7 +1010,7 @@ span[class*="border-"] {
     font-size: 12px;
     padding: 10px 15px;
     display: inline-block;
-    background: #a95bc3;
+    background: green;
     font-weight: normal;
 }
 
