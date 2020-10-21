@@ -89,7 +89,7 @@ class CodechefCompare:
                                 mode='lines+markers', name='deepanshu_pali', line=dict(color='white', width=1)))
 
         fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
-                                mode='lines+markers', name='sumitthakur', line=dict(color='white', width=1)))
+                                mode='lines+markers', name='sumitthakur', line=dict(color='skyblue', width=1)))
 
         fig.update_layout(title='Rating Change',
                         yaxis_title='Rating',
