@@ -14,15 +14,17 @@ firebase_user=firebase()
 
 def landingpage(request,SignUp=False,logOut=False,inValid=(False,False,False,False)):
 
-    if(not logOut and firebase_user.user!=None): return userhome(request)
+    # if(not logOut and firebase_user.user!=None): return userhome(request)
 
-    firebase_user.Clear()
+    print(firebase_user.user!=None)
+
     return render(request,'landingpage.html',{
         'SignUp':SignUp ,
         'inValid_Email': inValid[0],
         'inValid_CF': inValid[2],
         'inValid_CC': inValid[3],
-        'inValid_Pass': inValid[1]
+        'inValid_Pass': inValid[1],
+        'user': firebase_user.user!=None
 
         }
         )
@@ -40,7 +42,7 @@ def signin(request):
     except: return landingpage(request,False,False,(False,True,False,False))
     
     firebase_user.GetData()
-    return userhome(request)
+    return landingpage(request)
 
 def signup(request):
 
@@ -60,10 +62,9 @@ def signup(request):
         'college' : 'Dayananda Sagar College of Engineering',
         'branch' : branch,
         'sem': sem,
-        # 'HE_id': HE_id,
-        # 'HR_id': HR_id,
     }
 
+    print(data)
     CF_user=Codeforces(data['CF_id'])
     CF_user.fetch_data()
 
@@ -83,8 +84,6 @@ def signup(request):
 
 def userhome(request):
 
-    print(firebase_user.user)
-
 
     return render(
         request,'userhome.html',
@@ -102,6 +101,7 @@ def userhome(request):
         
 
 def logout(request):
+    firebase_user.Clear()
     return landingpage(request,False,True)
 
 
