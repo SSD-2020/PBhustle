@@ -12,7 +12,7 @@ firebase_user=firebase()
 
     
 
-def landingpage(request,SignUp=False,logOut=False,inValid=(False,False,False,False)):
+def landingpage(request,SignUp=False,logOut=False,edit=False,inValid=(False,False,False)):
 
     # if(not logOut and firebase_user.user!=None): return userhome(request)
 
@@ -21,10 +21,10 @@ def landingpage(request,SignUp=False,logOut=False,inValid=(False,False,False,Fal
     return render(request,'landingpage.html',{
         'SignUp':SignUp ,
         'inValid_Email': inValid[0],
-        'inValid_CF': inValid[2],
-        'inValid_CC': inValid[3],
-        'inValid_Pass': inValid[1],
-        'user': firebase_user.user!=None
+        'inValid_CF': inValid[1],
+        'inValid_CC': inValid[2],
+        'user': firebase_user.user!=None,
+        'edit': False,
 
         }
         )
@@ -46,44 +46,69 @@ def signin(request):
 
 def signup(request):
 
+    name=request.POST['name']
     emailid=request.POST['emailid']
     password=request.POST['password']
-    CF_id=request.POST['CF_id']
-    CC_id=request.POST['CC_id']
-    name=request.POST['name']
-    branch=request.POST['branch']
-    sem=request.POST['sem']
 
     data={
         'email': emailid,
-        'CC_id': CC_id,
-        'CF_id': CF_id,
+        'CC_id': '--',
+        'CF_id': '--',
         'name': name, 
-        'college' : 'Dayananda Sagar College of Engineering',
-        'branch' : branch,
-        'sem': sem,
+        'college' : '--',
+        'branch' : '--',
+        'sem': '--',
+        'CF_rating' : '--',
+        'CC_rating' : '--',
+        'PB_rating' : '--',
     }
-
-    print(data)
-    CF_user=Codeforces(data['CF_id'])
-    CF_user.fetch_data()
-
-    CC_user=Codechef(data['CC_id'])
-    CC_user.fetch_data()
 
     emailid_exist=firebase_user.EmailExist(emailid)
 
-    if(CF_user.user_valid and CC_user.user_valid and not emailid_exist):
+    if(not emailid_exist):
         firebase_user.SignUp(emailid,password)
         firebase_user.PushData(data)
-        return landingpage(request,True,False,(False,False,not CF_user.user_valid,not CC_user.user_valid))
+        return landingpage(request,True)
 
-    return landingpage(request,False,False,(emailid_exist,False,not CF_user.user_valid,not CC_user.user_valid))
+    return landingpage(request,True,False,False,(True,False,False))
+
+
+def edit(request):
+
+    firebase_user.GetData()
+    data=firebase_user.data
+    
+    CF_id=request.POST['CF_id']
+    CC_id=request.POST['CC_id']
+    data['branch']=request.POST['branch']
+    data['sem']=request.POST['sem']
+    # data['college']=request.POST['college']
+
+
+    # print(data)
+    CF_user=Codeforces(CF_id)
+    CF_user.fetch_data()
+
+    CC_user=Codechef(CC_id)
+    CC_user.fetch_data()
+
+    if(CF_user.user_valid): 
+        data['CF_id']=CF_id
+        data['CF_rating']= CF_user.user_info["Current Rating"]
+    if(CC_user.user_valid): 
+        data['CC_id']=CC_id
+        data['CC_rating']= CC_user.user_info["Current Rating"]
+
+    firebase_user.UpdateData(data)
+
+    return userhome(request)
 
 
 
-def userhome(request):
+def userhome(request,edit=False,CF_invalid=False,CC_invalid=False):
 
+
+    firebase_user.GetData()
 
     return render(
         request,'userhome.html',
@@ -95,6 +120,10 @@ def userhome(request):
             'sem': firebase_user.data['sem'],
             'CC_id': firebase_user.data['CC_id'],
             'CF_id': firebase_user.data['CF_id'],
+            'edit' : edit,
+            'inValid_CF': CF_invalid,
+            'inValid_CC': CC_invalid,
+            
         }
         )
 

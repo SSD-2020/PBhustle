@@ -31,19 +31,25 @@ class firebase:
 
 
     def SignIn(self,email,password):
-
         self.user=self.auth.sign_in_with_email_and_password(email,password)
 
     def SignUp(self,email,password):
-
         self.user=self.auth.create_user_with_email_and_password(email,password)
 
     def PushData(self,data):
 
-        self.db.child('users').child(self.user['localId']).push(data) 
+        self.db.child('users').child(self.user['localId']).push(data)
+        ratings={'CF' : data['CF_rating'], 'CC' : data['CC_rating'], 'PB' : data['PB_rating']}
+        self.db.child('Ratings').child(self.user['localId']).push(ratings)
+
+    def UpdateData(self,data):
+
+        self.db.child('users').child(self.user['localId']).remove()
+        self.db.child('Ratings').child(self.user['localId']).remove()
+        self.PushData(data)
+
     
     def GetData(self):
-
         res=self.db.child("users").child(self.user['localId']).child('').get()
         for have in res.each(): self.data=have.val()
 
@@ -51,6 +57,8 @@ class firebase:
 
         users=self.db.child("users").get().val()
         uid=[]
+        if(users==None): return False
+
         for i in users: uid.append(users[i][list(users[i].keys())[0]])
 
         for user in uid:
@@ -59,8 +67,8 @@ class firebase:
         return False
 
 # f=firebase()
-# print(f.InValidEmailID('deepanshukumarpali@gmail.com'))      
-        
+# print(f.EmailExist('deepanshukumarpali7@gmail.com'))      
+    
 
 
         

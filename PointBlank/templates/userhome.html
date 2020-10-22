@@ -199,6 +199,26 @@
         </div>
     </header>
 
+    {% if inValid_CF %}
+    <div class="alert" style="background-color:red;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codeforces id doesnt exists.!!
+     </div>
+
+    {% elif inValid_CC %}
+    <div class="alert" style="background-color:red;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codechef id doesnt exists.!!
+     </div>
+
+    {% elif edit %}
+      <div class="alert" style="background-color: green;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>SUCCESS, </strong> Your details has been updated!!.
+      </div>
+
+    {% endif %}
+
 
     <div id="menu-container">
         <div id="menu-1" class="homepage home-section container">
@@ -222,7 +242,7 @@
                                             <p style="color: #fff;" class="animated fadeInRight">Email ID : {{email}}</p>
                                             <p style="color: #fff;" class="animated fadeInLeft">College : {{college}}</p>
                                             <p style="color: #fff;" class="animated fadeInLeft">Branch : {{branch}}</p>
-                                            <p style="color: #fff;" class="animated fadeInLeft">Semester : {{semester}}</p>
+                                            <p style="color: #fff;" class="animated fadeInLeft">Semester : {{sem}}</p>
 
                                             <p style="color: #fff;" class="animated fadeInRight">CodeForces ID : {{CF_id}}</p>
                                             <p style="color: #fff;" class="animated fadeInLeft">CodeChef ID : {{CC_id}}</p>
@@ -298,32 +318,33 @@
         
             <div id="id02" class="modal">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <form class="modal-content" action="/signup/" name='signup' method="POST">
+                <form class="modal-content" action="/edit/" name='edit' method="POST">
+                    {% csrf_token %}
 
                     <div class="container" style="background-color:#32353a;">
                       <h1>EDit DETAILS</h1>
                       <p>Please edit this form to edit details.</p>
                       <hr>
                       <label for="name"><b>Edit Name</b></label>
-                      <input type="text" placeholder="{{name}}" name="name" >
+                      <input type="text" placeholder="{{name}}" name="name" value="{{name}}">
                       <label for="email"><b>Edit Email</b></label>
-                      <input type="text" placeholder="{{email}}" name="emailid" >
+                      <input type="text" placeholder="{{email}}" name="emailid" value="{{email}}">
                           <div class="row">
                          <div class="col-md-6 col-sm-12">
                             <label for="Codeforces"><b>Edit Codeforces</b></label>
-                            <input type="text" placeholder="{{CF_id}}" name="CF_id" >
+                            <input type="text" placeholder="{{CF_id}}" name="CF_id" value="{{CF_id}}">
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="Codechef"><b>Edit Codechef</b></label>
-                            <input type="text" placeholder="{{CC_id}}" name="CC_id" >
+                            <input type="text" placeholder="{{CC_id}}" name="CC_id" value="{{CC_id}}">
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="branch"><b>Edit Branch</b></label>
-                            <input type="text" placeholder="{{branch}}" name="branch" >
+                            <input type="text" placeholder="{{branch}}" name="branch" value="{{branch}}">
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="sem"><b>Edit Semester</b></label>
-                            <input type="text" placeholder="{{semester}}" name="sem" minlength="1" min="1" max="8" >
+                            <input type="text" placeholder="{{sem}}" name="sem" minlength="1" min="1" max="8" value="{{sem}}">
                          </div>
                       </div>
                 
