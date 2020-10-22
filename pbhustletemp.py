@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.fft import fft, ifft
 import gspread
-from collections import defaultdict
+
 
 def intdiv(x, y):
     return -(-x // y) if x < 0 else x // y
@@ -47,7 +47,7 @@ class CodeforcesRatingCalculator:
         MAX = 6144
 
         # Precompute the ELO win probability for all possible rating differences.
-        self.elo_win_prob = np.roll(1 / (1 + pow(10, np.arange(-MAX, MAX) / 600)), -MAX) #this is the only change
+        self.elo_win_prob = np.roll(1 / (1 + pow(10, np.arange(-MAX, MAX) / 400)), -MAX)
 
         # Compute the rating histogram.
         count = np.zeros(2 * MAX)
@@ -108,43 +108,47 @@ def predict(rows, prev_ratings):
     calc = CodeforcesRatingCalculator(rows, prev_ratings)
     return calc.calculate_rating_changes()
 
+#
+gc = gspread.service_account(filename='credentials.json')
+sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
+sheet_ins=sh.get_worksheet(1)
+record = sheet_ins.get_all_records()
+rows=[]
+for i in record:
+    rows+=[(i['Who'],i['#'],i['#ERROR!'],i['Penalty'])]
+
+prev_ratings={}
+
+for i in rows:
+    prev_ratings[i[0]]=500
+predicted = predict(rows, prev_ratings)
+
+new_rating={}
+for i in predicted:
+    new_rating[i]=prev_ratings[i]+predicted[i]
 
 
 gc = gspread.service_account(filename='credentials.json')
 sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
-total_pages=sh.__sizeof__()
-person=defaultdict(list)
-prev_rating=defaultdict(int)
-for i in range(1,29):
-    sheet_ins=sh.get_worksheet(i)
-    record = sheet_ins.get_all_records()
-    rows=[]
-    temp=defaultdict(int)
-    name=sheet_ins.title
-    for i in record:
-        st=""
-        for j in i['Who']:
-            if(not j.isalnum() and j!="." and j!="_"):
-                break
-            st+=j
-        rows+=[(st,i['#'],i['#ERROR!'],i['Penalty'])]
-        if st not in prev_rating:
-            temp[st]=500
-        else:
-            temp[st]=prev_rating[st]
+sheet_ins=sh.get_worksheet(2)
+record = sheet_ins.get_all_records()
+rows=[]
+for i in record:
+    rows+=[(i['Who'],i['#'],i['#ERROR!'],i['Penalty'])]
 
-    predicted = predict(rows, temp)
-    new_rating=defaultdict(int)
-    for i in predicted:
-        new_rating[i]=temp[i]+predicted[i]
-        prev_rating[i]=new_rating[i]
-        person[i]+=[{name:new_rating[i]}]
+prev_ratings={}
+for i in rows:
+    if i[0] in new_rating:
+        prev_ratings[i[0]]=new_rating[i[0]]
+    else:
+        prev_ratings[i[0]]=0
 
-    #print(new_rating)
-#print(prev_rating)
-res=[]
-for i in person:
-    res+=[{i:person[i]}]
+predicted = predict(rows, prev_ratings)
 
-print(res)
+new_new={}
+for i in predicted:
+    new_new[i]=prev_ratings[i]+predicted[i]
+
+print(new_new)
+
 
