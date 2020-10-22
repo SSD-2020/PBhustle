@@ -899,7 +899,7 @@ body {
     font-family: "Roboto",sans-serif;
     line-height: 1.55;
     text-rendering: optimizeLegibility;
-    -webkit-backface-visibility: hidden;
+    /* -webkit-backface-visibility: hidden; */
     overflow-x: hidden;
 }
 
