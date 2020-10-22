@@ -14,7 +14,6 @@ urlpatterns= [
     path('userhome/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
     path('userhome/codechef/', views.codechef , name='codechef'),
     path('userhome/codechef/codechefCompare/', views.codechefCompare, name='codechefCompare'),
-    path('userhome/hackerrank/', views.hackerrank, name='hackerrank'),
     path('userhome/pbhustle/', views.pbhustle , name='pbhustle'),
 
 ]
