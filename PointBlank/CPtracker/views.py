@@ -112,7 +112,9 @@ def logout(request):
 def codeforces(request):
 
     CF_user=Codeforces(firebase_user.data['CF_id'])
-    CF_user.fetch_data()
+
+    try: CF_user.fetch_data()
+    except : return render(request,'error.html')
     CF_user.plot_data()
 
     return render( 
@@ -169,11 +171,6 @@ def codechefCompare(request):
         'plot' : compare.plot
         }
         )
-
-
-
-def hackerrank(request):
-    return render(request,'hackerrank.html')
 
 def pbhustle(request):
     
