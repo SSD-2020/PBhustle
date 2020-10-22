@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
+
     <!-- <link rel="stylesheet" href="{% static 'css/landingpage.css' %}"> -->
 
 
@@ -211,8 +213,8 @@
                 
                                     <div id="menu-1" class="homepage home-section container">
                                         <div class="card-container">
-                                            <!-- <p class="animated fadeInRight">Hi User!!!</p>
-                                            <p class="animated fadeInLeft">Welcome Back!!</p> -->
+                                           <a><i class="fa fa-pencil-square-o" onclick="document.getElementById('id02').style.display='block'" style="position: absolute; right: 30px;"></i></a> 
+                                         
                                             <br>
                                             <h3 style="color: #fff;" class="animated fadeInRight" >USER INFO</h3>
                                                 <br><br> <br><br>
@@ -294,6 +296,48 @@
                 </div>
             </div>
         
+            <div id="id02" class="modal">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <form class="modal-content" action="/signup/" name='signup' method="POST">
+
+                    <div class="container" style="background-color:#32353a;">
+                      <h1>EDit DETAILS</h1>
+                      <p>Please edit this form to edit details.</p>
+                      <hr>
+                      <label for="name"><b>Edit Name</b></label>
+                      <input type="text" placeholder="{{name}}" name="name" >
+                      <label for="email"><b>Edit Email</b></label>
+                      <input type="text" placeholder="{{email}}" name="emailid" >
+                          <div class="row">
+                         <div class="col-md-6 col-sm-12">
+                            <label for="Codeforces"><b>Edit Codeforces</b></label>
+                            <input type="text" placeholder="{{CF_id}}" name="CF_id" >
+                         </div>
+                         <div class="col-md-6 col-sm-12">
+                            <label for="Codechef"><b>Edit Codechef</b></label>
+                            <input type="text" placeholder="{{CC_id}}" name="CC_id" >
+                         </div>
+                         <div class="col-md-6 col-sm-12">
+                            <label for="branch"><b>Edit Branch</b></label>
+                            <input type="text" placeholder="{{branch}}" name="branch" >
+                         </div>
+                         <div class="col-md-6 col-sm-12">
+                            <label for="sem"><b>Edit Semester</b></label>
+                            <input type="text" placeholder="{{semester}}" name="sem" minlength="1" min="1" max="8" >
+                         </div>
+                      </div>
+                
+                      <div class="clearfix">
+                         <div class="col-md-3 col-sm-12">
+                         </div>
+                         <div class=" col-sm-12">
+                            <button  type="submit" class="cancelbtn" style="background-color: green; width: 100%;">Edit</button>
+                         </div>
+                         
+                      </div>
+                   </div>
+                </form>
+             </div>
 
             <div id="id01" class="modal" background-color:#32353a;>
 
