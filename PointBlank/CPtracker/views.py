@@ -177,6 +177,8 @@ def codechef(request):
     CC_user.fetch_data()
     CC_user.plot_data()
 
+    print(CC_user.user_info)
+
     firebase_user.UpdateCCRatings(CC_user.user_info["Current Rating"])
     ranking.codechef()
 
