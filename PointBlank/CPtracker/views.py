@@ -115,15 +115,15 @@ def edit(request):
 
     firebase_user.UpdateData(data)
 
-    return userhome(request)
+    return userhome(request,True,CF_user.user_valid,CC_user.user_valid)
 
 
 
-def userhome(request,edit=False,CF_invalid=False,CC_invalid=False):
+def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 
     firebase_user.GetData()
-    print(firebase_user.data)
+    # print(firebase_user.data)
 
     return render(
         request,'userhome.html',
@@ -136,8 +136,8 @@ def userhome(request,edit=False,CF_invalid=False,CC_invalid=False):
             'CC_id': firebase_user.data['CC_id'],
             'CF_id': firebase_user.data['CF_id'],
             'edit' : edit,
-            'inValid_CF': CF_invalid,
-            'inValid_CC': CC_invalid,
+            'Valid_CF': CF_valid,
+            'Valid_CC': CC_valid,
             
         }
         )
