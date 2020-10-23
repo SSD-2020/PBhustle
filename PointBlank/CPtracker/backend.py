@@ -1,5 +1,11 @@
 import pyrebase
+import gspread
 
+from .PbhustleUpdate import *
+
+
+gc = gspread.service_account(filename='credentials.json')
+sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
 
 class firebase:
 
@@ -84,20 +90,47 @@ class firebase:
         return res
 
 
+    def updateHustle(self):
+
+        cur_page=self.db.child("PBhustle").child('PageIndex').get().val()
+        print(cur_page)
+
+        while(True):
+
+            try: sheet=sh.get_worksheet(cur_page).get_all_records()
+            except: break
+
+            curRating={}
+            for i in sheet:
+
+                here=i['Who']
+
+                j=0
+                while(j<len(here) and here[j]!=" "): j+=1
+                here=here[:j]
+                
+                curRating[here]=self.getPBRating(here)
+                print(here,curRating[here])
+
+            newRating=ratingcal(sheet,curRating)
+
+            cur_page+=1
+
 
 
                     
 
 
 
-
-
-
-
-
 f=firebase()
+f.updateHustle()
+
+
+
+
+# f=firebase()
 # print(f.getPBcontests('deepanshu_pali'))
-print(f.EmailExist('deepanshukumarpali7@gmail.com'))
+# print(f.EmailExist('deepanshukumarpali7@gmail.com'))
 # 
 
 # f.SignIn('deepanshukumarpali7@gmail.com','1234567')

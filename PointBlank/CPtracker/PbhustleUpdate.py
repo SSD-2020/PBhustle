@@ -7,7 +7,7 @@ from collections import defaultdict
 def intdiv(x, y):
     return -(-x // y) if x < 0 else x // y
 
-@dataclass
+
 class Contestant:
     party: str
     points: float
