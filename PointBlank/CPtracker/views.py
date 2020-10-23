@@ -49,16 +49,17 @@ def signup(request):
     name=request.POST['name']
     emailid=request.POST['emailid']
     password=request.POST['password']
-    # sem=request.POST['sem']
+    sem=request.POST['sem']
+    branch=request.POST['branch']
 
     data={
         'email': emailid,
         'CC_id': '--',
         'CF_id': '--',
         'name': name, 
-        'college' : '--',
-        'branch' : '--',
-        'sem': '--',
+        'college' : "Dayananda Sagar College of Engineering",
+        'branch' : branch,
+        'sem': sem,
         'CF_rating' : '--',
         'CC_rating' : '--',
         'PB_rating' : '--',
@@ -110,6 +111,7 @@ def userhome(request,edit=False,CF_invalid=False,CC_invalid=False):
 
 
     firebase_user.GetData()
+    print(firebase_user.data)
 
     return render(
         request,'userhome.html',
@@ -145,7 +147,7 @@ def codeforces(request):
 
     try: CF_user.fetch_data()
     except : return render(request,'error.html')
-    
+
     CF_user.plot_data()
 
     return render( 

@@ -61,7 +61,8 @@ class firebase:
     
     def GetData(self):
         res=self.db.child("users").child(self.user['localId']).get()
-        for have in res.each(): self.data=have.val()
+
+        self.data=res.val()
 
     def EmailExist(self, emailid):
 
@@ -99,5 +100,10 @@ class firebase:
 
 # f=firebase()
 # print(f.getPBcontests('deepanshu_pali'))
-# print(f.EmailExist('deepanshukumarpali7@gmail.com'))      
+# print(f.EmailExist('deepanshukumarpali7@gmail.com'))
+# 
+
+# f.SignIn('deepanshukumarpali7@gmail.com','1234567')
+# f.GetData()
+# print(f.data)      
     
