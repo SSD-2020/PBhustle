@@ -351,7 +351,7 @@
                 <form class="modal-content" action="/edit/" name='edit' method="POST">
                     {% csrf_token %}
 
-                    <div class="container" style="background-color:#32353a;">
+                    <div class="container" style="background-color:#32353a;  width :95%"">
                       <h1>EDit DETAILS</h1>
                       <p>Please edit this form to edit details.</p>
                       <hr>
@@ -388,16 +388,12 @@
                             <label for="sem"><b>Edit Semester</b></label>
                             <input type="text" placeholder="{{sem}}" name="sem" minlength="1" min="1" max="8" value="{{sem}}">
                          </div>
+                         <div class=" col-sm-12">
+                            <button  type="submit" class="cancelbtn" style="background-color: green; width: 100%; margin-left:0 px;margin-right: 0px;">EDIT</button>
+                         </div>
                       </div>
                 
-                      <div class="clearfix">
-                         <div class="col-md-3 col-sm-12">
-                         </div>
-                         <div class=" col-sm-12">
-                            <button  type="submit" class="cancelbtn" style="background-color: green; width: 100%;">Edit</button>
-                         </div>
-                         
-                      </div>
+                     
                    </div>
                 </form>
              </div>
