@@ -49,6 +49,7 @@ def signup(request):
     name=request.POST['name']
     emailid=request.POST['emailid']
     password=request.POST['password']
+    # sem=request.POST['sem']
 
     data={
         'email': emailid,
@@ -144,6 +145,7 @@ def codeforces(request):
 
     try: CF_user.fetch_data()
     except : return render(request,'error.html')
+    
     CF_user.plot_data()
 
     return render( 
