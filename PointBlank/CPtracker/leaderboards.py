@@ -21,17 +21,14 @@ class standings:
         self.CF_Standings=[]
         self.CC_Standings=[]
         self.PB_Standings=[]
-        self.ratings=db.child('Ratings').get().val()
-
-        self.codeforces()
-        self.codechef()
-        self.pbhustle()
+        self.ratings=[]
 
 
 
     def codeforces(self):
 
-
+        self.ratings=db.child('Ratings').get().val()
+        self.CF_Standings.clear()
         for id in self.ratings:
             
             name=db.child('users').child(id).child('name').get().val()
@@ -40,11 +37,14 @@ class standings:
 
             self.CF_Standings.append((name,handle,rating))
 
-        self.CF_Standings.sort(key= lambda x: x[2],reverse=True)
+        self.CF_Standings.sort(key= lambda x: int(x[2][:x[2].index(' ')]),reverse=True)
 
 
     def codechef(self):
 
+        self.ratings=db.child('Ratings').get().val()
+        self.CC_Standings.clear()
+        
         for id in self.ratings:
             
             name=db.child('users').child(id).child('name').get().val()
@@ -69,7 +69,8 @@ class standings:
 
 
     
-
-            
+# a=standings()
+# a.codechef()
+# print(a.CC_Standings)
 
 

@@ -5,10 +5,13 @@ from .codeforcesCompare import *
 from .codechefData import *
 from .codeforcesData import *
 from .backend import *
+from .leaderboards import *
 
 # Create your views here.
 
 firebase_user=firebase()
+ranking=standings()
+
 
     
 
@@ -60,9 +63,9 @@ def signup(request):
         'college' : "Dayananda Sagar College of Engineering",
         'branch' : branch,
         'sem': sem,
-        'CF_rating' : '--',
-        'CC_rating' : '--',
-        'PB_rating' : '--',
+        'CF_rating' : -10000,
+        'CC_rating' : -10000,
+        'PB_rating' : -10000,
     }
 
     emailid_exist=firebase_user.EmailExist(emailid)
@@ -97,6 +100,10 @@ def edit(request):
     if(CF_user.user_valid): 
         data['CF_id']=CF_id
         data['CF_rating']= CF_user.user_info["Current Rating"]
+        data['PB_rating']= firebase_user.getPBRating(CF_id)
+
+        if(data['PB_rating']==None): data['PB_rating']=-inf
+
     if(CC_user.user_valid): 
         data['CC_id']=CC_id
         data['CC_rating']= CC_user.user_info["Current Rating"]
@@ -149,6 +156,8 @@ def codeforces(request):
     except : return render(request,'error.html')
 
     CF_user.plot_data()
+    firebase_user.UpdateCFRatings(CF_user.user_info["Current Rating"])
+    ranking.codeforces()
 
     return render( 
         request,
@@ -156,7 +165,8 @@ def codeforces(request):
         {
             'plot':CF_user.plot,
             'info':CF_user.user_info,
-            'contests':CF_user.user_contests[::-1]
+            'contests':CF_user.user_contests[::-1],
+            'standings': ranking.CF_Standings
             }
         )
 
@@ -167,13 +177,17 @@ def codechef(request):
     CC_user.fetch_data()
     CC_user.plot_data()
 
+    firebase_user.UpdateCCRatings(CC_user.user_info["Current Rating"])
+    ranking.codechef()
+
     return render(
         request,
         'codechef.html',
         {
             'plot':CC_user.plot,
             'info':CC_user.user_info,
-            'contests':CC_user.user_contests[::-1]
+            'contests':CC_user.user_contests[::-1],
+            'standings': ranking.CC_Standings
             }
         )
 

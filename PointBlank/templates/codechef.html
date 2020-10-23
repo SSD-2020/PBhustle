@@ -111,6 +111,39 @@
                     </tr>
                     {% endfor %}
                 </table>
+
+                <br>
+                <br>
+                
+                <table class="table table-hover">
+                    <thead>
+    
+                        <tr>
+                            <th>
+                                <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Name</h5>
+                            </th>
+                            <th>
+                                <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Codeforces Handle</h5>
+                            </th>
+                            <th>
+                                <h5 style="color: #fff;text-align:center;" class="animated fadeInRight">Rating</h5>
+                            </th>
+                        </tr>
+    
+                    </thead>
+                    
+                    {% for name,id,rank in standings %}
+                    <tr>
+
+                        <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{name}}</td>
+                        <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{id}}</td>
+                        <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{rank}}</td>
+    
+                    </tr>
+                    {% endfor %}
+    
+    
+                </table>
         </div>
 
         <div id="menu-2" class="content about-section container">
