@@ -67,13 +67,10 @@ class firebase:
     def EmailExist(self, emailid):
 
         users=self.db.child("users").get().val()
-        uid=[]
         if(users==None): return False
 
-        for i in users: uid.append(users[i][list(users[i].keys())[0]])
-
-        for user in uid:
-            if(user['email']==emailid): return True
+        for i in users: 
+            if(users[i]['email']==emailid): return True
 
         return False
 
@@ -98,9 +95,9 @@ class firebase:
 
 
 
-# f=firebase()
+f=firebase()
 # print(f.getPBcontests('deepanshu_pali'))
-# print(f.EmailExist('deepanshukumarpali7@gmail.com'))
+print(f.EmailExist('deepanshukumarpali7@gmail.com'))
 # 
 
 # f.SignIn('deepanshukumarpali7@gmail.com','1234567')
