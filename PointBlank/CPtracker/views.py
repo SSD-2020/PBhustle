@@ -15,13 +15,14 @@ ranking=standings()
 
     
 
-def landingpage(request,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
+def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
 
     # if(not logOut and firebase_user.user!=None): return userhome(request)
 
     print(firebase_user.user!=None)
 
     return render(request,'landingpage.html',{
+        'SignIn' : SignIn ,
         'SignUp':SignUp ,
         'inValid_Email': inValid[0],
         'inValid_CF': inValid[1],
@@ -42,15 +43,11 @@ def signin(request):
     password=request.POST['password']
     # print(firebase_user.user)
 
-    try:
-        print("TRY") 
-        firebase_user.SignIn(emailid,password)
-    except:
-        print("EXCEPT")
-        return landingpage(request,False,False,False,(False,False,False),True)
+    try: firebase_user.SignIn(emailid,password)
+    except: return landingpage(request,False,False,False,False,(False,False,False),True)
     
     firebase_user.GetData()
-    return landingpage(request)
+    return landingpage(request,True)
 
 def signup(request):
 
@@ -78,9 +75,9 @@ def signup(request):
     if(not emailid_exist):
         firebase_user.SignUp(emailid,password)
         firebase_user.PushData(data)
-        return landingpage(request,True)
+        return landingpage(request,False,True)
 
-    return landingpage(request,True,False,False,(True,False,False))
+    return landingpage(request,False,True,False,False,(True,False,False))
 
 
 def edit(request):
@@ -146,7 +143,7 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 def logout(request):
     firebase_user.Clear()
-    return landingpage(request,False,True)
+    return landingpage(request,False,False,True)
 
 
 

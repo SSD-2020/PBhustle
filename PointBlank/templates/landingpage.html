@@ -156,6 +156,14 @@
       <!-- Welcome mesage account has been created -->
       <!-- Welcome div ends -->
       <!-- Email already exists -->
+      {% if SignIn %}
+      <div class="alert" style="background-color:green;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>SUCCESS !!! </strong>  &nbsp;&nbsp;&nbsp; Logged In Successfully.!!
+      </div>
+
+      {% endif %}
+
       {% if inValid_Email %}
       <div class="alert" style="background-color:red;">
          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
