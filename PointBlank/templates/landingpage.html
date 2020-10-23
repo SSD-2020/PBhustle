@@ -13,6 +13,10 @@
       <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
       <style>
 
+         .ihov:hover{
+            color: green;
+         }
+
          html,body{
             overflow: auto;
          }
@@ -66,6 +70,10 @@
          footer {
          bottom: -50px;
          }
+
+            a.dsce:hover{
+                  color: green;
+            }
 
       </style>
    </head>
@@ -145,9 +153,9 @@
 
 
       {% if SignIn %}
-      <div class="alert" style="background-color:green;">
+      <div class="alert" style="background-color:#008080;	">
          <span class="closebtn" onclick="this.parentElement.style.display='none';" style="text-align: left;">&times;</span> 
-        <strong>SUCCESS!!! </strong>  &nbsp;&nbsp;&nbsp; Logged In Successfully.!!
+        <strong>SUCCESS,  </strong>  Logged In!!
       </div>
 
       {% endif %}
@@ -159,7 +167,7 @@
       </div>
 
       {% elif SignUp %}
-      <div class="alert" style="background-color: green;">
+      <div class="alert" style="background-color: #008080;	">
          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
          <strong>WELCOME, </strong> Your account has been created!!.
       </div>
@@ -304,12 +312,14 @@
       <div id="menu-1" class="homepage home-section container">
          <div class="home-intro text-center">
             <h2 class="welcome-title animated fadeInUpBig">WE ARE <span style="color: green;">POINT</span> BLANK</h2>
-            <p class="animated fadeInDown">We are a multidisciplinary community of programmers that operates out of <br><a href="https://www.dsce.edu.in/">Dayananda Sagar College of Engineering, Bangalore.</a>
+            <p class="animated fadeInDown texthov">We are a multidisciplinary community of programmers that operates out of <br>
+               <a class="dsce">Dayananda Sagar College of Engineering, Bangalore.</a>
+
             <ul class="list-icons animated fadeInDownBig">
-               <li><i class="icon-trophy" style="font-weight: 800;"></i></li>
-               <li><i class="icon-badge" style="font-weight: 800;"></i></li>
-               <li><i class="icon-magic-wand" style=" font-weight: 800;"></i></li>
-               <li><i class="icon-screen-desktop"style="font-weight: 800;" ></i></li>
+               <li><i class="icon-trophy ihov" style="font-weight: 800;"></i></li>
+               <li><i class="icon-badge ihov" style="font-weight: 800;"></i></li>
+               <li><i class="icon-magic-wand ihov" style=" font-weight: 800;"></i></li>
+               <li><i class="icon-screen-desktop ihov"style="font-weight: 800;" ></i></li>
             </ul>
          </div>
          <div class="home-projects">
