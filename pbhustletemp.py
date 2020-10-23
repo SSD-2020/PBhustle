@@ -242,3 +242,62 @@ def PB_compare(user1,user2): #user1 is admin
             common+=[(name+str(i)+"."+str(j),user1_rank[cname],user2_rank[cname],dif)]
 
     return common
+
+#compare graph
+def PB_compare_graph(user1,user2): #user1 is admin
+    res1=db.child("PBhustle").child(user1).get().val()
+    res1=res1['contests']
+
+    res2=db.child("PBhustle").child(user2).get().val()
+    res2=res2['contests']
+
+    name="PBhustle "
+
+    user1_rank={}
+    temp=[]
+    for i in res1:
+        val=[str(x) for x in i.split("_")]
+        temp+=[(int(val[0]),int(val[1]),i)]
+        user1_rank[i]=int(res1[i]['rank'])
+
+    user2_rank={}
+    for i in res2:
+        if i not in user1_rank:
+            val = [str(x) for x in i.split("_")]
+            temp += [(int(val[0]), int(val[1]), i)]
+        user2_rank[i] = int(res2[i]['rank'])
+
+    temp.sort(key=lambda x:(2*x[0],x[1]))
+
+    y_user1=[]
+    y_user2=[]
+    xd=[]
+
+    for k,j,i in temp:
+        xd+=[name+str(k)+"."+str(j)]
+        if i in user1_rank:
+            y_user1+=[user1_rank[i]]
+        else:
+            y_user1+=[None]
+
+        if i in user2_rank:
+            y_user2+=[user2_rank[i]]
+        else:
+            y_user2+=[None]
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=xd, y=y_user1, connectgaps=True,
+                             mode='lines+markers', name=self.user, line=dict(color='white', width=1)))
+
+    fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
+                             mode='lines+markers', name=self.friend, line=dict(color='skyblue', width=1)))
+
+    fig.update_layout(title='Rating Change', yaxis_title='Rating', width=1100, height=500)
+
+    fig.layout.plot_bgcolor = '#32353a'
+    fig.layout.paper_bgcolor = '#32353a'
+    fig.layout.font = {'color': 'white'}
+
+    plot_div = plot(fig, output_type='div')
+
+    return render(request, "index.html", context={'plot_div': plot_div})
