@@ -64,6 +64,7 @@
          footer {
          bottom: -50px;
          }
+
       </style>
    </head>
    <body>
@@ -224,8 +225,32 @@
                <input type="text" placeholder="Enter Email" name="emailid" required>
                <label for="password"><b>Password</b></label>
                <input type="password" placeholder="Enter Password" name="password" minlength="6" required>
-
-  
+               <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Codeforces"><b>Codeforces</b></label>
+                     <input type="text" placeholder="Enter codeforces Handle" name="CF_id" required>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Codechef"><b>Codechef</b></label>
+                     <input type="text" placeholder="Enter codechef handle" name="CC_id" required>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="branch"><b>Branch</b></label>
+                     <input type="text" placeholder="Enter Branch" name="branch" required>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="sem"><b>Semester</b></label>
+                     <input type="text" placeholder="Enter Semester" name="sem" minlength="1" min="1" max="8" required>
+                  </div>
+               </div>
+               <!-- <div>
+                  <label for="HackerRank"><b>HackerRank</b></label>
+                  <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
+                  
+                  
+                  
+                  
+                  </div> -->
                <!-- <label for="re_password"><b>Repeat Password</b></label>
                   <input type="password" placeholder="Repeat Password" name="re_password" required> -->
                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
