@@ -14,11 +14,6 @@
       <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
       <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
       <style>
-         body {
-         /* height: 5000px; Make this site really long
-         width: 5000px; Make this site really wide */
-         overflow: hidden; /* Hide scrollbars */
-         }
          .alert {
          padding: 20px;
          background-color: #f44336;
@@ -231,31 +226,17 @@
                <label for="password"><b>Password</b></label>
                <input type="password" placeholder="Enter Password" name="password" minlength="6" required>
                <div class="row">
-                  <!-- <div class="col-md-6 col-sm-12">
+                  <div class="col-md-6 col-sm-12">
                      <label for="Codeforces"><b>Codeforces</b></label>
                      <input type="text" placeholder="Enter codeforces Handle" name="CF_id" >
                   </div>
                   <div class="col-md-6 col-sm-12">
                      <label for="Codechef"><b>Codechef</b></label>
                      <input type="text" placeholder="Enter codechef handle" name="CC_id" >
-                  </div> -->
-                  <!-- cse ise ece teleco mech others  -->
+                  </div>
                   <div class="col-md-6 col-sm-12">
                      <label for="branch"><b>Branch</b></label>
-                        <select name="branch"  style="width: 100%;
-                        padding: 12px 20px;
-                        margin: 8px 0;
-                        display: inline-block;
-                        border: 1px solid #ccc;
-                        box-sizing: border-box; " required>
-                           <option value="Computer Science & Engineering">Computer Science Engineering</option>
-                           <option value="Information Science Engineering ">Information Science Engineering </option>
-                           <option value="Mechanical Engineering">Mechanical Engineering</option>
-                           <option value="Telecomunication Engineering">Telecomunication Engineering</option>
-                          <option value="Others">Others</option>
-
-                       </select>
-
+                     <input type="text" placeholder="Enter Branch" name="branch" required>
                   </div>
                   <div class="col-md-6 col-sm-12">
                      <label for="sem"><b>Semester</b></label>
