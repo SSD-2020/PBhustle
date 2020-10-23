@@ -73,6 +73,7 @@
 
             a.dsce:hover{
                   color: green;
+                  font-weight: inherit;
             }
 
       </style>
@@ -137,7 +138,6 @@
                    <ul class="main-menu">
                        <li><a href="{% url 'userhome' %}">Dashboard</a></li>
                        <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-
                        <li><a href="{% url 'codeforces' %}">codeforces</a></li>
                        <li><a href="{% url 'codechef' %}">codechef</a></li>
                        <li><a href="{% url 'logout' %}">log out</a></li>
@@ -153,7 +153,7 @@
 
 
       {% if SignIn %}
-      <div class="alert" style="background-color:#008080;	">
+      <div class="alert" style="background-color:green;	">
          <span class="closebtn" onclick="this.parentElement.style.display='none';" style="text-align: left;">&times;</span> 
         <strong>SUCCESS,  </strong>  Logged In!!
       </div>
@@ -167,7 +167,7 @@
       </div>
 
       {% elif SignUp %}
-      <div class="alert" style="background-color: #008080;	">
+      <div class="alert" style="background-color: green;	">
          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
          <strong>WELCOME, </strong> Your account has been created!!.
       </div>
