@@ -121,6 +121,8 @@ for i in range(1,29):
     rows=[]
     temp=defaultdict(int)
     name=sheet_ins.title
+    print(name)
+    rank={}
     for i in record:
         st=""
         for j in i['Who']:
@@ -128,6 +130,8 @@ for i in range(1,29):
                 break
             st+=j
         rows+=[(st,i['#'],i['#ERROR!'],i['Penalty'])]
+        rank[st]=i['#']
+
         if st not in prev_rating:
             temp[st]=500
         else:
@@ -138,7 +142,7 @@ for i in range(1,29):
     for i in predicted:
         new_rating[i]=temp[i]+predicted[i]
         prev_rating[i]=new_rating[i]
-        person[i]+=[{name:new_rating[i]}]
+        person[i]+=[{name:(new_rating[i],rank[i])}]
 
     #print(new_rating)
 #print(prev_rating)
