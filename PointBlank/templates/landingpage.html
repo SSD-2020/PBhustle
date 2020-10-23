@@ -28,9 +28,9 @@
          color: white;
          width: 100%;
          margin: auto;
-         /* align-items: center; */
-         /* animation: fadeOut 2s forwards;
-         animation-delay: 2s; */
+         align-items: center;
+         animation: fadeOut 2s forwards;
+         animation-delay: 5s;
          background: red;
          color: white;
          padding: 10px;
@@ -46,12 +46,6 @@
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             background-color: #3f4147 !important;
          }
-
-         /* .project-item:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
-            /* background-color: #3f4147 !important; */
-         /* }  */
-         */
          .closebtn {
          margin-left: 0px;
          color:     white;
@@ -148,18 +142,12 @@
 </header>
 {% endif %}
 
-<!-- -----------------------------------loggedin nav bar ends -->
 
 
-
-
-      <!-- Welcome mesage account has been created -->
-      <!-- Welcome div ends -->
-      <!-- Email already exists -->
       {% if SignIn %}
       <div class="alert" style="background-color:green;">
          <span class="closebtn" onclick="this.parentElement.style.display='none';" style="text-align: left;">&times;</span> 
-        <strong>SUCCESS !!! </strong>  &nbsp;&nbsp;&nbsp; Logged In Successfully.!!
+        <strong>SUCCESS!!! </strong>  &nbsp;&nbsp;&nbsp; Logged In Successfully.!!
       </div>
 
       {% endif %}

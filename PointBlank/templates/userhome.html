@@ -137,9 +137,9 @@
          color: white;
          width: 100%;
          margin: auto;
-         /* align-items: center; */
-         /* animation: fadeOut 2s forwards;
-         animation-delay: 2s; */
+         align-items: center;
+         animation: fadeOut 2s forwards;
+         animation-delay: 5s;
          background: red;
          color: white;
          padding: 10px;
@@ -204,7 +204,6 @@
                         <ul class="main-menu">
                             <li><a class=" active2 homebutton" href="{% url 'userhome' %}">dashboard</a></li>
                             <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-
                             <li><a href="{% url 'codeforces' %}">codeforces</a></li>
                             <li><a href="{% url 'codechef' %}">codechef</a></li>
                             <li><a href="{% url 'logout' %}">log out</a></li>
@@ -215,7 +214,6 @@
                         <ul class="main-menu">
                             <li><a class=" active2 homebutton" href="{% url 'userhome' %}">dashboard</a></li>
                             <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-
                             <li><a href="{% url 'codeforces' %}">codeforces</a></li>
                             <li><a href="{% url 'codechef' %}">codechef</a></li>
                             <li><a href="{% url 'logout' %}">log out</a></li>
@@ -244,7 +242,7 @@
     {% elif edit %}
       <div class="alert" style="background-color: green;">
          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-         <strong>SUCCESS, </strong> Your details has been updated!!.
+         <strong>SUCCESS!! </strong> &nbsp; Your details has been updated!!.
       </div>
 
     {% endif %}
