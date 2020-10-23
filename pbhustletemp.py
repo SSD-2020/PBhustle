@@ -203,3 +203,42 @@ def PB_User_graph(user):
     # return render(request, "index.html", context={'plot_div': plot_div})
 
     return render(request, "index.html", context={'plot_div': plot_div})
+
+
+#compare table 
+def PB_compare(user1,user2): #user1 is admin
+    res1=db.child("PBhustle").child(user1).get().val()
+    res1=res1['contests']
+
+    res2=db.child("PBhustle").child(user2).get().val()
+    res2=res2['contests']
+
+    name="PBhustle "
+
+    user1_rank={}
+    temp=[]
+    for i in res1:
+        val=[str(x) for x in i.split("_")]
+        temp+=[(int(val[0]),int(val[1]),i)]
+        user1_rank[i]=int(res1[i]['rank'])
+
+    user2_rank={}
+    for i in res2:
+        if i not in user1_rank:
+            val = [str(x) for x in i.split("_")]
+            temp += [(int(val[0]), int(val[1]), i)]
+        user2_rank[i] = int(res2[i]['rank'])
+
+    temp.sort(key=lambda x:(2*x[0],x[1]))
+
+    common=[] #contains contest name of common contests, rating of both users and there difference
+    for i,j,cname in temp:
+        if(cname in user1_rank and cname in user2_rank):
+            dif=user2_rank[cname]-user1_rank[cname]
+            if (dif >= 0):
+                dif = '+' + str(dif)
+            else:
+                dif = str(dif)
+            common+=[(name+str(i)+"."+str(j),user1_rank[cname],user2_rank[cname],dif)]
+
+    return common
