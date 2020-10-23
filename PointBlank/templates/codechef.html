@@ -65,8 +65,24 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="inner-story animated fadeInRight text-center">
-                    <h2>CODECHEF</h2>
-                    <p>Blah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah BlahBlah Blah</p>
+                    <h1 class="animated fadeInDownBig">CODE CHEF</h1>
+                    <br>
+                    <!-- <h3 >USER INFO</h3> -->
+                    <!-- <br> -->
+                        <div>
+                            <table style="margin-left: auto; margin-right: auto">
+                                {% for key,value in info.items %}
+                                <tr >
+                                    <td style="padding-bottom: 10px; padding-right: 40px;">
+                                        <h6  class="animated fadeInUpBig">{{key }}</h6>
+                                    </td>
+                                    <td style="padding-bottom: 10px;">
+                                        <h6  class="animated fadeInUpBig">{{value}}</h6>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                     <!-- </div> -->
                 </div>
             </div>
@@ -84,8 +100,8 @@
                     <div class="site-branding">
                         <ul class="main-menu">
                                                         
-                            <li><a class="show-3 active homebutton " href="#">CONTEST HISTORY</a></li>
-                            <li><a class="show-2 aboutbutton" href="#">RATING GRAPH</a></li> 
+                            <li><a class="show-3 active homebutton " href="#">USER RATING</a></li>
+                            <li><a class="show-2 aboutbutton" href="#">CONTEST HISTORY</a></li> 
                             <li><a class="show-1 projectbutton" href="#">LEADERBOARDS</a></li>
                             <li><a class="show-4 blogbutton" href="#">COMPARE WITH FRIENDS</a></li>
                         </ul>
@@ -98,8 +114,23 @@
     <div id="menu-container">
         <div id="menu-1" class="homepage home-section container">
           
-              
+                <h2 style="color: #fff;" class="animated fadeInUpBig">RATING GRAPH</h3>
+                    
+                <div class="graphplot animated fadeInLeft" style="width: 1000px; height:400px;">
+                    {% autoescape off %}
+                    {{ plot }}
+                    {% endautoescape %}
+                </div>
+				<br>
+                <br><br>
 
+                
+       
+            </div>
+
+        <div id="menu-2" class="content about-section container">
+            
+                
                 <h2 style="color: #fff;" class="animated fadeInRight">CONTEST HISTORY</h2>
                 <br>
     
@@ -137,35 +168,6 @@
        
        
        
-       
-            </div>
-
-        <div id="menu-2" class="content about-section container">
-            <h2 style="color: #fff;" class="animated fadeInDownBig">USER INFO</h3>
-                <br>
-                <table>
-                    {% for key,value in info.items %}
-                    <tr>
-                        <td style="padding-bottom: 10px; padding-right: 40px;">
-                            <h6 style="color: #fff;" class="animated fadeInRight">{{key }}</h6>
-                        </td>
-                        <td style="padding-bottom: 10px;">
-                            <h6 style="color: #fff;" class="animated fadeInLeft">{{value}}</h6>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                <br>
-                <br>
-                <h2 style="color: #fff;" class="animated fadeInUpBig">RATING GRAPH</h3>
-                    
-                <div class="graphplot animated fadeInLeft" style="width: 1000px; height:400px;">
-                    {% autoescape off %}
-                    {{ plot }}
-                    {% endautoescape %}
-                </div>
-				<br>
-				<br><br>
 				<br><br>
 				<br>
         </div>
@@ -176,7 +178,6 @@
         <div id="menu-3" class="content project-section container">
         
               
-                    <br><br><br>
                     <h2 style="color: #fff;" class="animated fadeInDownBig">LEADER BOARDS</h2>
 
 

@@ -403,6 +403,7 @@ h2.welcome-title {
 .inner-story {
     background: #fff;
     padding: 40px;
+    font-weight: 300;
     color: #32353a;
     -moz-animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
@@ -410,7 +411,7 @@ h2.welcome-title {
 }
 
 .inner-story h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .inner-story p {
@@ -425,19 +426,6 @@ h2.welcome-title {
     margin-bottom: 120px;
 }
 
-.offer-bg {
-    background: url("../img/offer-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    width: 100%;
-    height: 69%;
-    top: 0;
-    left: 0;
-    -moz-animation-delay: 3.6s;
-    -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s;
-}
 
 .offer-title {
     color: #4e91c9;
