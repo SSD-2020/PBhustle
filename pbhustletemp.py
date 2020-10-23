@@ -152,3 +152,22 @@ for i in person:
 
 print(res)
 
+
+#user contests
+def databaseuse(user):  #return list of all the contest of the user
+    res=db.child("PBhustle").child(user).get().val()
+    res=res['contests']
+    name="PBhustle "
+    
+    temp=[]
+    for i in res:
+        val=[str(x) for x in i.split("_")]
+        temp+=[(int(val[0]),int(val[1]),i)]
+    temp.sort(key=lambda x:(2*x[0],x[1]))
+    
+    all_contest=[] #contains contest name, contest rank, contest rating
+    for i,j,cname in temp:
+        all_contest+=[(name+str(i)+"."+str(j),res[cname]['rank'],res[cname]['rating'])]
+        
+    return all_contest
+
