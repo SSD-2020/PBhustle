@@ -154,12 +154,6 @@
 
 
       <!-- Welcome mesage account has been created -->
-      {% if SignUp %}
-      <div class="alert" style="background-color: green;">
-         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-         <strong>WELCOME, </strong> Your account has been created!!.
-      </div>
-      {% endif %}
       <!-- Welcome div ends -->
       <!-- Email already exists -->
       {% if inValid_Email %}
@@ -167,6 +161,13 @@
          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
          <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Email already exsists.!!
       </div>
+
+      {% elif SignUp %}
+      <div class="alert" style="background-color: green;">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+         <strong>WELCOME, </strong> Your account has been created!!.
+      </div>
+
       {% endif %}
       <!-- Welcome div ends -->
       <!-- Code forces id doesnt exist already exists -->
