@@ -171,3 +171,35 @@ def databaseuse(user):  #return list of all the contest of the user
         
     return all_contest
 
+#pb user graph
+def PB_User_graph(user):  
+    res=db.child("PBhustle").child(user).get().val()
+    res=res['contests']
+    name="PBhustle "
+
+    temp=[]
+    for i in res:
+        val=[str(x) for x in i.split("_")]
+        temp+=[(int(val[0]),int(val[1]),i)]
+    temp.sort(key=lambda x:(2*x[0],x[1]))
+
+    xd=[]
+    yd=[]
+    for i,j,cname in temp:
+        xd+=[name+str(i)+"."+str(j)]
+        yd+=[int(res[cname]['rank'])]
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=xd, y=yd,
+                             mode='lines+markers', name='line+markers', line=dict(color='white', width=1)))
+
+    fig.update_layout(title='Rating Change',yaxis_title='Rating',width=1100,height=500)
+    fig.layout.plot_bgcolor = '#32353a'
+    fig.layout.paper_bgcolor = '#32353a'
+    fig.layout.font = {'color': 'white'}
+
+    plot_div = plot(fig, output_type='div')
+
+    # return render(request, "index.html", context={'plot_div': plot_div})
+
+    return render(request, "index.html", context={'plot_div': plot_div})
