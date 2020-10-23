@@ -15,7 +15,7 @@ ranking=standings()
 
     
 
-def landingpage(request,SignUp=False,logOut=False,edit=False,inValid=(False,False,False)):
+def landingpage(request,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
 
     # if(not logOut and firebase_user.user!=None): return userhome(request)
 
@@ -28,6 +28,7 @@ def landingpage(request,SignUp=False,logOut=False,edit=False,inValid=(False,Fals
         'inValid_CC': inValid[2],
         'user': firebase_user.user!=None,
         'edit': False,
+        'inValid_Pass': inValid_Pass,
 
         }
         )
@@ -41,8 +42,12 @@ def signin(request):
     password=request.POST['password']
     # print(firebase_user.user)
 
-    try: firebase_user.SignIn(emailid,password)
-    except: return landingpage(request,False,False,(False,True,False,False))
+    try:
+        print("TRY") 
+        firebase_user.SignIn(emailid,password)
+    except:
+        print("EXCEPT")
+        return landingpage(request,False,False,False,(False,False,False),True)
     
     firebase_user.GetData()
     return landingpage(request)
