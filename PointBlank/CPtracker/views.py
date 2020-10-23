@@ -102,7 +102,7 @@ def edit(request):
         data['CF_rating']= CF_user.user_info["Current Rating"]
         data['PB_rating']= firebase_user.getPBRating(CF_id)
 
-        if(data['PB_rating']==None): data['PB_rating']=-inf
+        if(data['PB_rating']==None): data['PB_rating']=-10000
 
     if(CC_user.user_valid): 
         data['CC_id']=CC_id
