@@ -13,6 +13,7 @@ urlpatterns= [
     path('userhome/',views.userhome,name='userhome'),
     path('userhome/codeforces/', views.codeforces, name='codeforces'),
     path('userhome/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
+    path('userhome/pbhustle/pbhustleCompare/', views.pbhustleCompare, name='pbhustleCompare'),
     path('userhome/codechef/', views.codechef , name='codechef'),
     path('userhome/codechef/codechefCompare/', views.codechefCompare, name='codechefCompare'),
     path('userhome/pbhustle/', views.pbhustle , name='pbhustle'),

@@ -22,12 +22,16 @@ class PBhustle:
     def __init__(self,user_id):
 
         self.user_id=user_id
-        self.user_info={}
         self.user_contests=[]
         self.user_valid=False
         self.plot=0
 
+        self.maxRating=0
+
     def fetch_data(self):
+
+
+
         #user contests
         res=db.child("PBhustle").child(self.user_id).get().val()
         res=res['contests']
@@ -36,11 +40,27 @@ class PBhustle:
         temp=[]
         for i in res:
             val=[str(x) for x in i.split("_")]
-            temp+=[(int(val[0]),int(val[1]),i)]
+            temp.append((int(val[0]),int(val[1]),i))
         temp.sort(key=lambda x:(2*x[0],x[1]))
+
+        last=res[temp[0][2]]['rating']
+
+        high=0
         
         for i,j,cname in temp:
-            self.user_contests+=[(name+str(i)+"."+str(j),res[cname]['rank'],res[cname]['rating'])]
+
+            change=res[cname]['rating']-last
+            last=res[cname]['rating']
+
+            here=str(change)
+            if(change>=0): here='+'+here
+
+            high=max(high,res[cname]['rating'])
+            self.user_contests.append((name+str(i)+"."+str(j),res[cname]['rank'],res[cname]['rating'],here))
+
+        self.maxRating=high
+
+        
 
         
     def plot_data(self):
@@ -75,3 +95,6 @@ class PBhustle:
 
         self.plot=plot(fig, output_type='div')
         
+# a=PBhustle('deepanshu_pali')
+# a.fetch_data()
+# print(a.user_contests)

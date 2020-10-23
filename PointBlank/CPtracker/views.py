@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .codechefCompare import *
 from .codeforcesCompare import *
 from .codechefData import *
+from .pbhustleData import *
+from .pbhustleCompare import *
 from .codeforcesData import *
 from .backend import *
 from .leaderboards import *
@@ -224,6 +226,44 @@ def codechefCompare(request):
         )
 
 def pbhustle(request):
-    
-    print(firebase_user.user)
-    return render(request,'pbhustle.html')
+
+
+    PB_user=PBhustle(firebase_user.data['CF_id'])
+    PB_user.fetch_data()
+    PB_user.plot_data()
+
+    ranking.pbhustle()
+
+    user_info={
+
+        'name' : firebase_user.data['name'],
+        'user handle' : firebase_user.data['CF_id'],
+        'current rating' : firebase_user.getPBRating(firebase_user.data['CF_id']),
+        'maximum rating' : PB_user.maxRating
+
+    }
+
+    return render(
+        request,
+        'pbhustle.html',
+        {
+            'plot':PB_user.plot,
+            'info':user_info,
+            'contests':PB_user.user_contests[::-1],
+            'standings': ranking.PB_Standings
+            }
+        )
+
+def pbhustleCompare(request):
+
+    friend=request.GET['friend_id']
+    compare=PBhustleCompare(firebase_user.data['CF_id'],friend)
+    compare.compare()
+
+
+    return render(request, "pbhustleCompare.html",{
+        'friend' : friend,
+        'result': compare.compare_result[::-1],
+        'plot' : compare.plot
+        }
+        )

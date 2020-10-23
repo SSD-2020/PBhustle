@@ -44,7 +44,7 @@ class standings:
 
         self.ratings=db.child('Ratings').get().val()
         self.CC_Standings.clear()
-        
+
         for id in self.ratings:
             
             name=db.child('users').child(id).child('name').get().val()
@@ -56,6 +56,9 @@ class standings:
         self.CC_Standings.sort(key= lambda x: x[2],reverse=True)
 
     def pbhustle(self):
+
+        self.ratings=db.child('Ratings').get().val()
+        self.PB_Standings.clear()
 
         for id in self.ratings:
             
@@ -70,7 +73,7 @@ class standings:
 
     
 # a=standings()
-# a.codechef()
-# print(a.CC_Standings)
+# a.pbhustle()
+# print(a.PB_Standings)
 
 

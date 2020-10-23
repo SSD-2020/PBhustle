@@ -17,7 +17,7 @@ firebaseConfig = {
         }
 db=pyrebase.initialize_app(firebaseConfig).database()
 
-class CodeforceCompare:
+class PBhustleCompare:
 
     def __init__(self,user,friend):
         self.user=user
