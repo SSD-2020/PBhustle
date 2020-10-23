@@ -40,20 +40,20 @@ class PBhustleCompare:
         for i in res1:
             val=[str(x) for x in i.split("_")]
             temp+=[(int(val[0]),int(val[1]),i)]
-            user1_rank[i]=int(res1[i]['rank'])
+            user1_rank[i]=int(res1[i]['rating'])
 
         user2_rank={}
         for i in res2:
             if i not in user1_rank:
                 val = [str(x) for x in i.split("_")]
                 temp += [(int(val[0]), int(val[1]), i)]
-            user2_rank[i] = int(res2[i]['rank'])
+            user2_rank[i] = int(res2[i]['rating'])
 
         temp.sort(key=lambda x:(2*x[0],x[1]))
 
         for i,j,cname in temp:
             if(cname in user1_rank and cname in user2_rank):
-                dif=user2_rank[cname]-user1_rank[cname]
+                dif=user1_rank[cname]-user2_rank[cname]
                 if (dif >= 0):
                     dif = '+' + str(dif)
                 else:
