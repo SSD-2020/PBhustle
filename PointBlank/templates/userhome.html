@@ -166,13 +166,15 @@
         </div>
     </header>
 
-    {% if inValid_CF %}
+    
+
+    {% if not Valid_CF %}
     <div class="alert" style="background-color:red;">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codeforces id doesnt exists.!!
      </div>
 
-    {% elif inValid_CC %}
+    {% elif not Valid_CC %}
     <div class="alert" style="background-color:red;">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
         <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Codechef id doesnt exists.!!
