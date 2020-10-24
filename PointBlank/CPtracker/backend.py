@@ -213,6 +213,11 @@ class firebase:
 
         self.data = res.val()
 
+
+    def GetRatings(self):
+        return self.db.child('Ratings').child(self.user['localId']).get().val()
+
+
     def EmailExist(self, emailid):
 
         users = self.db.child("users").get().val()

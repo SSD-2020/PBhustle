@@ -19,6 +19,7 @@ def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inVali
 
     print(firebase_user.user!=None)
 
+
     return render(request,'landingpage.html',{
         'SignIn' : SignIn ,
         'SignUp':SignUp ,
@@ -114,6 +115,16 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 
     firebase_user.GetData()
+    ratings=firebase_user.GetRatings()
+    # print(ratings)
+
+    CF_rating=ratings['CF']
+    CC_rating=ratings['CC']
+    PB_rating=ratings['PB']
+
+    j=0
+    while(j<len(CF_rating) and CF_rating[j]!=' '): j+=1
+    CF_rating=CF_rating[:j]
 
     return render(
         request,'userhome.html',
@@ -128,6 +139,9 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
             'edit' : edit,
             'Valid_CF': CF_valid,
             'Valid_CC': CC_valid,
+            'CF_rating': CF_rating,
+            'CC_rating' : CC_rating,
+            'PB_rating' : PB_rating,
             
         }
         )
