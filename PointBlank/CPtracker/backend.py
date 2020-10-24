@@ -6,6 +6,14 @@ from numpy.fft import fft, ifft
 import gspread
 from collections import defaultdict
 
+path=['','','']
+
+path[0]='/Users/deepanshukumarpali/Desktop/projects/PBhustle/credentials.json'  ## Deepanshu
+path[1]=''                  ## Sparsh
+path[2]=''                  ## Sumit
+
+gc = gspread.service_account( filename = path[0] )                     ## bhai index change kar lena bas
+sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
 
 ############### Rating Calculator ###################
 
@@ -137,9 +145,6 @@ def ratingcal(standings,prev_rating):
 
 
 ############### Firebase Connection ##############
-
-gc = gspread.service_account(filename='/Users/deepanshukumarpali/Desktop/projects/PBhustle/credentials.json')
-sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
 
 
 class firebase:
