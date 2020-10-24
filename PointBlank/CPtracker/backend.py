@@ -6,16 +6,19 @@ from numpy.fft import fft, ifft
 import gspread
 from collections import defaultdict
 
-path=['','','']
+# path = ['', '', '']
 
-path[0]='/Users/deepanshukumarpali/Desktop/projects/PBhustle/credentials.json'  ## Deepanshu
-path[1]=''                  ## Sparsh
-path[2]=''                  ## Sumit
+# # Deepanshu
+# path[0] = '/Users/deepanshukumarpali/Desktop/projects/PBhustle/credentials.json'
+# path[1] = 'C:\Users\Sparsh\Desktop\PBhustle\credentials.json'  # Sparsh
+# path[2] = ''  # Sumit
 
-gc = gspread.service_account( filename = path[0] )                     ## bhai index change kar lena bas
+# bhai index change kar lena bas
+gc = gspread.service_account(filename="../credentials.json")
 sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
 
 ############### Rating Calculator ###################
+
 
 def intdiv(x, y):
     return -(-x // y) if x < 0 else x // y
@@ -23,15 +26,15 @@ def intdiv(x, y):
 
 class Contestant:
 
-    def __init__(self,handle, points, penalty, rating):
-        self.party=handle
-        self.points= points
-        self.penalty= penalty
-        self.rating=rating
-        self.need_rating=0
-        self.delta= 0
-        self.rank=0.0
-        self.seed= 0.0
+    def __init__(self, handle, points, penalty, rating):
+        self.party = handle
+        self.points = points
+        self.penalty = penalty
+        self.rating = rating
+        self.need_rating = 0
+        self.delta = 0
+        self.rank = 0.0
+        self.seed = 0.0
 
 
 class CodeforcesRatingCalculator:
@@ -62,7 +65,8 @@ class CodeforcesRatingCalculator:
         MAX = 6144
 
         # Precompute the ELO win probability for all possible rating differences.
-        self.elo_win_prob = np.roll(1 / (1 + pow(10, np.arange(-MAX, MAX) / 600)), -MAX)
+        self.elo_win_prob = np.roll(
+            1 / (1 + pow(10, np.arange(-MAX, MAX) / 600)), -MAX)
 
         # Compute the rating histogram.
         count = np.zeros(2 * MAX)
@@ -119,27 +123,28 @@ class CodeforcesRatingCalculator:
         for contestant in contestants:
             contestant.delta += correction
 
+
 def predict(rows, prev_ratings):
     calc = CodeforcesRatingCalculator(rows, prev_ratings)
     return calc.calculate_rating_changes()
 
 
-def ratingcal(standings,prev_rating):
+def ratingcal(standings, prev_rating):
     record = standings
-    rows=[]
-    temp=defaultdict(int)
+    rows = []
+    temp = defaultdict(int)
     for i in record:
-        st=""
+        st = ""
         for j in i['Who']:
-            if(not j.isalnum() and j!="." and j!="_"):
+            if(not j.isalnum() and j != "." and j != "_"):
                 break
-            st+=j
-        rows+=[(st,i['#'],i['#ERROR!'],i['Penalty'])]
+            st += j
+        rows += [(st, i['#'], i['#ERROR!'], i['Penalty'])]
 
     predicted = predict(rows, prev_rating)
-    new_rating=defaultdict(int)
+    new_rating = defaultdict(int)
     for i in predicted:
-        new_rating[i]=prev_rating[i]+predicted[i]
+        new_rating[i] = prev_rating[i]+predicted[i]
 
     return new_rating
 
@@ -162,139 +167,136 @@ class firebase:
             'measurementId': "G-YKZE3DKT4Z"
         }
 
-        self.user=None
-        self.auth=pyrebase.initialize_app(self.firebaseConfig).auth()
-        self.db=pyrebase.initialize_app(self.firebaseConfig).database()
-        self.data={}
-
+        self.user = None
+        self.auth = pyrebase.initialize_app(self.firebaseConfig).auth()
+        self.db = pyrebase.initialize_app(self.firebaseConfig).database()
+        self.data = {}
 
     def Clear(self):
-        
-        self.user=None
-        self.auth=pyrebase.initialize_app(self.firebaseConfig).auth()
-        self.db=pyrebase.initialize_app(self.firebaseConfig).database()
-        self.data={}
 
+        self.user = None
+        self.auth = pyrebase.initialize_app(self.firebaseConfig).auth()
+        self.db = pyrebase.initialize_app(self.firebaseConfig).database()
+        self.data = {}
 
-    def SignIn(self,email,password):
-        self.user=self.auth.sign_in_with_email_and_password(email,password)
+    def SignIn(self, email, password):
+        self.user = self.auth.sign_in_with_email_and_password(email, password)
 
-    def SignUp(self,email,password):
-        self.user=self.auth.create_user_with_email_and_password(email,password)
+    def SignUp(self, email, password):
+        self.user = self.auth.create_user_with_email_and_password(
+            email, password)
 
-    def PushData(self,data):
+    def PushData(self, data):
 
         self.db.child('users').child(self.user['localId']).set(data)
-        ratings={'CF' : data['CF_rating'], 'CC' : data['CC_rating'], 'PB' : data['PB_rating']}
+        ratings = {'CF': data['CF_rating'],
+                   'CC': data['CC_rating'], 'PB': data['PB_rating']}
         self.db.child('Ratings').child(self.user['localId']).set(ratings)
 
-    def UpdateData(self,data):
+    def UpdateData(self, data):
 
         self.db.child('users').child(self.user['localId']).remove()
         self.db.child('Ratings').child(self.user['localId']).remove()
         self.PushData(data)
 
-    def UpdateCFRatings(self,CF):
-        self.db.child('Ratings').child(self.user['localId']).update({'CF':CF})
+    def UpdateCFRatings(self, CF):
+        self.db.child('Ratings').child(self.user['localId']).update({'CF': CF})
 
-    def UpdateCCRatings(self,CC):
-        self.db.child('Ratings').child(self.user['localId']).update({'CC':CC})
-    
-    def UpdatePBRatings(self,PB):
-        self.db.child('Ratings').child(self.user['localId']).update({'PB':PB})
+    def UpdateCCRatings(self, CC):
+        self.db.child('Ratings').child(self.user['localId']).update({'CC': CC})
 
+    def UpdatePBRatings(self, PB):
+        self.db.child('Ratings').child(self.user['localId']).update({'PB': PB})
 
-    
     def GetData(self):
-        res=self.db.child("users").child(self.user['localId']).get()
+        res = self.db.child("users").child(self.user['localId']).get()
 
-        self.data=res.val()
+        self.data = res.val()
 
     def EmailExist(self, emailid):
 
-        users=self.db.child("users").get().val()
-        if(users==None): return False
+        users = self.db.child("users").get().val()
+        if(users == None):
+            return False
 
-        for i in users: 
-            if(users[i]['email']==emailid): return True
+        for i in users:
+            if(users[i]['email'] == emailid):
+                return True
 
         return False
 
-    
-    def getPBRating(self,id):
-        res=self.db.child("PBhustle").child(id.replace('.','*')).child('curRating').get().val()
+    def getPBRating(self, id):
+        res = self.db.child("PBhustle").child(
+            id.replace('.', '*')).child('curRating').get().val()
         return res
 
-    def getPBcontests(self,id):
-        res=self.db.child("PBhustle").child(id.replace('.','*')).child('contests').get().val()
+    def getPBcontests(self, id):
+        res = self.db.child("PBhustle").child(
+            id.replace('.', '*')).child('contests').get().val()
         return res
-
 
     def updateHustle(self):
 
-        cur_page=self.db.child("PBhustle").child('PageIndex').get().val()
+        cur_page = self.db.child("PBhustle").child('PageIndex').get().val()
 
         while(True):
 
-            try: sheet=sh.get_worksheet(cur_page).get_all_records()
-            except: break
+            try:
+                sheet = sh.get_worksheet(cur_page).get_all_records()
+            except:
+                break
 
-            curRating={}
-            have=[]
-            name=sh.get_worksheet(cur_page).title
-            name=name[name.index(" ")+1:].replace('.','_')
+            curRating = {}
+            have = []
+            name = sh.get_worksheet(cur_page).title
+            name = name[name.index(" ")+1:].replace('.', '_')
             # print(name)
-            
+
             for i in sheet:
 
-                here=i['Who']
+                here = i['Who']
 
-                j=0
-                while(j<len(here) and here[j]!=" "): j+=1
-                here=here[:j]
-                
-                curRating[here]=self.getPBRating(here)
-                if(curRating[here]==None): curRating[here]=500
+                j = 0
+                while(j < len(here) and here[j] != " "):
+                    j += 1
+                here = here[:j]
+
+                curRating[here] = self.getPBRating(here)
+                if(curRating[here] == None):
+                    curRating[here] = 500
                 have.append(here)
 
-               
-            newRating=ratingcal(sheet,curRating)
+            newRating = ratingcal(sheet, curRating)
 
-            for rank in range(1,len(have)+1):
+            for rank in range(1, len(have)+1):
 
-                user=have[rank-1].replace('.','*')
-                data={'rank': rank, 'rating': newRating[have[rank-1]]}
+                user = have[rank-1].replace('.', '*')
+                data = {'rank': rank, 'rating': newRating[have[rank-1]]}
 
-                self.db.child('PBhustle').child(user).child('contests').child(name).set(data)
-                self.db.child('PBhustle').child(user).update({'curRating' : data['rating']})
+                self.db.child('PBhustle').child(user).child(
+                    'contests').child(name).set(data)
+                self.db.child('PBhustle').child(user).update(
+                    {'curRating': data['rating']})
 
+            cur_page += 1
 
-            cur_page+=1
+        self.db.child('PBhustle').update({'PageIndex': cur_page})
 
-        self.db.child('PBhustle').update({'PageIndex':cur_page})
-
-        user=self.data['CF_id'].replace('.','*')
-        PB=self.db.child('PBhustle').child(user).child('curRating').get().val()
+        user = self.data['CF_id'].replace('.', '*')
+        PB = self.db.child('PBhustle').child(
+            user).child('curRating').get().val()
         self.UpdatePBRatings(PB)
-
-
-
-            
-
 
 
 # f=firebase()
 # f.updateHustle()
 
 
-
-
 # f=firebase()
 # print(f.getPBcontests('deepanshu_pali'))
 # print(f.EmailExist('deepanshukumarpali7@gmail.com'))
-# 
+#
 
 # f.SignIn('deepanshukumarpali7@gmail.com','1234567')
 # f.GetData()
-# print(f.data)      
-    
+# print(f.data)
