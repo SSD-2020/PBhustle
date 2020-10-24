@@ -11,6 +11,7 @@ urlpatterns= [
     path('edit/',views.edit,name='edit'),
     path('logout/',views.logout,name='logout'),
     path('userhome/',views.userhome,name='userhome'),
+    path('userhome/update/',views.update,name='update'),
     path('userhome/codeforces/', views.codeforces, name='codeforces'),
     path('userhome/codeforces/codeforcesCompare/', views.codeforcesCompare, name='codeforcesCompare'),
     path('userhome/pbhustle/pbhustleCompare/', views.pbhustleCompare, name='pbhustleCompare'),

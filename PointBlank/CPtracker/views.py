@@ -13,13 +13,9 @@ from .leaderboards import *
 
 firebase_user=firebase()
 ranking=standings()
-
-
     
 
 def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
-
-    # if(not logOut and firebase_user.user!=None): return userhome(request)
 
     print(firebase_user.user!=None)
 
@@ -43,7 +39,6 @@ def signin(request):
 
     emailid=request.POST['emailid']
     password=request.POST['password']
-    # print(firebase_user.user)
 
     try: firebase_user.SignIn(emailid,password)
     except: return landingpage(request,False,False,False,False,(False,False,False),True)
@@ -91,10 +86,7 @@ def edit(request):
     CC_id=request.POST['CC_id']
     data['branch']=request.POST['branch']
     data['sem']=request.POST['sem']
-    # data['college']=request.POST['college']
 
-
-    # print(data)
     CF_user=Codeforces(CF_id)
     CF_user.fetch_data()
 
@@ -122,7 +114,6 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 
     firebase_user.GetData()
-    # print(firebase_user.data)
 
     return render(
         request,'userhome.html',
@@ -148,7 +139,10 @@ def logout(request):
     return landingpage(request,False,False,True)
 
 
+def update(request):
 
+    firebase_user.updateHustle()
+    return userhome(request)
 
 #### CP Stuff ------------------------------------------------------------/
 
