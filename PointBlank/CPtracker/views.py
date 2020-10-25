@@ -175,12 +175,18 @@ def codeforces(request):
     firebase_user.UpdateCFRatings(CF_user.user_info["Current Rating"])
     ranking.codeforces()
 
+    here={}
+    for i in CF_user.user_info: here[i]=CF_user.user_info[i]
+
+    if(here["Current Rating"]=='-10000 '): here["Current Rating"]='N/A'
+    if(here["Maximum Rating"]=='-10000 '): here["Maximum Rating"]='N/A'
+
     return render( 
         request,
         'codeforces.html', 
         {
             'plot':CF_user.plot,
-            'info':CF_user.user_info,
+            'info':here,
             'contests':CF_user.user_contests[::-1],
             'standings': ranking.CF_Standings
             }
