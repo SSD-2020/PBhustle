@@ -73,7 +73,7 @@
 
             a.dsce:hover{
                   color: green;
-                  font-weight: inherit;
+                  font-weight: 500;
             }
 
       </style>
@@ -87,7 +87,8 @@
                <div class="col-md-4">
                   <div class="site-branding animated fadeInDownBig">
                      <a href="{% url 'landingpage' %}">
-                     <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span><span style="color: darkgreen;">POINT</span> BLANK</h1>
+                     <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span><span style="color: darkgreen; font-weight: 550;
+                        font-size: 40px;">POINT</span> BLANK</h1>
                      </a>
                   </div>
                </div>
@@ -319,17 +320,22 @@
       <div id="menu-container">
       <div id="menu-1" class="homepage home-section container">
          <div class="home-intro text-center">
-            <h2 class="welcome-title animated fadeInUpBig">WE ARE <span style="color: green;">POINT</span> BLANK</h2>
-            <p class="animated fadeInDown texthov">We are a multidisciplinary community of programmers that operates out of <br>
+          
+          <div style="animation-delay: 1900ms;" class="animated bounceInDown repeat-5"> <h2 style="animation-delay: 1500ms;" class="welcome-title animated fadeInDownBig">WE ARE <span style="color: green;">POINT</span> BLANK</h2>
+          </div> 
+            <p class="animated bounceInDown texthov">We are a multidisciplinary community of programmers that operates out of <br>
                <a class="dsce">Dayananda Sagar College of Engineering, Bangalore.</a>
-
-            <ul class="list-icons animated fadeInDownBig">
-               <li><i class="icon-trophy ihov" style="font-weight: 800;"></i></li>
-               <li><i class="icon-badge ihov" style="font-weight: 800;"></i></li>
-               <li><i class="icon-magic-wand ihov" style=" font-weight: 800;"></i></li>
-               <li><i class="icon-screen-desktop ihov"style="font-weight: 800;" ></i></li>
-            </ul>
+               
+               <div class="animated bounceInDown" style="animation-delay: 1500ms;">
+                  <ul class="list-icons animated  fadeInDownBig">
+                     <li><i class="icon-trophy ihov" style="font-weight: 800;"></i></li>
+                     <li><i class="icon-badge ihov" style="font-weight: 800;"></i></li>
+                     <li><i class="icon-magic-wand ihov" style=" font-weight: 800;"></i></li>
+                     <li><i class="icon-screen-desktop ihov"style="font-weight: 800;" ></i></li>
+                  </ul>
+                </div>
          </div>
+
          <div class="home-projects">
             <div class="row">
                <div class="col-md-6 col-sm-12">
@@ -349,7 +355,7 @@
                <div class="project-home-holder col-md-6 col-sm-12">
                   <div class="row">
                      <div class="col-md-6 col-sm-6">
-                        <div class="project-item two animated fadeInDown">
+                        <div class="project-item one animated fadeInLeft">
                            <img src="{% static 'img/1.jpg' %}" alt="">
                            <div class="overlay">
                               <h4><a >CODECHEF</a></h4>
@@ -357,7 +363,7 @@
                         </div>
                      </div>
                      <div class="col-md-6 col-sm-6">
-                        <div class="project-item two animated fadeInUp">
+                        <div class="project-item two animated fadeInRight">
                            <img src="{% static 'img/2.jpg' %}" alt="">
                            <div class="overlay">
                               <h4><a >CODEFORCES</a></h4>
@@ -365,7 +371,7 @@
                         </div>
                      </div>
                      <div class="col-md-6 col-sm-6">
-                        <div class="project-item three animated fadeInUp">
+                        <div class="project-item two animated fadeInLeft">
                            <img src="{% static 'img/6.jpg' %}" alt="">
                            <div class="overlay">
                               <h4><a >Hacker Rank</a></h4>
@@ -373,7 +379,7 @@
                         </div>
                      </div>
                      <div class="col-md-6 col-sm-6">
-                        <div class="project-item four animated fadeInDown">
+                        <div class="project-item one animated fadeInRight">
                            <img src="{% static 'img/10.jpg' %}" alt="">
                            <div class="overlay">
                               <h4><a >HAckerEarth</a></h4>
