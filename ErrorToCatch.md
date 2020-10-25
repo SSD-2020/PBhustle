@@ -9,4 +9,4 @@
 
 5. Api taking more time that expected . Connection Time Out ~30seconds.
 
-6. 
+6. Leaderboard not updating unless user has not updated his ratings
