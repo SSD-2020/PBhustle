@@ -57,8 +57,8 @@ def signup(request):
 
     data={
         'email': emailid,
-        'CC_id': '--',
-        'CF_id': '--',
+        'CC_id': 'N/A',
+        'CF_id': 'N/A',
         'name': name, 
         'college' : "Dayananda Sagar College of Engineering",
         'branch' : branch,
@@ -99,8 +99,6 @@ def edit(request):
         data['CF_rating']= CF_user.user_info["Current Rating"]
         data['PB_rating']= firebase_user.getPBRating(CF_id)
 
-        if(data['PB_rating']==None): data['PB_rating']=-10000
-
     if(CC_user.user_valid): 
         data['CC_id']=CC_id
         data['CC_rating']= CC_user.user_info["Current Rating"]
@@ -122,9 +120,15 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
     CC_rating=ratings['CC']
     PB_rating=ratings['PB']
 
-    j=0
-    while(j<len(CF_rating) and CF_rating[j]!=' '): j+=1
-    CF_rating=CF_rating[:j]
+    if(PB_rating==-10000): PB_rating='N/A'
+    if(CF_rating=='-10000 ') : CF_rating='N/A'
+    else:
+        j=0
+        while(j<len(CF_rating) and CF_rating[j]!=' '): j+=1
+        CF_rating=CF_rating[:j]
+
+    if(CC_rating==-10000): CC_rating='N/A'
+
 
     return render(
         request,'userhome.html',
@@ -239,6 +243,9 @@ def pbhustle(request):
     PB_user=PBhustle(firebase_user.data['CF_id'])
     PB_user.fetch_data()
     PB_user.plot_data()
+    rating=firebase_user.getPBRating(firebase_user.data['CF_id'])
+
+    if(rating==-10000): rating='N/A'
 
     ranking.pbhustle()
 
@@ -246,7 +253,7 @@ def pbhustle(request):
 
         'name' : firebase_user.data['name'],
         'user handle' : firebase_user.data['CF_id'],
-        'current rating' : firebase_user.getPBRating(firebase_user.data['CF_id']),
+        'current rating' : rating,
         'maximum rating' : PB_user.maxRating
 
     }

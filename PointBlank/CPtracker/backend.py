@@ -132,7 +132,6 @@ def predict(rows, prev_ratings):
 def ratingcal(standings, prev_rating):
     record = standings
     rows = []
-    temp = defaultdict(int)
     for i in record:
         st = ""
         for j in i['Who']:
@@ -189,8 +188,8 @@ class firebase:
     def PushData(self, data):
 
         self.db.child('users').child(self.user['localId']).set(data)
-        ratings = {'CF': data['CF_rating'],
-                   'CC': data['CC_rating'], 'PB': data['PB_rating']}
+
+        ratings = {'CF': data['CF_rating'],'CC': data['CC_rating'], 'PB': data['PB_rating']}
         self.db.child('Ratings').child(self.user['localId']).set(ratings)
 
     def UpdateData(self, data):
@@ -233,6 +232,8 @@ class firebase:
     def getPBRating(self, id):
         res = self.db.child("PBhustle").child(
             id.replace('.', '*')).child('curRating').get().val()
+
+        if(res==None): return -10000
         return res
 
     def getPBcontests(self, id):

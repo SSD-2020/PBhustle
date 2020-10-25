@@ -17,8 +17,11 @@ class Codechef:
 
     def fetch_data(self):
 
-        url='https://competitive-coding-api.herokuapp.com/api/codechef/' + self.user_id
-        content=requests.get(url).json()
+        try:
+            url='https://competitive-coding-api.herokuapp.com/api/codechef/' + self.user_id
+            content=requests.get(url).json()
+        except: 
+            return
 
         if(content['status']!='Success'):  return
         self.user_valid=True

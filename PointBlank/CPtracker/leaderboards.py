@@ -35,9 +35,12 @@ class standings:
             handle=db.child('users').child(id).child('CF_id').get().val()
             rating=self.ratings[id]['CF']
 
-            self.CF_Standings.append((name,handle,rating))
+            self.CF_Standings.append([name,handle,rating])
 
         self.CF_Standings.sort(key= lambda x: int(x[2][:x[2].index(' ')]),reverse=True)
+
+        for i in range(len(self.CF_Standings)):
+            if(self.CF_Standings[i][2]=='-10000 '): self.CF_Standings[i][2]='N/A'
 
 
     def codechef(self):
@@ -51,9 +54,12 @@ class standings:
             handle=db.child('users').child(id).child('CC_id').get().val()
             rating=self.ratings[id]['CC']
 
-            self.CC_Standings.append((name,handle,rating))
+            self.CC_Standings.append([name,handle,rating])
 
         self.CC_Standings.sort(key= lambda x: x[2],reverse=True)
+
+        for i in range(len(self.CC_Standings)):
+            if(self.CC_Standings[i][2]==-10000): self.CC_Standings[i][2]='N/A'
 
     def pbhustle(self):
 
@@ -66,9 +72,11 @@ class standings:
             handle=db.child('users').child(id).child('CF_id').get().val()
             rating=self.ratings[id]['PB']
 
-            self.PB_Standings.append((name,handle,rating))
+            self.PB_Standings.append([name,handle,rating])
 
         self.PB_Standings.sort(key= lambda x: x[2],reverse=True)
+        for i in range(len(self.PB_Standings)):
+            if(self.PB_Standings[i][2]==-10000): self.PB_Standings[i][2]='N/A'
 
 
     

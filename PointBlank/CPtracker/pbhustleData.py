@@ -34,6 +34,10 @@ class PBhustle:
 
         #user contests
         res=db.child("PBhustle").child(self.user_id).get().val()
+
+        if(res==None): 
+            self.maxRating='N/A'
+            return
         res=res['contests']
         name="PBhustle "
         
@@ -95,6 +99,6 @@ class PBhustle:
 
         self.plot=plot(fig, output_type='div')
         
-# a=PBhustle('deepanshu_pali')
+# a=PBhustle('tourist')
 # a.fetch_data()
 # print(a.user_contests)
