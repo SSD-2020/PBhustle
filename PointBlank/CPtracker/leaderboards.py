@@ -39,8 +39,10 @@ class standings:
 
         self.CF_Standings.sort(key= lambda x: int(x[2][:x[2].index(' ')]),reverse=True)
 
-        for i in range(len(self.CF_Standings)):
-            if(self.CF_Standings[i][2]=='-10000 '): self.CF_Standings[i][2]='N/A'
+        j=0
+        while( j<len(self.CF_Standings) and   self.CF_Standings[j][2]!='-10000 '): j+=1
+        self.CF_Standings=self.CF_Standings[:j]
+        
 
 
     def codechef(self):
@@ -58,8 +60,9 @@ class standings:
 
         self.CC_Standings.sort(key= lambda x: x[2],reverse=True)
 
-        for i in range(len(self.CC_Standings)):
-            if(self.CC_Standings[i][2]==-10000): self.CC_Standings[i][2]='N/A'
+        j=0
+        while( j<len(self.CF_Standings) and   self.CF_Standings[j][2]!='-10000 '): j+=1
+        self.CF_Standings=self.CF_Standings[:j]
 
     def pbhustle(self):
 
@@ -75,8 +78,10 @@ class standings:
             self.PB_Standings.append([name,handle,rating])
 
         self.PB_Standings.sort(key= lambda x: x[2],reverse=True)
-        for i in range(len(self.PB_Standings)):
-            if(self.PB_Standings[i][2]==-10000): self.PB_Standings[i][2]='N/A'
+        
+        j=0
+        while( j<len(self.CF_Standings) and   self.CF_Standings[j][2]!='-10000 '): j+=1
+        self.CF_Standings=self.CF_Standings[:j]
 
 
     

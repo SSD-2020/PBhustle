@@ -70,8 +70,11 @@ def signup(request):
 
     emailid_exist=firebase_user.EmailExist(emailid)
 
+    try: firebase_user.SignUp(emailid,password)
+    except: emailid_exist=True
+
     if(not emailid_exist):
-        firebase_user.SignUp(emailid,password)
+        
         firebase_user.PushData(data)
         firebase_user.Clear()
         return landingpage(request,False,True)
@@ -169,7 +172,6 @@ def update(request):
 def codeforces(request):
 
     CF_user=Codeforces(firebase_user.data['CF_id'])
-
     CF_user.fetch_data()
 
     CF_user.plot_data()
@@ -200,8 +202,6 @@ def codechef(request):
     CC_user=Codechef(firebase_user.data['CC_id'])
     CC_user.fetch_data()
     CC_user.plot_data()
-
-    print(CC_user.user_info)
 
     firebase_user.UpdateCCRatings(CC_user.user_info["Current Rating"])
     ranking.codechef()
