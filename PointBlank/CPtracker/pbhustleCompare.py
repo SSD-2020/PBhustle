@@ -27,14 +27,18 @@ class PBhustleCompare:
         self.plot=0
 
     def compare(self):
+
         res1=db.child("PBhustle").child(self.user).get().val()
         res1=res1['contests']
 
-        res2=db.child("PBhustle").child(self.friend).get().val()
-        res2=res2['contests']
+        try:
+            res2=db.child("PBhustle").child(self.friend).get().val()
+            res2=res2['contests']
+        except: return
+
+        self.friend_valid=True
 
         name="PBhustle "
-
         user1_rank={}
         temp=[]
         for i in res1:
@@ -83,7 +87,6 @@ class PBhustleCompare:
         
         fig.add_trace(go.Scatter(x=xd, y=y_user2, connectgaps=True,
                     mode='lines+markers',name=self.friend,line = dict(color='skyblue', width=1)))
-
         fig.update_layout(title='Rating Change',yaxis_title='Rating',width=1100,height=500)
 
         fig.layout.plot_bgcolor = '#32353a'
