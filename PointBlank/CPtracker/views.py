@@ -168,8 +168,7 @@ def codeforces(request):
 
     CF_user=Codeforces(firebase_user.data['CF_id'])
 
-    try: CF_user.fetch_data()
-    except : return render(request,'error.html')
+    CF_user.fetch_data()
 
     CF_user.plot_data()
     firebase_user.UpdateCFRatings(CF_user.user_info["Current Rating"])
@@ -178,7 +177,6 @@ def codeforces(request):
     here={}
     for i in CF_user.user_info: here[i]=CF_user.user_info[i]
 
-    print(here)
     if(here["Current Rating"]=='-10000 '): here["Current Rating"]='N/A'
     if(here["Maximum Rating"]=='-10000 '): here["Maximum Rating"]='N/A'
 
@@ -189,7 +187,8 @@ def codeforces(request):
             'plot':CF_user.plot,
             'info':here,
             'contests':CF_user.user_contests[::-1],
-            'standings': ranking.CF_Standings
+            'standings': ranking.CF_Standings,
+            'user_id' : firebase_user.data['CF_id']!='N/A',
             }
         )
 
@@ -212,7 +211,8 @@ def codechef(request):
             'plot':CC_user.plot,
             'info':CC_user.user_info,
             'contests':CC_user.user_contests[::-1],
-            'standings': ranking.CC_Standings
+            'standings': ranking.CC_Standings,
+            'user_id' : firebase_user.data['CF_id']!='N/A',
             }
         )
 
