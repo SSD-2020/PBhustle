@@ -162,7 +162,7 @@ def update(request):
     firebase_user.updateHustle()
     return userhome(request)
 
-#### CP Stuff ------------------------------------------------------------/
+#### CP Stuff -----------------------------------------------------------/
 
 def codeforces(request):
 

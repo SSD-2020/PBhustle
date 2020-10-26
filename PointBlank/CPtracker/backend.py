@@ -291,6 +291,7 @@ class firebase:
         user = self.data['CF_id'].replace('.', '*')
         PB = self.db.child('PBhustle').child(
             user).child('curRating').get().val()
+        if(PB==None): PB=-10000
         self.UpdatePBRatings(PB)
 
 
