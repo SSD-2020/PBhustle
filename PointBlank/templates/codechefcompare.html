@@ -271,6 +271,20 @@
                     <br>
                     <br>
 
+                    {% if not_valid %}
+                    <div class="alert" style="background-color:red;">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Invalid Handle for comparision!!
+                    </div>
+
+                    {% elif empty_list %}
+                    <div class="alert" style="background-color:red;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; You have not given any contests yet;!!
+                    </div>
+                    
+                    {% else %}
+
                     <p class="animated fadeInRight">
                     <div class="graphplot" style="width: 1000px; height:400px;">
                         {% autoescape off %}
@@ -278,18 +292,27 @@
                         {% endautoescape %}
                     </div>
 
+                    {% endif %}
+
         </div>
 
         <div id="menu-2" class="content about-section container">
             <h2 style="color: #fff;" class="animated fadeInRight">CONTEST TABLE</h3>
                 <br>
+                
+                {% if not_valid %}
+                <div class="alert" style="background-color:red;">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Invalid Handle for comparision!!
+                </div>
 
-  <!-- |||||||||||||||||||no contests -->
-<!-- 
-            <div class="alert" style="background-color:red;">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; You have not given any contests yet;!!
-             </div> -->
+                {% elif empty_list %}
+                <div class="alert" style="background-color:red;">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; You have not given any contests yet;!!
+                </div>
+                
+                {% else %}
 
 
                 <table class="table table-hover">
@@ -329,6 +352,8 @@
                     {% endfor %}
 
                 </table>
+
+                {% endif %}
 				<br>
 				<br>
         </div>

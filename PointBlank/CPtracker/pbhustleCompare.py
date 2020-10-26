@@ -29,16 +29,16 @@ class PBhustleCompare:
     def compare(self):
 
         try:
+            res2=db.child("PBhustle").child(self.friend).get().val()
+            res2=res2['contests']
+        except: return
+        self.friend_valid=True
+
+        try:
             res1=db.child("PBhustle").child(self.user).get().val()
             res1=res1['contests']
         except: return
 
-        try:
-            res2=db.child("PBhustle").child(self.friend).get().val()
-            res2=res2['contests']
-        except: return
-
-        self.friend_valid=True
 
         name="PBhustle "
         user1_rank={}

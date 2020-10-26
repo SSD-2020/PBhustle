@@ -228,7 +228,9 @@ def codeforcesCompare(request):
     return render(request, "codeforcescompare.html",{
         'friend' : friend,
         'result': compare.compare_result[::-1],
-        'plot' : compare.plot
+        'plot' : compare.plot,
+        'not_valid': compare.friend_valid==False,
+        'empty_list' : len(compare.compare_result)==0,
         }
         )
 
@@ -242,7 +244,9 @@ def codechefCompare(request):
     return render(request, "codechefcompare.html",{
         'friend' : friend,
         'result': compare.compare_result[::-1],
-        'plot' : compare.plot
+        'plot' : compare.plot,
+        'not_valid': compare.friend_valid==False,
+        'empty_list' : len(compare.compare_result)==0,
         }
         )
 
@@ -289,6 +293,8 @@ def pbhustleCompare(request):
     return render(request, "pbhustleCompare.html",{
         'friend' : friend,
         'result': compare.compare_result[::-1],
-        'plot' : compare.plot
+        'plot' : compare.plot,
+        'not_valid': compare.friend_valid==False,
+        'empty_list' : len(compare.compare_result)==0,
         }
         )
