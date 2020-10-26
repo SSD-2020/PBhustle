@@ -318,3 +318,8 @@ def pbhustleCompare(request):
         'empty_list' : len(compare.compare_result)==0,
         }
         )
+        
+#### ERROR VIEWS ####
+
+def error_view(request,exception=None):
+    return render(request, 'error.html')

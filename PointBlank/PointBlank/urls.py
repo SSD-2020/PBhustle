@@ -21,3 +21,4 @@ urlpatterns = [
     path('',include('CPtracker.urls'))
 ]
 
+handler404 = 'CPtracker.views.error_view'
