@@ -243,8 +243,8 @@
                 margin: 8px 0;
                 display: inline-block;
                 border: 1px solid #ccc;
-                box-sizing: border-box; ">
-                    <option value="" disabled selected>Choose Friend </option>
+                box-sizing: border-box; " required>
+                    <option value="" disabled selected>Choose User </option>
 
          {% for name,id,rank in standings %}
          
@@ -262,6 +262,7 @@
                           margin: 8px 0;
                           padding: 5px 10px;
                           background: green;
+
                           color: white;
                           border: 1px solid black;
                           -webkit-appearance: none;">
@@ -296,7 +297,7 @@
                     margin: 8px 0;
                     display: inline-block;
                     border: 1px solid #ccc;
-                    box-sizing: border-box; ">
+                    box-sizing: border-box; " required>
                   
                   {% if user_id %}
            <input type="submit" value="COMPARE" style=" 
