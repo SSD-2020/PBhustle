@@ -28,8 +28,10 @@ class PBhustleCompare:
 
     def compare(self):
 
-        res1=db.child("PBhustle").child(self.user).get().val()
-        res1=res1['contests']
+        try:
+            res1=db.child("PBhustle").child(self.user).get().val()
+            res1=res1['contests']
+        except: return
 
         try:
             res2=db.child("PBhustle").child(self.friend).get().val()
