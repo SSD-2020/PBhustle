@@ -178,6 +178,7 @@ def codeforces(request):
     here={}
     for i in CF_user.user_info: here[i]=CF_user.user_info[i]
 
+    print(here)
     if(here["Current Rating"]=='-10000 '): here["Current Rating"]='N/A'
     if(here["Maximum Rating"]=='-10000 '): here["Maximum Rating"]='N/A'
 

@@ -9,7 +9,14 @@ class Codeforces:
     def __init__(self,user_id):
 
         self.user_id=user_id
-        self.user_info={}
+        self.user_info={
+
+            "User Handle" : self.user_id,
+            "Name" : "[ Not Given On Codeforces ]",
+            "Current Rating" : '-10000 ',
+            "Maximum Rating" : '-10000 ',
+
+        }
         self.user_contests=[]
         self.user_valid=False
         self.plot=0
@@ -52,10 +59,9 @@ class Codeforces:
 
 
 
-
         self.user_info={
 
-            "User Handle" : temp['handle'],
+            "User Handle" : self.user_id,
             "Name" : temp['firstName']+' '+temp['lastName'],
             "Current Rating" : str(temp['rating']) + temp['rank'],
             "Maximum Rating" : str(temp['maxRating'])+ temp['maxRank'],
@@ -125,15 +131,15 @@ class Codeforces:
 
 
 
-# CF_user=Codeforces('Samyk')
-# CF_user.fetch_data()
+CF_user=Codeforces('N/A')
+CF_user.fetch_data()
 # CF_user.compare('sumitthakur')
 # CF_user.plot_data()
 
 # print(CF_user.user_valid)
 # print()
 
-# print(CF_user.user_contests)
+print(CF_user.user_info)
 # print()
 
 # print(CF_user.compare_result)
