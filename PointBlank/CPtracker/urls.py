@@ -20,5 +20,3 @@ urlpatterns= [
     path('userhome/pbhustle/', views.pbhustle , name='pbhustle'),
 
 ]
-
-# handler404 = 'views.error_view'
