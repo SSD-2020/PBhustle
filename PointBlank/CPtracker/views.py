@@ -85,6 +85,8 @@ def signup(request):
 
 def edit(request):
 
+    if(firebase_user.user==None): return render(request, 'error.html')
+
     firebase_user.GetData()
     data=firebase_user.data
     
@@ -115,6 +117,9 @@ def edit(request):
 
 
 def userhome(request,edit=False,CF_valid=True,CC_valid=True):
+
+
+    if(firebase_user.user==None): return render(request, 'error.html')
 
 
     firebase_user.GetData()
@@ -158,11 +163,14 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
         
 
 def logout(request):
+
     firebase_user.Clear()
     return landingpage(request,False,False,True)
 
 
 def update(request):
+
+    if(firebase_user.user==None): return render(request, 'error.html')
 
     firebase_user.updateHustle()
     return userhome(request)
@@ -170,6 +178,8 @@ def update(request):
 #### CP Stuff -----------------------------------------------------------/
 
 def codeforces(request):
+
+    if(firebase_user.user==None): return render(request, 'error.html')
 
     CF_user=Codeforces(firebase_user.data['CF_id'])
     CF_user.fetch_data()
@@ -199,6 +209,8 @@ def codeforces(request):
 
 def codechef(request):
 
+    if(firebase_user.user==None): return render(request, 'error.html')
+
     CC_user=Codechef(firebase_user.data['CC_id'])
     CC_user.fetch_data()
     CC_user.plot_data()
@@ -221,6 +233,8 @@ def codechef(request):
 
 def codeforcesCompare(request):
 
+    if(firebase_user.user==None): return render(request, 'error.html')
+
     friend=request.GET['friend_id']
     compare=CodeforceCompare(firebase_user.data['CF_id'],friend)
     compare.compare()
@@ -235,6 +249,8 @@ def codeforcesCompare(request):
         )
 
 def codechefCompare(request):
+
+    if(firebase_user.user==None): return render(request, 'error.html')
 
     friend=request.GET['friend_id']
     compare=CodechefCompare(firebase_user.data['CC_id'],friend)
@@ -251,6 +267,8 @@ def codechefCompare(request):
         )
 
 def pbhustle(request):
+
+    if(firebase_user.user==None): return render(request, 'error.html')
 
     print(firebase_user)
     PB_user=PBhustle(firebase_user.data['CF_id'])
@@ -284,6 +302,8 @@ def pbhustle(request):
         )
 
 def pbhustleCompare(request):
+
+    if(firebase_user.user==None): return render(request, 'error.html')
 
     friend=request.GET['friend_id']
     compare=PBhustleCompare(firebase_user.data['CF_id'],friend)
