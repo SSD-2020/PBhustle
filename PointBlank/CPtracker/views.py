@@ -270,7 +270,7 @@ def pbhustle(request):
 
     if(firebase_user.user==None): return render(request, 'error.html')
 
-    print(firebase_user)
+    # print(firebase_user)
     PB_user=PBhustle(firebase_user.data['CF_id'])
     PB_user.fetch_data()
     PB_user.plot_data()
@@ -318,7 +318,7 @@ def pbhustleCompare(request):
         'empty_list' : len(compare.compare_result)==0,
         }
         )
-        
+
 #### ERROR VIEWS ####
 
 def error_view(request,exception=None):

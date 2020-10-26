@@ -131,15 +131,15 @@ class Codeforces:
 
 
 
-CF_user=Codeforces('N/A')
-CF_user.fetch_data()
+# CF_user=Codeforces('N/A')
+# CF_user.fetch_data()
 # CF_user.compare('sumitthakur')
 # CF_user.plot_data()
 
 # print(CF_user.user_valid)
 # print()
 
-print(CF_user.user_info)
+# print(CF_user.user_info)
 # print()
 
 # print(CF_user.compare_result)
