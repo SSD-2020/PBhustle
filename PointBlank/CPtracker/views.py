@@ -63,8 +63,8 @@ def signup(request):
         'college' : "Dayananda Sagar College of Engineering",
         'branch' : branch,
         'sem': sem,
-        'CF_rating' : -10000,
         'CC_rating' : -10000,
+        'CF_rating' : '-10000 ',
         'PB_rating' : -10000,
     }
 
@@ -271,7 +271,8 @@ def pbhustle(request):
             'plot':PB_user.plot,
             'info':user_info,
             'contests':PB_user.user_contests[::-1],
-            'standings': ranking.PB_Standings
+            'standings': ranking.PB_Standings,
+            'user_id' : firebase_user.data['CF_id']!='N/A',
             }
         )
 
