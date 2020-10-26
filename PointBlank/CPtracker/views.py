@@ -73,8 +73,10 @@ def signup(request):
     if(not emailid_exist):
         firebase_user.SignUp(emailid,password)
         firebase_user.PushData(data)
+        firebase_user.Clear()
         return landingpage(request,False,True)
-
+    
+    firebase_user.Clear()
     return landingpage(request,False,True,False,False,(True,False,False))
 
 
@@ -246,7 +248,7 @@ def codechefCompare(request):
 
 def pbhustle(request):
 
-
+    print(firebase_user)
     PB_user=PBhustle(firebase_user.data['CF_id'])
     PB_user.fetch_data()
     PB_user.plot_data()
