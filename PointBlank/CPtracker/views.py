@@ -229,7 +229,7 @@ def codechef(request):
         'codechef.html',
         {
             'plot':CC_user.plot,
-            'info':CC_user.user_info,
+            'info':here,
             'contests':CC_user.user_contests[::-1],
             'standings': ranking.CC_Standings,
             'user_id' : firebase_user.data['CF_id']!='N/A',
