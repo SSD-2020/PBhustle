@@ -61,7 +61,7 @@ class standings:
         self.CC_Standings.sort(key= lambda x: x[2],reverse=True)
 
         j=0
-        while( j<len(self.CC_Standings) and   self.CC_Standings[j][2]!=-10000): j+=1
+        while( j<len(self.CC_Standings) and   self.CC_Standings[j][2]!='-10000 '): j+=1
         self.CC_Standings=self.CC_Standings[:j]
 
     def pbhustle(self):
@@ -80,7 +80,7 @@ class standings:
         self.PB_Standings.sort(key= lambda x: x[2],reverse=True)
         
         j=0
-        while( j<len(self.PB_Standings) and   self.PB_Standings[j][2]!=-10000): j+=1
+        while( j<len(self.PB_Standings) and   self.PB_Standings[j][2]!='-10000 '): j+=1
         self.PB_Standings=self.PB_Standings[:j]
 
 
