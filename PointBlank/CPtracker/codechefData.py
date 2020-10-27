@@ -9,7 +9,13 @@ class Codechef:
     def __init__(self,user_id):
 
         self.user_id=user_id
-        self.user_info={}
+        self.user_info={
+
+            "User Handle" : self.user_id,
+            "Current Rating" : -10000,
+            "Maximum Rating" : -10000,
+
+        }
         self.user_contests=[]
         self.user_valid=False
         self.plot=0
@@ -41,7 +47,6 @@ class Codechef:
         self.user_info={
 
             "User Handle" : temp['username'],
-            "Name" : temp['name'],
             "Current Rating" : temp['rating'],
             "Maximum Rating" : temp['highest_rating'],
 

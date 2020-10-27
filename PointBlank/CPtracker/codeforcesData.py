@@ -12,7 +12,6 @@ class Codeforces:
         self.user_info={
 
             "User Handle" : self.user_id,
-            "Name" : "[ Not Given On Codeforces ]",
             "Current Rating" : '-10000 ',
             "Maximum Rating" : '-10000 ',
 
@@ -62,7 +61,6 @@ class Codeforces:
         self.user_info={
 
             "User Handle" : self.user_id,
-            "Name" : temp['firstName']+' '+temp['lastName'],
             "Current Rating" : str(temp['rating']) + temp['rank'],
             "Maximum Rating" : str(temp['maxRating'])+ temp['maxRank'],
 

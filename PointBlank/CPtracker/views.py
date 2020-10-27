@@ -218,6 +218,12 @@ def codechef(request):
     firebase_user.UpdateCCRatings(CC_user.user_info["Current Rating"])
     ranking.codechef()
 
+    here={}
+    for i in CC_user.user_info: here[i]=CC_user.user_info[i]
+
+    if(here["Current Rating"]==-10000): here["Current Rating"]='N/A'
+    if(here["Maximum Rating"]==-10000): here["Maximum Rating"]='N/A'
+
     return render(
         request,
         'codechef.html',
@@ -281,8 +287,6 @@ def pbhustle(request):
     ranking.pbhustle()
 
     user_info={
-
-        'name' : firebase_user.data['name'],
         'user handle' : firebase_user.data['CF_id'],
         'current rating' : rating,
         'maximum rating' : PB_user.maxRating
