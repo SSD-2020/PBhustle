@@ -18,13 +18,14 @@ class CodechefCompare:
         url='https://competitive-coding-api.herokuapp.com/api/codechef/'+self.user
         r = requests.get(url)
         content = r.json()
-        if (content['status'] != 'Success'): return -1
         user1=content['contest_ratings']
 
         url = 'https://competitive-coding-api.herokuapp.com/api/codechef/'+self.friend
         r = requests.get(url)
         content = r.json()
-        if (content['status'] != 'Success'): return -1
+        if (content['status'] != 'Success'): return
+
+        self.friend_valid=True
         user2 = content['contest_ratings']
 
         #compare contests

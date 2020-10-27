@@ -262,6 +262,8 @@ def codechefCompare(request):
     compare=CodechefCompare(firebase_user.data['CC_id'],friend)
     compare.compare()
 
+    print(compare.friend_valid)
+
 
     return render(request, "codechefcompare.html",{
         'friend' : friend,
