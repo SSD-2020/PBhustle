@@ -33,10 +33,11 @@
           transform: translate(-50%, -50%);
           font-family: 'Concert One', cursive;
           color: rgba(19, 36, 44, 0.5);
-          font-size: 350px;
+          font-size: 280px;
           text-align: center;
           top: 40%;
-          margin-top: 150px;
+          margin-top: 50px;
+          padding: 0px !important;
         }
         
         .container123 {
@@ -46,7 +47,7 @@
           transform: translate(-50%, -50%);
           height: 300px;
           width: 500px;
-          margin-top: 100px;
+          /* margin-top: 50px; */
         }
         .container123:after {
           position: absolute;
@@ -441,54 +442,83 @@
 </head>
 
 <body>
-    <header class="site-header container animated fadeInDown" style="position:fixed;bottom: 0;">
-        <div class="header-wrapper">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="site-branding">
-                        <a href="{% url 'landingpage' %}">
-                          <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span>  <span style="color: darkgreen; font-size: 35px;">POINT</span> <span style="font-size: 35px;">BLANK</span></h1>
-                        </a>
-                    </div>
-                </div>
-                <a href="#" class="toggle-nav hidden-md hidden-lg">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <div class="col-md-8">
-                    <nav id="nav" class="main-navigation hidden-xs hidden-sm">
-                        <ul class="main-menu">
-                          <li><a href="{% url 'userhome' %}">dashboard</a></li>
-                          <li><a  href="{% url 'pbhustle' %}">pb hustle</a></li>
-                          <li><a href="{% url 'codeforces' %}">codeforces</a></li>
-                          <li><a href="{% url 'codechef' %}">codechef</a></li>
-                          <li><a href="{% url 'logout' %}">log out</a></li>
+  {% if not user %}
+  <header class="site-header container animated fadeInDownBig">
+     <div class="header-wrapper animated fadeInDownBig">
+        <div class="row">
+           <div class="col-md-4">
+              <div class="site-branding animated fadeInDownBig">
+                 <a href="{% url 'landingpage' %}">
+                    <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span>  <span style="color: darkgreen; font-size: 35px;">POINT</span> <span style="font-size: 35px;">BLANK</span></h1>
 
-                        </ul>
-                    </nav>
-                    <nav class="main-navigation menu-responsive hidden-md hidden-lg">
-                        <ul class="main-menu">
-                            <li><a href="{% url 'userhome' %}">dashboard</a></li>
-                           <li><a  href="{% url 'pbhustle' %}">pb hustle</a></li>
-                              <li><a href="{% url 'codeforces' %}">codeforces</a></li>
-                            <li><a href="{% url 'codechef' %}">codechef</a></li>
-                            <li><a href="{% url 'logout' %}">log out</a></li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+                 </a>
+              </div>
+           </div>
+           <a href="#" class="toggle-nav hidden-md hidden-lg">
+           <i class="fa fa-bars"></i>
+           </a>
+           <div class="col-md-8">
+              <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+                 <ul class="main-menu">
+                    <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; background-color: green;">SIGN IN</button> </li>
+                    <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;background-color: green;">SIGN UP</button> </li>
+                 </ul>
+              </nav>
+           </div>
         </div>
-    </header>
+     </div>
+  </header>
+  {% endif %}
+<!-- ----------  Login nav bar-------- -->
 
+{% if user %}
+<header class="site-header container animated fadeInDown">
+<div class="header-wrapper">
+   <div class="row">
+       <div class="col-md-4">
+           <div class="site-branding">
+               <a href="{% url 'landingpage' %}">
+                 <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span>  <span style="color: darkgreen; font-size: 35px;">POINT</span> <span style="font-size: 35px;">BLANK</span></h1>
+
+               </a>
+           </div>
+       </div>
+       <a href="#" class="toggle-nav hidden-md hidden-lg">
+           <i class="fa fa-bars"></i>
+       </a>
+       <div class="col-md-8">
+           <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+               <ul class="main-menu">
+                 <li><a href="{% url 'userhome' %}">Dashboard</a></li>
+                 <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+                 <li><a href="{% url 'codeforces' %}">codeforces</a></li>
+                   <li><a href="{% url 'codechef' %}">codechef</a></li>
+                   <li><a href="{% url 'logout' %}">log out</a></li>
+
+               </ul>
+           </nav>
+           <nav class="main-navigation menu-responsive hidden-md hidden-lg">
+               <ul class="main-menu">
+                   <li><a href="{% url 'userhome' %}">Dashboard</a></li>
+                   <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
+                   <li><a href="{% url 'codeforces' %}">codeforces</a></li>
+                   <li><a href="{% url 'codechef' %}">codechef</a></li>
+                   <li><a href="{% url 'logout' %}">log out</a></li>
+
+               </ul>
+           </nav>
+       </div>
+   </div>
+</div>
+</header>
+{% endif %}
     <br>    <br>
     <br><br>
-    <br><br>
-    <br>
-    <br>
+    
 
         <div >
-
-                <div class="text"><p>404</p></div>
+          <!-- <a href="{% url 'landingpage' %}"> -->
+            <div class="text"><p>404</p></div>
 
               <div class="container123">
                 <!-- caveman left -->
@@ -528,8 +558,17 @@
                   <div class="arm-right"><div class="club"></div></div>    
                 </div>
               </div>
-
+            <!-- </a> -->
         </div>
+
+<br><br>
+<br>
+<br><br>
+<br>
+<br><br>
+<br>
+
+<div style="text-align: center; margin-bottom: 20px;">You are not logged in..!! Please Login</div>
 
 
     <!-- <footer class="site-footer container text-center">

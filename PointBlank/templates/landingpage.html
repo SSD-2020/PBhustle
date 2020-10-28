@@ -100,14 +100,39 @@
                      <ul class="main-menu">
                         <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; background-color: green;">SIGN IN</button> </li>
                         <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;background-color: green;">SIGN UP</button> </li>
+                      
+                       
                      </ul>
                   </nav>
+
+                
+                  <nav class="main-navigation menu-responsive hidden-md hidden-lg">
+                     <ul class="main-menu">
+                        <li> <a onclick="document.getElementById('id01').style.display='block'" style="width:auto; ">SIGN IN</a> </li>
+                        <li> <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</a> </li>
+                     </ul>
+                  </nav>
+
                </div>
             </div>
          </div>
       </header>
       {% endif %}
 <!-- ----------  Login nav bar-------- -->
+
+
+<script>
+   $('#exampleModal').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget) // Button that triggered the modal
+var recipient = button.data('whatever') // Extract info from data-* attributes
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+var modal = $(this)
+modal.find('.modal-title').text('New message to ' + recipient)
+modal.find('.modal-body input').val(recipient)
+})
+
+</script>
 
 {% if user %}
 <header class="site-header container animated fadeInDown">
@@ -129,7 +154,6 @@
                    <ul class="main-menu">
                      <li><a href="{% url 'userhome' %}">Dashboard</a></li>
                      <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-
                      <li><a href="{% url 'codeforces' %}">codeforces</a></li>
                        <li><a href="{% url 'codechef' %}">codechef</a></li>
                        <li><a href="{% url 'logout' %}">log out</a></li>
@@ -318,6 +342,8 @@
              }
          };
       </script>
+
+
       <div id="menu-container">
       <div id="menu-1" class="homepage home-section container">
          <div class="home-intro text-center">
@@ -747,6 +773,10 @@
       <span class="border-bottom"></span>
       <span class="shape-1"></span>
       <span class="shape-2"></span>
+
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/mainjs.js' %}"></script>
+  
       <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
    </body>
 </html>
