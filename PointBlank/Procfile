@@ -1,1 +1,1 @@
-web: gunicorn PBhustle.wsgi --log-file -
+web: gunicorn PointBlank.wsgi.py --log-file -
