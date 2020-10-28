@@ -14,7 +14,7 @@ from collections import defaultdict
 # path[2] = ''  # Sumit
 
 # bhai index change kar lena bas
-gc = gspread.service_account(filename="../credentials.json")
+gc = gspread.service_account(filename="./credentials.json")
 sh = gc.open_by_key('1DHh5jPufmWLyPrYngpORRWAtslzbUA_o_8OBdGI3So4')
 
 ############### Rating Calculator ###################
@@ -192,7 +192,8 @@ class firebase:
 
         self.db.child('users').child(self.user['localId']).set(data)
 
-        ratings = {'CF': data['CF_rating'],'CC': data['CC_rating'], 'PB': data['PB_rating']}
+        ratings = {'CF': data['CF_rating'],
+                   'CC': data['CC_rating'], 'PB': data['PB_rating']}
         self.db.child('Ratings').child(self.user['localId']).set(ratings)
 
     def UpdateData(self, data):
@@ -215,10 +216,8 @@ class firebase:
 
         self.data = res.val()
 
-
     def GetRatings(self):
         return self.db.child('Ratings').child(self.user['localId']).get().val()
-
 
     def EmailExist(self, emailid):
 
@@ -236,7 +235,8 @@ class firebase:
         res = self.db.child("PBhustle").child(
             id.replace('.', '*')).child('curRating').get().val()
 
-        if(res==None): return -10000
+        if(res == None):
+            return -10000
         return res
 
     def getPBcontests(self, id):
@@ -294,7 +294,8 @@ class firebase:
         user = self.data['CF_id'].replace('.', '*')
         PB = self.db.child('PBhustle').child(
             user).child('curRating').get().val()
-        if(PB==None): PB=-10000
+        if(PB == None):
+            PB = -10000
         self.UpdatePBRatings(PB)
 
 
