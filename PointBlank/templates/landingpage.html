@@ -102,6 +102,14 @@
                         <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;background-color: green;">SIGN UP</button> </li>
                      </ul>
                   </nav>
+
+                  <nav class="main-navigation menu-responsive hidden-md hidden-lg">
+                     <ul class="main-menu">
+                        <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; ">SIGN IN</button> </li>
+                        <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</button> </li>
+                     </ul>
+                  </nav>
+
                </div>
             </div>
          </div>
@@ -129,7 +137,6 @@
                    <ul class="main-menu">
                      <li><a href="{% url 'userhome' %}">Dashboard</a></li>
                      <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-
                      <li><a href="{% url 'codeforces' %}">codeforces</a></li>
                        <li><a href="{% url 'codechef' %}">codechef</a></li>
                        <li><a href="{% url 'logout' %}">log out</a></li>
@@ -747,6 +754,10 @@
       <span class="border-bottom"></span>
       <span class="shape-1"></span>
       <span class="shape-2"></span>
+
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/mainjs.js' %}"></script>
+  
       <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
    </body>
 </html>
