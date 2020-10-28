@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import auth
 from django.http import HttpResponse
 from .codechefCompare import *
 from .codeforcesCompare import *
@@ -44,6 +45,10 @@ def signin(request):
     try: firebase_user.SignIn(emailid,password)
     except: return landingpage(request,False,False,False,False,(False,False,False),True)
     
+    # print(firebase_user.user['idToken'])
+    session_id=firebase_user.user['idToken']
+    request.session['uid']=str(session_id)
+
     firebase_user.GetData()
     return landingpage(request,True)
 
@@ -164,6 +169,7 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 def logout(request):
 
+    auth.logout(request)
     firebase_user.Clear()
     return landingpage(request,False,False,True)
 

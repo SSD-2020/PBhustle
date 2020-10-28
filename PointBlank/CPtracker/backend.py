@@ -181,6 +181,9 @@ class firebase:
     def SignIn(self, email, password):
         self.user = self.auth.sign_in_with_email_and_password(email, password)
 
+        # print(self.user)
+        # print('---------')
+
     def SignUp(self, email, password):
         self.user = self.auth.create_user_with_email_and_password(
             email, password)
