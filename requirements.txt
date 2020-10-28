@@ -5,4 +5,3 @@ panda==0.3.1
 pandas==0.24.2
 pylint==1.9.5
 requests==2.24.0
-scipy==0.13.0b1
