@@ -18,7 +18,7 @@ from .leaderboards import *
 def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
 
     user_id=request.session.get('uid')
-    print(user_id)
+    # print(user_id)
 
 
     return render(request,'landingpage.html',{
@@ -83,7 +83,7 @@ def signup(request):
     except: emailid_exist=True
 
     if(not emailid_exist):
-        
+
         firebase_user.PushData(data)
         return landingpage(request,False,True)
  

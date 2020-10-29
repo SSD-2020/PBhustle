@@ -186,7 +186,7 @@ class firebase:
 
     def SignUp(self, email, password):
         self.user = self.auth.create_user_with_email_and_password(
-            email, password)
+            email, password)['localId']
 
     def PushData(self, data):
 
@@ -214,7 +214,7 @@ class firebase:
     def GetData(self):
         res = self.db.child("users").child(self.user).get()
         self.data = res.val()
-        
+
 
     def GetRatings(self):
         return self.db.child('Ratings').child(self.user).get().val()
