@@ -199,6 +199,7 @@ def codeforces(request):
     
     if(firebase_user.user==None): return render(request, 'error.html')
 
+    firebase_user.GetData()
     CF_user=Codeforces(firebase_user.data['CF_id'])
     CF_user.fetch_data()
 
@@ -234,6 +235,7 @@ def codechef(request):
 
     if(firebase_user.user==None): return render(request, 'error.html')
 
+    firebase_user.GetData()
     CC_user=Codechef(firebase_user.data['CC_id'])
     CC_user.fetch_data()
     CC_user.plot_data()
@@ -270,6 +272,7 @@ def codeforcesCompare(request):
     if(firebase_user.user==None): return render(request, 'error.html')
 
     friend=request.GET['friend_id']
+    firebase_user.GetData()
     compare=CodeforceCompare(firebase_user.data['CF_id'],friend)
     compare.compare()
 
@@ -288,6 +291,8 @@ def codechefCompare(request):
     firebase_user=firebase(user)
 
     if(firebase_user.user==None): return render(request, 'error.html')
+
+    firebase_user.GetData()
 
     friend=request.GET['friend_id']
     compare=CodechefCompare(firebase_user.data['CC_id'],friend)
@@ -313,6 +318,7 @@ def pbhustle(request):
     if(firebase_user.user==None): return render(request, 'error.html')
 
     # print(firebase_user)
+    firebase_user.GetData()
     PB_user=PBhustle(firebase_user.data['CF_id'])
     PB_user.fetch_data()
     PB_user.plot_data()
@@ -346,6 +352,7 @@ def pbhustleCompare(request):
 
     user=request.session.get('uid')
     firebase_user=firebase(user)
+    firebase_user.GetData()
 
     if(firebase_user.user==None): return render(request, 'error.html')
 

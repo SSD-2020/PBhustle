@@ -213,8 +213,8 @@ class firebase:
 
     def GetData(self):
         res = self.db.child("users").child(self.user).get()
-
         self.data = res.val()
+        
 
     def GetRatings(self):
         return self.db.child('Ratings').child(self.user).get().val()
