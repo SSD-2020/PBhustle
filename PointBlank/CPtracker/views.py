@@ -12,13 +12,13 @@ from .leaderboards import *
 
 # Create your views here.
 
-firebase_user=firebase()
-ranking=standings()
+
     
 
 def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
 
-    print(firebase_user.user!=None)
+    user_id=request.session.get('uid')
+    print(user_id)
 
 
     return render(request,'landingpage.html',{
@@ -27,7 +27,7 @@ def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inVali
         'inValid_Email': inValid[0],
         'inValid_CF': inValid[1],
         'inValid_CC': inValid[2],
-        'user': firebase_user.user!=None,
+        'user': user_id!=None,
         'edit': False,
         'inValid_Pass': inValid_Pass,
 
@@ -42,11 +42,13 @@ def signin(request):
     emailid=request.POST['emailid']
     password=request.POST['password']
 
+    firebase_user=firebase()
+
     try: firebase_user.SignIn(emailid,password)
     except: return landingpage(request,False,False,False,False,(False,False,False),True)
     
     # print(firebase_user.user['idToken'])
-    session_id=firebase_user.user['idToken']
+    session_id=firebase_user.user
     request.session['uid']=str(session_id)
 
     firebase_user.GetData()
@@ -60,6 +62,7 @@ def signup(request):
     sem=request.POST['sem']
     branch=request.POST['branch']
 
+
     data={
         'email': emailid,
         'CC_id': 'N/A',
@@ -72,25 +75,27 @@ def signup(request):
         'CF_rating' : '-10000 ',
         'PB_rating' : -10000,
     }
-
+    firebase_user=firebase()
     emailid_exist=firebase_user.EmailExist(emailid)
 
+    
     try: firebase_user.SignUp(emailid,password)
     except: emailid_exist=True
 
     if(not emailid_exist):
         
         firebase_user.PushData(data)
-        firebase_user.Clear()
         return landingpage(request,False,True)
-    
-    firebase_user.Clear()
+ 
     return landingpage(request,False,True,False,False,(True,False,False))
 
 
 def edit(request):
 
-    if(firebase_user.user==None): return render(request, 'error.html')
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+
+    if(user==None): return render(request, 'error.html')
 
     firebase_user.GetData()
     data=firebase_user.data
@@ -123,9 +128,10 @@ def edit(request):
 
 def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
 
     if(firebase_user.user==None): return render(request, 'error.html')
-
 
     firebase_user.GetData()
     ratings=firebase_user.GetRatings()
@@ -169,12 +175,15 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 def logout(request):
 
-    auth.logout(request)
-    firebase_user.Clear()
+
+    request.session['uid']=None
     return landingpage(request,False,False,True)
 
 
 def update(request):
+
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
 
     if(firebase_user.user==None): return render(request, 'error.html')
 
@@ -185,6 +194,9 @@ def update(request):
 
 def codeforces(request):
 
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+    
     if(firebase_user.user==None): return render(request, 'error.html')
 
     CF_user=Codeforces(firebase_user.data['CF_id'])
@@ -192,6 +204,8 @@ def codeforces(request):
 
     CF_user.plot_data()
     firebase_user.UpdateCFRatings(CF_user.user_info["Current Rating"])
+
+    ranking=standings()
     ranking.codeforces()
 
     here={}
@@ -215,6 +229,9 @@ def codeforces(request):
 
 def codechef(request):
 
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+
     if(firebase_user.user==None): return render(request, 'error.html')
 
     CC_user=Codechef(firebase_user.data['CC_id'])
@@ -222,6 +239,8 @@ def codechef(request):
     CC_user.plot_data()
 
     firebase_user.UpdateCCRatings(CC_user.user_info["Current Rating"])
+
+    ranking=standings()
     ranking.codechef()
 
     here={}
@@ -245,6 +264,9 @@ def codechef(request):
 
 def codeforcesCompare(request):
 
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+
     if(firebase_user.user==None): return render(request, 'error.html')
 
     friend=request.GET['friend_id']
@@ -261,6 +283,9 @@ def codeforcesCompare(request):
         )
 
 def codechefCompare(request):
+
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
 
     if(firebase_user.user==None): return render(request, 'error.html')
 
@@ -282,6 +307,9 @@ def codechefCompare(request):
 
 def pbhustle(request):
 
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+
     if(firebase_user.user==None): return render(request, 'error.html')
 
     # print(firebase_user)
@@ -292,6 +320,7 @@ def pbhustle(request):
 
     if(rating==-10000): rating='N/A'
 
+    ranking=standings()
     ranking.pbhustle()
 
     user_info={
@@ -314,6 +343,9 @@ def pbhustle(request):
         )
 
 def pbhustleCompare(request):
+
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
 
     if(firebase_user.user==None): return render(request, 'error.html')
 

@@ -153,7 +153,7 @@ def ratingcal(standings, prev_rating):
 
 class firebase:
 
-    def __init__(self):
+    def __init__(self,uid=None):
 
         self.firebaseConfig = {
             'apiKey': "AIzaSyAIuua7NGadNu4dHChW0hYGHLApMW_XVOE",
@@ -166,7 +166,7 @@ class firebase:
             'measurementId': "G-YKZE3DKT4Z"
         }
 
-        self.user = None
+        self.user = uid
         self.auth = pyrebase.initialize_app(self.firebaseConfig).auth()
         self.db = pyrebase.initialize_app(self.firebaseConfig).database()
         self.data = {}
@@ -179,7 +179,7 @@ class firebase:
         self.data = {}
 
     def SignIn(self, email, password):
-        self.user = self.auth.sign_in_with_email_and_password(email, password)
+        self.user = self.auth.sign_in_with_email_and_password(email, password)['localId']
 
         # print(self.user)
         # print('---------')
@@ -190,34 +190,34 @@ class firebase:
 
     def PushData(self, data):
 
-        self.db.child('users').child(self.user['localId']).set(data)
+        self.db.child('users').child(self.user).set(data)
 
         ratings = {'CF': data['CF_rating'],
                    'CC': data['CC_rating'], 'PB': data['PB_rating']}
-        self.db.child('Ratings').child(self.user['localId']).set(ratings)
+        self.db.child('Ratings').child(self.user).set(ratings)
 
     def UpdateData(self, data):
 
-        self.db.child('users').child(self.user['localId']).remove()
-        self.db.child('Ratings').child(self.user['localId']).remove()
+        self.db.child('users').child(self.user).remove()
+        self.db.child('Ratings').child(self.user).remove()
         self.PushData(data)
 
     def UpdateCFRatings(self, CF):
-        self.db.child('Ratings').child(self.user['localId']).update({'CF': CF})
+        self.db.child('Ratings').child(self.user).update({'CF': CF})
 
     def UpdateCCRatings(self, CC):
-        self.db.child('Ratings').child(self.user['localId']).update({'CC': CC})
+        self.db.child('Ratings').child(self.user).update({'CC': CC})
 
     def UpdatePBRatings(self, PB):
-        self.db.child('Ratings').child(self.user['localId']).update({'PB': PB})
+        self.db.child('Ratings').child(self.user).update({'PB': PB})
 
     def GetData(self):
-        res = self.db.child("users").child(self.user['localId']).get()
+        res = self.db.child("users").child(self.user).get()
 
         self.data = res.val()
 
     def GetRatings(self):
-        return self.db.child('Ratings').child(self.user['localId']).get().val()
+        return self.db.child('Ratings').child(self.user).get().val()
 
     def EmailExist(self, emailid):
 
