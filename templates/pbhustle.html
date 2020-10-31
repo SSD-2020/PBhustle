@@ -205,11 +205,11 @@
     
                     </thead>
                     
-                    {% for name,id,rank in standings %}
+                    {% for name,id,rank,link in standings %}
                     <tr>
     
                         <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{name}}</td>
-                        <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{id}}</td>
+                        <td style="color: #fff; text-align:center;" class="animated fadeInLeft">  <a href= {{link}}> {{id}}  </a></td>
                         <td style="color: #fff; text-align:center;" class="animated fadeInLeft"> {{rank}}</td>
 
                     </tr>
@@ -246,7 +246,7 @@
                 box-sizing: border-box; " required>
                     <option value="" disabled selected>Choose User </option>
 
-         {% for name,id,rank in standings %}
+         {% for name,id,rank,link in standings %}
          
                <option value="{{id}}">{{name}} :  {{id}}</option>
            

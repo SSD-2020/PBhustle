@@ -35,7 +35,7 @@ class standings:
             handle=db.child('users').child(id).child('CF_id').get().val()
             rating=self.ratings[id]['CF']
 
-            self.CF_Standings.append([name,handle,rating])
+            self.CF_Standings.append([name,handle,rating,'https://codeforces.com/profile/'+handle])
 
         self.CF_Standings.sort(key= lambda x: int(x[2][:x[2].index(' ')]),reverse=True)
 
@@ -56,7 +56,7 @@ class standings:
             handle=db.child('users').child(id).child('CC_id').get().val()
             rating=self.ratings[id]['CC']
 
-            self.CC_Standings.append([name,handle,rating])
+            self.CC_Standings.append([name,handle,rating,'https://www.codechef.com/users/deepu217'+handle])
 
         self.CC_Standings.sort(key= lambda x: x[2],reverse=True)
 
@@ -75,7 +75,7 @@ class standings:
             handle=db.child('users').child(id).child('CF_id').get().val()
             rating=self.ratings[id]['PB']
 
-            self.PB_Standings.append([name,handle,rating])
+            self.PB_Standings.append([name,handle,rating,'https://codeforces.com/profile/'+handle])
 
         self.PB_Standings.sort(key= lambda x: x[2],reverse=True)
         
