@@ -117,7 +117,7 @@ class Codechef:
 
 
 
-# CC_user=Codechef('deepu217')
+# CC_user=Codechef('N/A')
 # CC_user.fetch_data()
 
 # print(CC_user.user_valid)

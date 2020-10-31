@@ -5,6 +5,7 @@ import numpy as np
 from numpy.fft import fft, ifft
 import gspread
 from collections import defaultdict
+import requests
 
 # path = ['', '', '']
 
@@ -299,8 +300,47 @@ class firebase:
         self.UpdatePBRatings(PB)
 
 
-# f=firebase()
-# f.updateHustle()
+    def UpdateCodeforce(self):
+
+        users=self.db.child("users").get().val()
+        # print(users)
+
+        for uid in users:
+            url= "https://codeforces.com/api/user.info?handles="+users[uid]['CF_id']
+            r = requests.get(url)
+            rating = r.json()
+            if(rating['status']=='OK'):
+                if ('rating' in rating['result'][0]):
+
+                    new_rating=str(rating['result'][0]['rating']) + ' ( ' + rating['result'][0]['rank'] + ' )'
+
+                    self.db.child('Ratings').child(uid).update({'CF': new_rating})
+                    self.db.child('users').child(uid).update({'CF_rating': new_rating})
+
+    def UpdateCodechef(self):
+
+        users=self.db.child("users").get().val()
+        # print(users)
+
+        for uid in users:
+
+            if(users[uid]['CC_id']=='N/A'): continue
+            
+            try:
+                url= 'https://competitive-coding-api.herokuapp.com/api/codechef/' + users[uid]['CC_id']
+                r = requests.get(url)
+                rating = r.json()
+            except: continue
+            if(rating['status']!='Success'):  continue
+            
+            new_rating=rating['rating']
+            print(new_rating)
+            self.db.child('Ratings').child(uid).update({'CC': new_rating})
+            self.db.child('users').child(uid).update({'CC_rating': new_rating})
+    
+
+f=firebase()
+f.UpdateCodechef()
 
 
 # f=firebase()
