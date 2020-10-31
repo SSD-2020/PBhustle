@@ -292,6 +292,7 @@ class firebase:
 
         self.db.child('PBhustle').update({'PageIndex': cur_page})
 
+        self.GetData()
         user = self.data['CF_id'].replace('.', '*')
         PB = self.db.child('PBhustle').child(
             user).child('curRating').get().val()
@@ -334,13 +335,13 @@ class firebase:
             if(rating['status']!='Success'):  continue
             
             new_rating=rating['rating']
-            print(new_rating)
+            
             self.db.child('Ratings').child(uid).update({'CC': new_rating})
             self.db.child('users').child(uid).update({'CC_rating': new_rating})
     
 
-f=firebase()
-f.UpdateCodechef()
+# f=firebase()
+# f.UpdateCodechef()
 
 
 # f=firebase()

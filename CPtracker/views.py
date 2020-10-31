@@ -190,6 +190,27 @@ def update(request):
     firebase_user.updateHustle()
     return userhome(request)
 
+def updateCF(request):
+
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+
+    if(firebase_user.user==None): return render(request, 'error.html')
+
+    firebase_user.UpdateCodeforce()
+    return userhome(request)
+
+def updateCC(request):
+
+    user=request.session.get('uid')
+    firebase_user=firebase(user)
+
+    if(firebase_user.user==None): return render(request, 'error.html')
+
+    firebase_user.UpdateCodechef()
+    return userhome(request)
+
+
 #### CP Stuff -----------------------------------------------------------/
 
 def codeforces(request):
