@@ -401,13 +401,19 @@ h2.welcome-title {
 }
 
 .inner-story {
-    background: #fff;
+    background-color: #2f3136;
     padding: 40px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0.2, 0.2, 0.5);
     font-weight: 300;
-    color: #32353a;
+    color: #DCDCDC !important;
     -moz-animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
+}
+
+.inner-story:hover {
+    box-shadow: 0 4px 8px 0 rgba(0.1, 0.2, 0.2, 0.2); 
+
 }
 
 .inner-story h2 {

@@ -15,6 +15,15 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
 
+<!-- <style>
+
+@media screen and (max-width: 600px) {
+  div.container2 {
+    width: 100%;
+  }
+}
+</style> -->
+
 </head>
 
 <body>
@@ -58,35 +67,33 @@
     </header>
 
 
-    <!-- <div id="menu-2" class="content about-section container"> -->
-        <div class="our-story">
+    <div class=" container2">
+        <div class="our-story" >
             <!-- <div class="story-bg animated fadeIn"></div> -->
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-8 col-md-offset-2 ">
                     <div class="inner-story animated fadeInRight text-center">
-                        <h1 class="animated fadeInDownBig">CODE FORCES</h1>
+                        <h1 class="animated fadeInDownBig">CODEFORCES</h1>
                         <br>
                         <!-- <h3 >USER INFO</h3> -->
                         <!-- <br> -->
                             <div>
-                                <table style="margin-left: auto; margin-right: auto">
                                     {% for key,value in info.items %}
-                                    <tr >
-                                        <td style="padding-bottom: 10px; padding-right: 40px;">
-                                            <h6  class="animated fadeInUpBig">{{key }}</h6>
-                                        </td>
-                                        <td style="padding-bottom: 10px;">
-                                            <p  class="animated fadeInUpBig">{{value}}</p>
-                                        </td>
-                                    </tr>
+                                    <!-- <tr >
+                                        <td style="padding-bottom: 10px; padding-right: 40px;"> -->
+                                            <p  class="animated fadeInUpBig" style="margin-bottom: 5px;">{{key }} &nbsp;&nbsp; : &nbsp;&nbsp;{{value}}</p>
+                                        <!-- </td> -->
+            
+                                    <!-- </tr> -->
                                     {% endfor %}
-                                </table>
+                                <!-- </table> -->
                             </div>
                         <!-- </div> -->
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     
     
 
@@ -119,12 +126,7 @@
                 {{ plot }}
                 {% endautoescape %}
             </div>
-            <br>
-            <br><br>
-
-            
-   
-        </div>
+          </div>
 
     <div id="menu-2" class="content about-section container">
         
