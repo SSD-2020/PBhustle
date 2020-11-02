@@ -271,12 +271,15 @@ h2.welcome-title {
     -moz-animation-delay: 0.5s;
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+
    
 }
 
 .project-title:hover {
     background:rgba(70,73,79, 1.5);
-    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7); 
+
 
 }
 

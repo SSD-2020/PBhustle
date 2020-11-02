@@ -265,16 +265,30 @@
 
 
             {% if not_valid %}
-            <div class="alert" style="background-color:red;">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Invalid Handle for comparision!!
-             </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 ">
+                    <div class="inner-story animated fadeInRight text-center" style="padding: 10px;">
+                        <h4 class="animated fadeInDownBig">
+                            <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Invalid Handle for comparision!!
+
+                        </h4>
+                        <br>
+                    </div>
+                </div>
+            </div>
 
              {% elif empty_list %}
-             <div class="alert" style="background-color:red;">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; You have not given any contests yet;!!
-             </div>
+             <div class="row">
+                <div class="col-md-12 ">
+                    <div class="inner-story animated fadeInRight text-center" style="padding: 10px;">
+                        <h4 class="animated fadeInDownBig">
+                                <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp;  You have not given any contests yet;!!
+
+                            </h4>
+                            <br>
+                        </div>
+                    </div>
+                </div>
             
              {% else %}
 
@@ -296,16 +310,29 @@
 
 
                 {% if not_valid %}
-                <div class="alert" style="background-color:red;">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Invalid Handle for comparision!!
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 ">
+                        <div class="inner-story animated fadeInRight text-center" style="padding: 10px;">
+                            <h4 class="animated fadeInDownBig">
+                                <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; Invalid Handle for comparision!!
+    
+                            </h4>
+                            <br>
+                        </div>
+                    </div>
                 </div>
-
                 {% elif empty_list %}
-                <div class="alert" style="background-color:red;">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp; You have not given any contests yet;!!
-                </div>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="inner-story animated fadeInRight text-center" style="padding: 10px;">
+                            <h4 class="animated fadeInDownBig">
+                                    <strong>ERROR !!! </strong>  &nbsp;&nbsp;&nbsp;  You have not given any contests yet;!!
+    
+                                </h4>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
             
              {% else %}
 
