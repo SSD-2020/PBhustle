@@ -419,32 +419,27 @@
                 <form class="modal-content" action="/edit/" name='edit' method="POST">
                     {% csrf_token %}
 
-                    <div class="container" style="background-color:#32353a;  width :95%"">
+                    <div class="container" style="background-color:#32353a;  width :95%">
                       <h1>EDit DETAILS</h1>
                       <p>Please edit this form to edit details.</p>
                       <hr>
                       <label for="name"><b>Edit Name</b></label>
-                      <input type="text" placeholder="{{name}}" name="name" value="{{name}}">
+                      <input type="text" placeholder="{{name}}" name="name" disabled="disabled" style=" background: #fff;color: black;" value="{{name}}">
                       <label for="email"><b>Edit Email</b></label>
-                      <input type="text" placeholder="{{email}}" name="emailid" value="{{email}}">
+                      <input type="text" placeholder="{{email}}" name="emailid" disabled="disabled" style=" background: #fff;color: black;" value="{{email}}">
                           <div class="row">
                          <div class="col-md-6 col-sm-12">
                             <label for="Codeforces"><b>Edit Codeforces</b></label>
-                            <input type="text" placeholder="{{CF_id}}" name="CF_id" value="{{CF_id}}">
+                            <input type="text" placeholder="{{CF_id}}" style="color: black;" name="CF_id" value="{{CF_id}}">
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="Codechef"><b>Edit Codechef</b></label>
-                            <input type="text" placeholder="{{CC_id}}" name="CC_id" value="{{CC_id}}">
+                            <input type="text" placeholder="{{CC_id}}" style="color: black;name="CC_id" value="{{CC_id}}">
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="branch"><b>Edit Branch</b></label>
-                            <select name="branch"  style="width: 100%;
-                            padding: 12px 20px;
-                            margin: 8px 0;
-                            display: inline-block;
-                            color: black !important;
-                            border: 1px solid #ccc;
-                            box-sizing: border-box; " required>
+                                               <select name="branch"  style="width:100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;color: black;" required>
+
                                <option value="Aeronautical Engineering">Aeronautical Engineering</option>
                                <option value="Civil Engineering">Civil Engineering</option>
                                <option value="Chemical Engineering">Chemical Engineering</option>
