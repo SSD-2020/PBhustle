@@ -442,7 +442,6 @@
 </head>
 
 <body>
-  {% if not user %}
   <header class="site-header container animated fadeInDownBig">
      <div class="header-wrapper animated fadeInDownBig">
         <div class="row">
@@ -468,50 +467,9 @@
         </div>
      </div>
   </header>
-  {% endif %}
 <!-- ----------  Login nav bar-------- -->
 
-{% if user %}
-<header class="site-header container animated fadeInDown">
-<div class="header-wrapper">
-   <div class="row">
-       <div class="col-md-4">
-           <div class="site-branding">
-               <a href="{% url 'landingpage' %}">
-                 <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span>  <span style="color: darkgreen; font-size: 35px;">POINT</span> <span style="font-size: 35px;">BLANK</span></h1>
 
-               </a>
-           </div>
-       </div>
-       <a href="#" class="toggle-nav hidden-md hidden-lg">
-           <i class="fa fa-bars"></i>
-       </a>
-       <div class="col-md-8">
-           <nav id="nav" class="main-navigation hidden-xs hidden-sm">
-               <ul class="main-menu">
-                 <li><a href="{% url 'userhome' %}">Dashboard</a></li>
-                 <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-                 <li><a href="{% url 'codeforces' %}">codeforces</a></li>
-                   <li><a href="{% url 'codechef' %}">codechef</a></li>
-                   <li><a href="{% url 'logout' %}">log out</a></li>
-
-               </ul>
-           </nav>
-           <nav class="main-navigation menu-responsive hidden-md hidden-lg">
-               <ul class="main-menu">
-                   <li><a href="{% url 'userhome' %}">Dashboard</a></li>
-                   <li><a href="{% url 'pbhustle' %}">pb hustle</a></li>
-                   <li><a href="{% url 'codeforces' %}">codeforces</a></li>
-                   <li><a href="{% url 'codechef' %}">codechef</a></li>
-                   <li><a href="{% url 'logout' %}">log out</a></li>
-
-               </ul>
-           </nav>
-       </div>
-   </div>
-</div>
-</header>
-{% endif %}
     <br>    <br>
     <br><br>
     
