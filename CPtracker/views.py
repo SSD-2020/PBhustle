@@ -382,7 +382,7 @@ def pbhustleCompare(request):
     compare.compare()
 
 
-    return render(request, "pbhustleCompare.html",{
+    return render(request, "pbhustlecompare.html",{
         'friend' : friend,
         'result': compare.compare_result[::-1],
         'plot' : compare.plot,
