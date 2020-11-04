@@ -1,1 +1,1 @@
-web: gunicorn PointBlank.wsgi.py --log-file -
+web: gunicorn PointBlank.wsgi
