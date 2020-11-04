@@ -440,10 +440,12 @@
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="branch"><b>Edit Branch</b></label>
-                            <input type="text" placeholder="{{branch}}" style="background: #32353a;
-                            color: white;" disabled="disabled"name="branch" value="{{branch}}">
-
-                             <!-- <select name="branch" style="width:100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;color: black;">
+                            <select name="branch"  style="width: 100%;
+                            padding: 12px 20px;
+                            margin: 8px 0;
+                            display: inline-block;
+                            border: 1px solid #ccc;
+                            box-sizing: border-box; " required>
                                <option value="Aeronautical Engineering">Aeronautical Engineering</option>
                                <option value="Civil Engineering">Civil Engineering</option>
                                <option value="Chemical Engineering">Chemical Engineering</option>
@@ -454,19 +456,17 @@
                                <option value="Telecomunication Engineering">Telecomunication Engineering</option>
                                <option value="Others">Others</option>
     
-                           </select> -->
+                           </select>
                         </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="sem"><b>Edit Semester</b></label>
-                            <input type="number" placeholder="{{sem}}" value="{{sem}}" name="sem"  min="1" max="8" disabled="disabled" style="width: 100%; color:white; background: #32353a;    border: 1px solid #ccc;
-                            padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;"required>
+                            <input type="number" placeholder="{{sem}}" value="{{sem}}" name="sem"  min="1" max="8"  style="width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;"required>
 
                          </div>
                          <div class=" col-sm-12">
                             <button  type="submit" class="cancelbtn" style="background-color: green; width: 100%; margin-left:0 px;margin-right: 0px;">EDIT</button>
                          </div>
                       </div>
-                
                      
                    </div>
                 </form>
