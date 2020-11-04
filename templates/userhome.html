@@ -424,9 +424,11 @@
                       <p>Please edit this form to edit details.</p>
                       <hr>
                       <label for="name"><b>Edit Name</b></label>
-                      <input type="text" placeholder="{{name}}" name="name" disabled="disabled" style=" background: #fff;color: black;" value="{{name}}">
+                      <input type="text" placeholder="{{name}}" name="name" disabled="disabled" style=" background: #32353a;
+                      color: white;" value="{{name}}">
                       <label for="email"><b>Edit Email</b></label>
-                      <input type="text" placeholder="{{email}}" name="emailid" disabled="disabled" style=" background: #fff;color: black;" value="{{email}}">
+                      <input type="text" placeholder="{{email}}" name="emailid" disabled="disabled" style=" background: #32353a;
+                      color: white;" value="{{email}}">
                           <div class="row">
                          <div class="col-md-6 col-sm-12">
                             <label for="Codeforces"><b>Edit Codeforces</b></label>
@@ -434,12 +436,14 @@
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="Codechef"><b>Edit Codechef</b></label>
-                            <input type="text" placeholder="{{CC_id}}" style="color: black;name="CC_id" value="{{CC_id}}">
+                            <input type="text" placeholder="{{CC_id}}" style="color: black;" name="CC_id" value="{{CC_id}}">
                          </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="branch"><b>Edit Branch</b></label>
-                                               <select name="branch"  style="width:100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;color: black;" required>
+                            <input type="text" placeholder="{{branch}}" style="background: #32353a;
+                            color: white;" disabled="disabled"name="branch" value="{{branch}}">
 
+                             <!-- <select name="branch" style="width:100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;color: black;">
                                <option value="Aeronautical Engineering">Aeronautical Engineering</option>
                                <option value="Civil Engineering">Civil Engineering</option>
                                <option value="Chemical Engineering">Chemical Engineering</option>
@@ -450,11 +454,12 @@
                                <option value="Telecomunication Engineering">Telecomunication Engineering</option>
                                <option value="Others">Others</option>
     
-                           </select>
+                           </select> -->
                         </div>
                          <div class="col-md-6 col-sm-12">
                             <label for="sem"><b>Edit Semester</b></label>
-                            <input type="number" placeholder="{{sem}}" value="{{sem}}" name="sem"  min="1" max="8"  style="width: 100%; color:black; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;"required>
+                            <input type="number" placeholder="{{sem}}" value="{{sem}}" name="sem"  min="1" max="8" disabled="disabled" style="width: 100%; color:white; background: #32353a;    border: 1px solid #ccc;
+                            padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;"required>
 
                          </div>
                          <div class=" col-sm-12">
