@@ -272,6 +272,8 @@ def codechef(request):
     if(here["Current Rating"]==-10000): here["Current Rating"]='N/A'
     if(here["Maximum Rating"]==-10000): here["Maximum Rating"]='N/A'
 
+
+
     return render(
         request,
         'codechef.html',
@@ -280,7 +282,7 @@ def codechef(request):
             'info':here,
             'contests':CC_user.user_contests[::-1],
             'standings': ranking.CC_Standings,
-            'user_id' : firebase_user.data['CF_id']!='N/A',
+            'user_id' : firebase_user.data['CC_id']!='N/A',
             }
         )
 
@@ -319,7 +321,7 @@ def codechefCompare(request):
     compare=CodechefCompare(firebase_user.data['CC_id'],friend)
     compare.compare()
 
-    print(compare.friend_valid)
+    # print(compare.friend_valid)
 
 
     return render(request, "codechefcompare.html",{
