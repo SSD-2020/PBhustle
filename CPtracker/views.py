@@ -52,7 +52,7 @@ def signin(request):
     request.session['uid']=str(session_id)
 
     firebase_user.GetData()
-    return landingpage(request,True)
+    return userhome(request)
 
 def signup(request):
 
