@@ -15,79 +15,18 @@ from .leaderboards import *
 
     
 
-def landingpage(request,SignIn=False,SignUp=False,logOut=False,edit=False,inValid=(False,False,False),inValid_Pass=False):
+def landingpage(request,edit=False):
 
     user_id=request.session.get('uid')
-    # print(user_id)
-
-
+    
     return render(request,'landingpage.html',{
-        'SignIn' : SignIn ,
-        'SignUp':SignUp ,
-        'inValid_Email': inValid[0],
-        'inValid_CF': inValid[1],
-        'inValid_CC': inValid[2],
         'user': user_id!=None,
         'edit': False,
-        'inValid_Pass': inValid_Pass,
 
         }
         )
 
 
-
-
-def signin(request):
-
-    emailid=request.POST['emailid']
-    password=request.POST['password']
-
-    firebase_user=firebase()
-
-    try: firebase_user.SignIn(emailid,password)
-    except: return landingpage(request,False,False,False,False,(False,False,False),True)
-    
-    # print(firebase_user.user['idToken'])
-    session_id=firebase_user.user
-    request.session['uid']=str(session_id)
-
-    firebase_user.GetData()
-    return userhome(request)
-
-def signup(request):
-
-    name=request.POST['name']
-    emailid=request.POST['emailid']
-    password=request.POST['password']
-    sem=request.POST['sem']
-    branch=request.POST['branch']
-
-
-    data={
-        'email': emailid,
-        'CC_id': 'N/A',
-        'CF_id': 'N/A',
-        'name': name, 
-        'college' : "Dayananda Sagar College of Engineering",
-        'branch' : branch,
-        'sem': sem,
-        'CC_rating' : -10000,
-        'CF_rating' : '-10000 ',
-        'PB_rating' : -10000,
-    }
-    firebase_user=firebase()
-    emailid_exist=firebase_user.EmailExist(emailid)
-
-    
-    try: firebase_user.SignUp(emailid,password)
-    except: emailid_exist=True
-
-    if(not emailid_exist):
-
-        firebase_user.PushData(data)
-        return landingpage(request,False,True)
- 
-    return landingpage(request,False,True,False,False,(True,False,False))
 
 
 def edit(request):
@@ -129,11 +68,20 @@ def edit(request):
 def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
     user=request.session.get('uid')
+    new_user=False
+
+    if(user==None):
+        
+        if(request.user.id!=None): 
+            request.session['uid']=str(request.user.id)
+            user=request.session['uid']
+            new_user=True
+        else:
+
+            return render(request, 'error.html')
+
     firebase_user=firebase(user)
-
-    if(firebase_user.user==None): return render(request, 'error.html')
-
-    firebase_user.GetData()
+    firebase_user.GetData(request.user.first_name + ' ' +request.user.last_name)
     ratings=firebase_user.GetRatings()
     # print(ratings)
 
@@ -155,7 +103,6 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
         request,'userhome.html',
         {
             'name':  firebase_user.data['name'],
-            'email': firebase_user.data['email'],
             'college': firebase_user.data['college'],
             'branch': firebase_user.data['branch'],
             'sem': firebase_user.data['sem'],
@@ -167,6 +114,7 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
             'CF_rating': CF_rating,
             'CC_rating' : CC_rating,
             'PB_rating' : PB_rating,
+            'new_user' : new_user
             
         }
         )
@@ -175,9 +123,9 @@ def userhome(request,edit=False,CF_valid=True,CC_valid=True):
 
 def logout(request):
 
-
     request.session['uid']=None
-    return landingpage(request,False,False,True)
+    auth.logout(request)
+    return landingpage(request)
 
 
 def update(request):

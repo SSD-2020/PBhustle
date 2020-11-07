@@ -245,10 +245,20 @@
 
     {% endif %}
 
-<div class="alert" style="background-color: green;">
+    {% if edit %}
+    <div class="alert" style="background-color: green;">
          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
          <strong>SUCCESS!! </strong> &nbsp; Your details has been updated!!.
       </div>
+    {% endif %}
+
+    {% if new_user %}
+      <div class="alert" style="background-color:green;	">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';" style="text-align: left;">&times;</span> 
+        <strong>SUCCESS,  </strong>  Logged In, Please Fill in your details!!
+      </div>
+
+      {% endif %}
 
 
     <div id="menu-container">
@@ -311,7 +321,6 @@
                                             <h4 style="color: #fff; animation-delay: 300ms;" class="animated fadeInDownBig">General</h4><br>
 
                                             <p style="color: #fff; margin-bottom: 0px;animation-delay: 320ms;" class="animated fadeInLeft">Name : {{name}}</p>
-                                            <p style="color: #fff; margin-bottom: 0px;animation-delay: 340ms;" class="animated fadeInLeft">Email ID : {{email}}</p>
                                             <p style="color: #fff; margin-bottom: 0px;animation-delay: 360ms;" class="animated fadeInLeft">College : {{college}}</p>
                                             <p style="color: #fff; margin-bottom: 0px;animation-delay: 380ms;" class="animated fadeInLeft">Branch : {{branch}}</p>
                                             <p style="color: #fff; margin-bottom: 0px;animation-delay: 400ms;" class="animated fadeInLeft">Semester : {{sem}}</p><br>

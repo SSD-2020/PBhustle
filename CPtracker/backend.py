@@ -212,9 +212,24 @@ class firebase:
     def UpdatePBRatings(self, PB):
         self.db.child('Ratings').child(self.user).update({'PB': PB})
 
-    def GetData(self):
-        res = self.db.child("users").child(self.user).get()
-        self.data = res.val()
+    def GetData(self,user=None):
+        res = self.db.child("users").child(self.user).get().val()
+
+        if(res==None):
+
+            res={
+                'CC_id': 'N/A',
+                'CF_id': 'N/A',
+                'name': user, 
+                'college' : "Dayananda Sagar College of Engineering",
+                'branch' : 'N/A',
+                'sem': 'N/A',
+                'CC_rating' : -10000,
+                'CF_rating' : '-10000 ',
+                'PB_rating' : -10000,
+                }
+            self.PushData(res)
+        self.data = res
 
 
     def GetRatings(self):
