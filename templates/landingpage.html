@@ -103,7 +103,7 @@
                      <ul class="main-menu">
                         <!-- <li> <a href="{% provider_login_url 'google' %}">Google</a></li> -->
                         <li><a href="{% provider_login_url 'google' %}">    <button style="width:auto; background-color: green;">SIGN IN &nbsp;<i class="icon-social-google" style="color: white;"></i></button></a> </li>
-                        <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;background-color: green;">SIGN UP</button> </li>
+                        <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;background-color: green;">SIGN UP </button> </li>
                       
                        
                      </ul>
@@ -210,8 +210,8 @@ modal.find('.modal-body input').val(recipient)
       </div>
       </form>
       </div>
-      <div id="id02" class="modal">
-         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <!-- <div id="id02" class="modal"> -->
+         <!-- <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
          <form class="modal-content animate" action="/signup/" name='signup' method="POST">
             {% csrf_token %}
             <div class="container" style="background-color:#32353a; width :95%">
@@ -224,7 +224,7 @@ modal.find('.modal-body input').val(recipient)
                <input type="text" placeholder="Enter Email" name="emailid" required>
                <label for="password"><b>Password</b></label>
                <input type="password" placeholder="Enter Password" name="password" minlength="6" required>
-               <div class="row">
+               <div class="row"> -->
                   <!-- <div class="col-md-6 col-sm-12">
                      <label for="Codeforces"><b>Codeforces</b></label>
                      <input type="text" placeholder="Enter codeforces Handle" name="CF_id" >
@@ -233,7 +233,7 @@ modal.find('.modal-body input').val(recipient)
                      <label for="Codechef"><b>Codechef</b></label>
                      <input type="text" placeholder="Enter codechef handle" name="CC_id" >
                   </div> -->
-                  <div class="col-md-6 col-sm-12">
+                  <!-- <div class="col-md-6 col-sm-12">
                      <label for="branch"><b>Branch</b></label>
                      
                      <select name="branch"  style="width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;color: black;" required>
@@ -257,7 +257,7 @@ modal.find('.modal-body input').val(recipient)
                   <script>
 
 
-                  </script>
+                  </script> -->
                <!-- <div>
                   <label for="HackerRank"><b>HackerRank</b></label>
                   <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
@@ -265,21 +265,21 @@ modal.find('.modal-body input').val(recipient)
                   </div> -->
                <!-- <label for="re_password"><b>Repeat Password</b></label>
                   <input type="password" placeholder="Repeat Password" name="re_password" required> -->
-                  <p style="padding-left: 15px;">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                  <!-- <p style="padding-left: 15px;">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
                   <div class="clearfix">
                      
                      <div class=" col-sm-12">
                         <button  type="submit" class="cancelbtn" style="background-color: green; width: 100%;">Sign Up</button>
                      </div>
-                  </div>
+                  </div> -->
                      <!-- <div class="col-md-6 col-sm-12"> -->
                      <!-- <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" style="width: 50%;">Cancel</button>
                         </div>
                         -->
-                  </div>
+                  <!-- </div>
             </div>
          </form>
-      </div>
+      </div> -->
       <script>
          var modal1 = document.getElementById('id02');
          var modal2 = document.getElementById('id01')
