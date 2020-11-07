@@ -1,0 +1,248 @@
+{% load socialaccount %}
+{% providers_media_js %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+      <link rel="icon" href="{% static 'img/icon8.png' %}" type="image/png" sizes="32x32">
+      <title>Welcome | Pointblank </title>
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/simple-line-icons.css' %}">
+      <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+      <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
+      <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.css" integrity="sha512-9Tu/Gu0+bXW+oGrTGJOeNz2RG4MaF52FznXCciXFrXehFTLF6phJnJFNVOU2mmj9FWIXk9ap0H1ocygu1ZTRqg==" crossorigin="anonymous" />
+      <style>
+
+      .modal {
+		  display: none; 
+		  position: fixed; 
+		  z-index: 1;
+		  left: 0;
+		  top: 0;
+		  width: 100%; 
+		  height: 100%; 
+		  overflow: hidden; 
+		  background-color: rgb(0,0,0); 
+		  background-color: rgba(0,0,0,0.4); 
+		  padding-top: 60px;
+		}
+		
+		.modal-content 
+		{
+		  background-color: #32353a;
+		  margin: 5% auto 15% auto;
+		  border: 1px solid #32353a;
+		  width: 52%; 
+		}
+		
+         .ihov:hover{
+            color: green;
+         }
+
+         html,body{
+            overflow: auto;
+         }
+
+         /* .modal{
+            overflow: auto;
+
+         }
+          */
+         .alert {
+
+         padding: 20px;
+         background-color: #f44336;
+         color: white;
+         width: 100%;
+         margin: auto;
+         align-items: center;
+         animation: fadeOut 2s forwards;
+         animation-delay: 5s;
+         background: red;
+         color: white;
+         padding: 10px;
+         /* position: absolute; */
+         margin-bottom: 50px;
+         /* z-index:5; */
+         margin-top: -80px;
+         text-align: center;
+         margin-left: 10px;
+         margin-right: 10px;
+         }
+         .project-title:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            background-color: #3f4147 !important;
+         }
+         .closebtn {
+         margin-left: 0px;
+         color:     white;
+         font-weight: bold;
+         float:right;
+         font-size: 22px;
+         line-height: 20px;
+         cursor: pointer;
+         transition: 0.3s;
+         }
+         .closebtn:hover {
+         color: black;
+         }
+         html,
+         body {
+         height: 100%;
+         }
+         footer {
+         bottom: -50px;
+         }
+
+            a.dsce:hover{
+                  color: green;
+                  font-weight: 500;
+            }
+
+      </style>
+   </head>
+   <body>
+
+      <header class="site-header container animated fadeInDownBig">
+         <div class="header-wrapper animated fadeInDownBig">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="site-branding animated fadeInDownBig">
+                     <a href="{% url 'landingpage' %}">
+                        <h1><span style="color: green;" class="animated fadeInDownBig">&lt;.&nbsp;&gt;&nbsp;</span>  <span style="color: darkgreen; font-size: 35px;">POINT</span> <span style="font-size: 35px;">BLANK</span></h1>
+                     </a>
+                  </div>
+               </div>
+               <div class="col-md-8">
+                  <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+                     <ul class="main-menu">
+                       
+                        <h1> <span style=" font-size: 35px;">SIGN</span> <span style="color: darkgreen;font-size: 35px;">UP</span></h1>
+
+                     </ul>
+                  </nav>          
+            </div>
+         </div>
+      </header>
+
+
+      <!-- <div id="id02" class="modal"> -->
+         <span onclick="document.getElementById('id02').style.display='block'" class="close" title="Close Modal">&times;</span>
+         <form class="modal-content animate" action="/signup/" name='signup' method="POST">
+            {% csrf_token %}
+            <div class="container" style="background-color:#32353a; width :95%">
+               <h1>Sign Up</h1>
+               <p>Please fill in this form to create an account.</p>
+               <hr>
+               <label for="name"><b>Name</b></label>
+               <input type="text" placeholder="Enter Name" name="name" required>
+               <label for="email"><b>Email</b></label>
+               <input type="text" placeholder="Enter Email" name="emailid" required>
+               <label for="password"><b>Password</b></label>
+               <input type="password" placeholder="Enter Password" name="password" minlength="6" required>
+               <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Codeforces"><b>Codeforces</b></label>
+                     <input type="text" placeholder="Enter codeforces Handle" name="CF_id" >
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Codechef"><b>Codechef</b></label>
+                     <input type="text" placeholder="Enter codechef handle" name="CC_id" >
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="VJudge"><b>VJudge ID</b></label>
+                     <input type="text" placeholder="Enter vjudge handle" name="Vjduge_id" >
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="Github"><b>GItHub ID</b></label>
+                     <input type="text" placeholder="Enter Github handle" name="github_id" >
+                  </div>
+
+                  <div class="col-md-6 col-sm-12">
+                     <label for="branch"><b>Branch</b></label>
+                     
+                     <select name="branch"  style="width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;color: black;" required>
+                        <option value="Aeronautical Engineering">Aeronautical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Chemical Engineering">Chemical Engineering</option>
+                        <option value="Computer Science & Engineering">Computer Science Engineering</option>
+                        <option value="Eletronics & Comunication Engineering">Eletronics & Comunication Engineering</option>
+                        <option value="Information Science Engineering ">Information Science Engineering </option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Telecomunication Engineering">Telecomunication Engineering</option>
+                        <option value="Others">Others</option>
+
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                     <label for="sem"><b>Semester</b></label>
+                     <input type="number" placeholder="Enter Semester"  name="sem"  min="1" max="8"  style="width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; box-sizing: border-box;"required>
+                  </div>
+              
+                  <script>
+
+
+                  </script>
+               <!-- <div>
+                  <label for="HackerRank"><b>HackerRank</b></label>
+                  <input type="text" placeholder="Enter Rackerrank handle" name="HR_id" required>
+                  
+                  </div> -->
+               <!-- <label for="re_password"><b>Repeat Password</b></label>
+                  <input type="password" placeholder="Repeat Password" name="re_password" required> -->
+                  <p style="padding-left: 15px;">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                  <div class="clearfix">
+                     
+                     <div class=" col-sm-12">
+                        <button  type="submit" class="cancelbtn" style="background-color: green; width: 100%;">Sign Up</button>
+                     </div>
+                  </div>
+                     <!-- <div class="col-md-6 col-sm-12"> -->
+                     <!-- <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" style="width: 50%;">Cancel</button>
+                        </div>
+                        -->
+                  </div>
+            </div>
+         </form>
+      </div>
+
+
+
+      
+      <footer class="site-footer container text-center" style="bottom: 0px;">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="main-footer">
+                  <ul class="social">
+                     <li><a href="https://www.linkedin.com/company/point-blank-d/">Linkedin</a></li>
+                     <li><a href="https://www.instagram.com/pointblank_dsce/?hl=en">Instagram</a></li>
+                     <li><a href="https://www.dsce.edu.in/">DSCE</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12 copyright">
+               <p>Copyright &copy; 2020 <a href="https://www.linkedin.com/company/point-blank-d/" target="_blank">Point Blank@ DSCE</a></p>
+               <p>Created by -  <a href="https://github.com/SSD-2020/PBhustle"target="_blank"><i class="icon-social-github"></i></a> :  &nbsp;<a href= "https://www.linkedin.com/in/sparshk98/" target="_blank">Sparsh</a>, <a href="https://www.linkedin.com/in/deepanshu-pali/" target="_blank">Deepanshu</a>, <a href="https://www.linkedin.com/in/sumit-kumar-7b5306162/" target="_blank">Sumit</a> </p>
+             
+               <!-- <p> Wanna check <a href="https://github.com/SSD-2020/PBhustle">Under the Hood</a>?</p> -->
+            </div>
+         </div>
+      </footer>
+      <span class="border-top"></span>
+      <span class="border-left"></span>
+      <span class="border-right"></span>
+      <span class="border-bottom"></span>
+      <span class="shape-1"></span>
+      <span class="shape-2"></span>
+
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/mainjs.js' %}"></script>
+  
+      <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
+   </body>
+</html>
