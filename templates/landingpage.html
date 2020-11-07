@@ -13,6 +13,7 @@
       <link rel="stylesheet" href="{% static 'css/animate.css' %}">
       <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
       <link rel="stylesheet" href="{% static 'css/landingpage.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.css" integrity="sha512-9Tu/Gu0+bXW+oGrTGJOeNz2RG4MaF52FznXCciXFrXehFTLF6phJnJFNVOU2mmj9FWIXk9ap0H1ocygu1ZTRqg==" crossorigin="anonymous" />
       <style>
 
          .ihov:hover{
@@ -100,8 +101,8 @@
                <div class="col-md-8">
                   <nav id="nav" class="main-navigation hidden-xs hidden-sm">
                      <ul class="main-menu">
-                        <li> <a href="{% provider_login_url 'google' %}">Google</a></li>
-                        <li> <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; background-color: green;">SIGN IN</button> </li>
+                        <!-- <li> <a href="{% provider_login_url 'google' %}">Google</a></li> -->
+                        <li><a href="{% provider_login_url 'google' %}">    <button style="width:auto; background-color: green;">SIGN IN &nbsp;<i class="icon-social-google" style="color: white;"></i></button></a> </li>
                         <li> <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;background-color: green;">SIGN UP</button> </li>
                       
                        
@@ -111,8 +112,8 @@
                 
                   <nav class="main-navigation menu-responsive hidden-md hidden-lg">
                      <ul class="main-menu">
-                        <li> <a href="{% provider_login_url 'google' %}">Google</a></li>
-                        <li> <a onclick="document.getElementById('id01').style.display='block'" style="width:auto; ">SIGN IN</a> </li>
+                        <!-- <li> <a href="{% provider_login_url 'google' %}">Google</a></li> -->
+                        <li> <a href="{% provider_login_url 'google' %}"> SIGN IN &nbsp;<i class="icon-social-google" style="color: white;"></i></a> </li>
                         <li> <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SIGN UP</a> </li>
                      </ul>
                   </nav>
@@ -528,6 +529,7 @@ modal.find('.modal-body input').val(recipient)
             <div class="col-md-12 copyright">
                <p>Copyright &copy; 2020 <a href="https://www.linkedin.com/company/point-blank-d/" target="_blank">Point Blank@ DSCE</a></p>
                <p>Created by - <a href= "https://www.linkedin.com/in/sparshk98/" target="_blank">Sparsh</a>, <a href="https://www.linkedin.com/in/deepanshu-pali/" target="_blank">Deepanshu</a>, <a href="https://www.linkedin.com/in/sumit-kumar-7b5306162/" target="_blank">Sumit</a> </p>
+              <i class="icon-social-github">asd</i>
                <!-- <p> Wanna check <a href="https://github.com/SSD-2020/PBhustle">Under the Hood</a>?</p> -->
             </div>
          </div>
